@@ -1,3 +1,4 @@
+import NavBar from "~/components/nav-bar";
 import type { Route } from "./+types/projects";
 
 export function meta({}: Route.MetaArgs) {
@@ -11,5 +12,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Projects() {
-  return <h1>Projects Page</h1>;
+  return (
+    <>
+      <h1>Projects</h1>
+    </>
+  );
 }
