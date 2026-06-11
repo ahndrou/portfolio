@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-manrope: "Manrope";
+
+  --color-*: initial;
+  --color-off-white: #ebebf5;
+  --color-dark: #000;
+  --color-purple: #262d96;
+
+  --text-*: initial;
+  /* Scale is a 'major third' scale - geometric with multiplier 1.25, base 18px. */
+  --text-000: 0.9rem;
+  --text-100: 1.125rem;
+  --text-200: 1.406rem;
+  --text-300: 1.758rem;
+  --text-400: 2.198rem;
+  --text-500: 2.7469rem;
+  --text-600: 3.4331rem;
+
+  --spacing-*: initial;
+  /* Scale is a geometric sequence with multiplier 1.75, base 4px. */
+  --spacing-000: 0.25rem;
+  --spacing-100: 0.4375rem;
+  --spacing-200: 0.7656rem;
+  --spacing-300: 1.34rem;
+  --spacing-400: 2.345rem;
+  --spacing-500: 4.1031rem;
+  --spacing-600: 7.1806rem;
+}

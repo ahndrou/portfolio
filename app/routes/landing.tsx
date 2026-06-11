@@ -42,7 +42,7 @@ export default function Landing() {
             <Link to="projects">Contact</Link>
           </li>
           <li>
-            <Link to="projects">GitHub</Link>
+            <Link to="/">GitHub</Link>
           </li>
         </ul>
       </nav>
