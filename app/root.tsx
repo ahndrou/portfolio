@@ -33,7 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="bg-dark">
+      <body className="h-screen bg-[linear-gradient(#02071A,#04103E,#130E75,#6514B1)]">
         {children}
         <ScrollRestoration />
         <Scripts />
