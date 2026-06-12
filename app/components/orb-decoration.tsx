@@ -1,33 +1,19 @@
 import { type CSSProperties, useId } from "react";
 
 interface OrbDecorationProps {
-  top?: CSSProperties["top"];
-  left?: CSSProperties["left"];
-  right?: CSSProperties["right"];
-  bottom?: CSSProperties["bottom"];
-  radius: CSSProperties["width"];
+  diameter: CSSProperties["width"];
 }
 
-export default function OrbDecoration({
-  top,
-  left,
-  right,
-  bottom,
-  radius,
-}: OrbDecorationProps) {
+export default function OrbDecoration({ diameter }: OrbDecorationProps) {
   let id = useId();
   id = `${id}-orb-decoration`;
 
   return (
     <svg
-      className="absolute overflow-visible"
+      className="overflow-visible"
       style={{
-        top: top,
-        left: left,
-        right: right,
-        bottom: bottom,
-        height: radius,
-        width: radius,
+        height: diameter,
+        width: diameter,
       }}
       viewBox="0 0 100 100"
     >
