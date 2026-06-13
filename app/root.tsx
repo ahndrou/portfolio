@@ -33,7 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="flex h-screen items-center justify-center bg-[linear-gradient(#02071A,#04103E,#130E75,#6514B1)] px-200 md:px-300">
+      <body className="min-h-screen bg-[linear-gradient(#02071A,#04103E,#130E75,#6514B1)] px-200 md:items-start md:px-300">
         {children}
         <ScrollRestoration />
         <Scripts />
