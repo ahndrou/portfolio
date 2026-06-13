@@ -26,14 +26,14 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="font-manrope text-neutral-0 text-100">
+    <html lang="en" className="font-manrope text-neutral-0 text-100 h-full">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="min-h-screen bg-[linear-gradient(#02071A,#04103E,#130E75,#6514B1)] px-200 md:items-start md:px-300">
+      <body className="h-full bg-[linear-gradient(#02071A,#04103E,#130E75,#6514B1)] px-200 md:items-start md:px-300">
         {children}
         <ScrollRestoration />
         <Scripts />
