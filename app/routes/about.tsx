@@ -17,10 +17,11 @@ export default function About() {
       <h1 className="text-500 rounded-lg bg-neutral-200/25 p-300 leading-none">
         About Me
       </h1>
-      <section className="grid gap-400 rounded-lg bg-neutral-200/25 p-300">
+
+      <section className="gap-400 rounded-lg bg-neutral-200/25 p-300 *:mb-400 md:columns-2">
         <article className="grid gap-100">
           <h2 className="text-400">Hi! I'm Andrew</h2>
-          <section className="grid gap-200">
+          <section className="*:mb-200">
             <p className="font-light">
               I’m a <span className="font-bold">frontend-focused</span> web
               developer with strong technical fundamentals backed by a{" "}
@@ -33,7 +34,7 @@ export default function About() {
 
         <article className="grid gap-100">
           <h2 className="text-400">Recent Interests</h2>
-          <section className="grid gap-200">
+          <section className="*:mb-200">
             <p className="font-light">
               I am <span className="font-bold">always trying to improve</span>{" "}
               my understanding of the web platform and its complexities, as well
@@ -64,7 +65,7 @@ export default function About() {
 
         <article className="grid gap-100">
           <h2 className="text-400">Other Interests</h2>
-          <section className="grid gap-200">
+          <section className="*:mb-200">
             <p className="font-light">
               Outside of web development, I enjoy tinkering with{" "}
               <span className="font-bold">3D modelling</span> in Blender, as
