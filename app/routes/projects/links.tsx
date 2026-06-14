@@ -1,7 +1,7 @@
 import { LinkButton } from "~/components/linkButton";
 
 export function Links({ className }: { className: string }) {
-  const cn = `flex w-full gap-300 *:grow ${className}`;
+  const cn = `flex w-full gap-300 font-medium *:grow ${className}`;
 
   return (
     <nav className={cn}>

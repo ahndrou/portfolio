@@ -18,7 +18,7 @@ export default function Landing() {
       <main className="relative z-10 flex max-w-5xl items-center gap-400">
         <section className="rounded-lg border border-neutral-50/45 bg-neutral-200/25">
           <div className="mb-500 p-200">
-            <h1 className="text-500 mb-200">Andrew Smith</h1>
+            <h1 className="text-500 mb-200 font-semibold">Andrew Smith</h1>
             <section className="grid gap-200">
               <p>
                 A self taught web developer with a Bsc. Computer Science
@@ -36,15 +36,15 @@ export default function Landing() {
           </div>
 
           <nav>
-            <ul className="text-100 md:text-100 grid grid-cols-2 justify-items-center gap-[2px] md:grid-cols-4">
+            <ul className="text-100 md:text-100 grid grid-cols-2 justify-items-center gap-[2px] font-medium md:grid-cols-4">
               <li className="rounded-br-reg hover:bg-purple w-full border-2 border-neutral-100/20 bg-neutral-200/30 text-center md:rounded-br-none md:rounded-bl-lg">
-                <Link className="block w-full py-100" to="projects">
-                  Projects
+                <Link className="block w-full py-100" to="about">
+                  About Me
                 </Link>
               </li>
               <li className="rounded-bl-reg hover:bg-purple w-full border-2 border-neutral-100/20 bg-neutral-200/30 text-center md:rounded-bl-none">
-                <Link className="block w-full py-100" to="about">
-                  About Me
+                <Link className="block w-full py-100" to="projects">
+                  Projects
                 </Link>
               </li>
               <li className="rounded-tr-reg hover:bg-purple w-full rounded-bl-lg border-2 border-neutral-100/20 bg-neutral-200/30 text-center md:rounded-tr-none md:rounded-bl-none">

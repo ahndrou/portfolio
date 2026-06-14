@@ -2,17 +2,17 @@ import { Link } from "react-router";
 
 export default function NavBar() {
   return (
-    <nav className="text-100 @container w-full font-medium">
-      <ul className="flex gap-200">
+    <nav className="text-100 @container w-full font-semibold">
+      <ul className="flex gap-300">
         <li className="grow">
           <Link to="/">Andrew Smith</Link>
         </li>
 
         <li className="@max-[40ch]:hidden">
-          <Link to="/projects">Projects</Link>
+          <Link to="/about">About Me</Link>
         </li>
         <li className="@max-[40ch]:hidden">
-          <Link to="/about">About Me</Link>
+          <Link to="/projects">Projects</Link>
         </li>
         <li className="@max-[40ch]:hidden">
           <Link to="/contact">Contact</Link>
