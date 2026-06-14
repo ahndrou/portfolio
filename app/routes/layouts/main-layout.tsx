@@ -8,7 +8,7 @@ export default function MainLayout() {
         <NavBar />
       </header>
 
-      <main className="max-w-5xl grow">
+      <main className="w-full max-w-5xl grow">
         <Outlet />
       </main>
     </div>

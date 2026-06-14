@@ -53,9 +53,14 @@ export default function Landing() {
                 </Link>
               </li>
               <li className="rounded-tl-reg hover:bg-purple w-full rounded-br-lg border-2 border-neutral-100/20 bg-neutral-200/30 text-center md:rounded-tl-none">
-                <Link className="block w-full py-100" to="/">
+                <a
+                  className="block w-full py-100"
+                  href="https://github.com/ahndrou"
+                  target="_blank"
+                  rel="noopener"
+                >
                   GitHub
-                </Link>
+                </a>
               </li>
             </ul>
           </nav>

@@ -18,7 +18,9 @@ export default function NavBar() {
           <Link to="/contact">Contact</Link>
         </li>
         <li className="@max-[40ch]:hidden">
-          <Link to="/">GitHub</Link>
+          <a href="https://github.com/ahndrou" target="_blank" rel="noopener">
+            GitHub
+          </a>
         </li>
 
         <li className="hidden @max-[40ch]:block">Menu</li>

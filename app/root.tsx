@@ -28,7 +28,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className="font-manrope text-neutral-0 text-100 scrollbar-gutter-stable bg-[linear-gradient(#3a4e9f,#04103E,#130E75,#6514B1)]"
+      className="font-manrope text-neutral-0 text-100 bg-[linear-gradient(#3a4e9f,#04103E,#130E75,#6514B1)]"
     >
       <head>
         <meta charSet="utf-8" />
@@ -36,7 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="flex min-h-dvh p-200 *:grow md:p-300">
+      <body className="flex min-h-dvh scrollbar-gutter-stable p-200 *:grow md:p-300">
         {children}
         <ScrollRestoration />
         <Scripts />

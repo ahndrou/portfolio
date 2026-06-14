@@ -9,6 +9,7 @@
   --color-neutral-100: #1f1f1f;
   --color-neutral-200: #000;
   --color-purple: #262d96;
+  --color-purple-desaturated: #3c4296;
 
   --text-*: initial;
   /* Scale is a 'major third' scale - geometric with multiplier 1.25, base 18px. */
