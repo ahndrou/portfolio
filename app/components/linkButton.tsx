@@ -9,7 +9,10 @@ export function LinkButton({
   to: string;
 }) {
   return (
-    <Link to={to} className="bg-purple text-200 rounded-reg py-100 text-center">
+    <Link
+      to={to}
+      className="bg-purple text-100 flex items-center justify-center rounded-lg py-100 text-center"
+    >
       {children}
     </Link>
   );

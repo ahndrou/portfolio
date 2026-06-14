@@ -14,39 +14,28 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Projects() {
   return (
-    <div>
-      <h1 className="text-500 bg-neutral-200/25 px-300 py-200">Projects</h1>
-      <section className="text-100 grid gap-500 rounded-lg bg-neutral-200/25 px-300 py-200">
-        <Card>
-          <img className="rounded-reg" src="/weather-app.png" />
-          <section className="grid gap-400">
-            <div>
-              <h2 className="text-500">Weather App</h2>
-              <p>
-                Lorem ipsum laoreet congue aliquet senectus netus non mollis vel
-                venenatis enim velit rutrum nunc nisi viverra condimentum vel
-                ipsum. Lorem ipsum laoreet congue aliquet senectus netus non
-                mollis vel venenatis enim velit rutrum nunc nisi viverra
-                condimentum vel ipsum.
-              </p>
-            </div>
-          </section>
+    <div className="grid gap-300">
+      <h1 className="text-500 rounded-lg bg-neutral-200/25 px-300 py-200 font-bold">
+        Projects
+      </h1>
+
+      <section className="text-100 grid gap-500 rounded-lg bg-neutral-200/25 p-300">
+        <Card imgSrc="/weather-app.png" title="Weather App">
+          <p>
+            Lorem ipsum laoreet congue aliquet senectus netus non mollis vel
+            venenatis enim velit rutrum nunc nisi viverra condimentum vel ipsum.
+            Lorem ipsum laoreet congue aliquet senectus netus non mollis vel
+            venenatis enim velit rutrum nunc nisi viverra condimentum vel ipsum.
+          </p>
         </Card>
 
-        <Card>
-          <img className="rounded-reg" src="/weather-app.png" />
-          <section className="grid gap-400">
-            <div>
-              <h2 className="text-500">Weather App</h2>
-              <p>
-                Lorem ipsum laoreet congue aliquet senectus netus non mollis vel
-                venenatis enim velit rutrum nunc nisi viverra condimentum vel
-                ipsum. Lorem ipsum laoreet congue aliquet senectus netus non
-                mollis vel venenatis enim velit rutrum nunc nisi viverra
-                condimentum vel ipsum.
-              </p>
-            </div>
-          </section>
+        <Card imgSrc="/weather-app.png" title="Weather App">
+          <p>
+            Lorem ipsum laoreet congue aliquet senectus netus non mollis vel
+            venenatis enim velit rutrum nunc nisi viverra condimentum vel ipsum.
+            Lorem ipsum laoreet congue aliquet senectus netus non mollis vel
+            venenatis enim velit rutrum nunc nisi viverra condimentum vel ipsum.
+          </p>
         </Card>
       </section>
     </div>
