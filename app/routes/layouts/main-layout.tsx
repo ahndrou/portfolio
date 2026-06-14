@@ -3,11 +3,12 @@ import NavBar from "~/components/nav-bar";
 
 export default function MainLayout() {
   return (
-    <div className="grid justify-items-center py-200">
-      <header className="mb-400 w-full max-w-5xl bg-neutral-200/25">
+    <div>
+      <header className="mb-400 max-w-5xl bg-neutral-200/25 px-300 py-200">
         <NavBar />
       </header>
-      <main className="w-full max-w-5xl">
+
+      <main className="max-w-5xl">
         <Outlet />
       </main>
     </div>

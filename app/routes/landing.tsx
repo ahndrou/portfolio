@@ -14,7 +14,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Landing() {
   return (
-    <div className="grid h-full justify-items-center">
+    <div className="justify-items-center self-center">
       <main className="relative z-10 flex max-w-5xl items-center gap-400">
         <section className="rounded-lg border border-neutral-50/45 bg-neutral-200/25">
           <div className="mb-500 p-200">
