@@ -36,7 +36,7 @@ export default function Landing() {
           </div>
 
           <nav>
-            <ul className="text-100 md:text-100 grid grid-cols-2 justify-items-center gap-[2px] font-medium md:grid-cols-4">
+            <ul className="text-100 md:text-100 grid grid-cols-2 justify-items-center gap-[2px] font-medium lg:grid-cols-4">
               <li className="rounded-br-reg hover:bg-purple w-full border-2 border-neutral-100/20 bg-neutral-200/30 text-center md:rounded-br-none md:rounded-bl-lg">
                 <Link className="block w-full py-100" to="about">
                   About Me
@@ -63,7 +63,7 @@ export default function Landing() {
 
         <div
           aria-hidden
-          className="top-[-330px] right-[-160px] hidden md:block"
+          className="top-[-330px] right-[-160px] hidden lg:block"
         >
           <OrbDecoration diameter={"350px"} />
         </div>
@@ -71,7 +71,7 @@ export default function Landing() {
 
       <div
         aria-hidden
-        className="absolute top-[0] left-[0] h-full w-full overflow-clip md:hidden"
+        className="absolute top-[0] left-[0] h-full w-full overflow-clip lg:hidden"
       >
         <div className="absolute top-[-330px] right-[-160px]">
           <OrbDecoration diameter={"450"} />
