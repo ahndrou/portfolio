@@ -14,11 +14,11 @@ export function meta({}: Route.MetaArgs) {
 export default function About() {
   return (
     <div className="grid gap-300">
-      <h1 className="text-500 rounded-lg bg-neutral-200/25 p-300 leading-none font-bold">
+      <h1 className="text-500 rounded-lg bg-neutral-200/25 p-300 leading-none font-bold shadow-lg">
         About Me
       </h1>
 
-      <section className="gap-400 rounded-lg bg-neutral-200/25 p-300 *:mb-400 md:columns-2">
+      <section className="gap-400 rounded-lg bg-neutral-200/25 p-300 shadow-lg *:mb-400 md:columns-2">
         <article className="grid gap-100">
           <h2 className="text-500 font-semibold">Hi! I'm Andrew</h2>
           <section className="*:mb-200">

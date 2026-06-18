@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
-@theme {
+@theme inline {
   --font-manrope: "Manrope";
 
   --color-*: initial;
-  --color-neutral-0: #ebebf5;
-  --color-neutral-50: #1f1f1f;
-  --color-neutral-100: #1f1f1f;
-  --color-neutral-200: #000;
-  --color-purple: #262d96;
-  --color-purple-desaturated: #3c4296;
+  --color-bg-page: var(--clr-neutral-cool-1000);
+  --color-bg-surface: var(--clr-neutral-cool-800);
+  --color-bg-link: var(--clr-neutral-green-400);
+  --color-brdr-link: var(--clr-green-200);
+  --color-brdr-surface: var(--clr-green-800);
+  --color-txt-body: var(--clr-neutral-cool-0);
+  --color-txt-link: var(--clr-neutral-cool-50);
+  --color-txt-heading-1: var(--clr-green-200);
+  --color-txt-heading-2: var(--clr-green-200);
 
   --text-*: initial;
   /* Scale is a 'major third' scale - geometric with multiplier 1.25, base 18px. */
@@ -33,5 +36,16 @@
 
   --radius-*: initial;
   --radius-reg: 6px;
-  --radius-lg: 12px;
+}
+
+html {
+  --clr-neutral-cool-0: #e6e6e6;
+  --clr-neutral-cool-50: #dbdbdb;
+  --clr-neutral-cool-800: #19181b;
+  --clr-neutral-cool-1000: #0e1010;
+  --clr-neutral-green-400: #272927;
+  --clr-green-200: #70b272;
+  --clr-green-400: #58945a;
+  --clr-green-700: #478049;
+  --clr-green-800: #233b29;
 }

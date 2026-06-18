@@ -15,11 +15,11 @@ export function meta({}: Route.MetaArgs) {
 export default function Projects() {
   return (
     <div className="grid gap-300">
-      <h1 className="text-500 rounded-lg bg-neutral-200/25 px-300 py-200 font-bold">
+      <h1 className="text-500 rounded-lg bg-neutral-200/25 px-300 py-200 font-bold shadow-lg">
         Projects
       </h1>
 
-      <section className="text-100 grid gap-500 rounded-lg bg-neutral-200/25 p-300">
+      <section className="text-100 grid gap-500 rounded-lg bg-neutral-200/25 p-300 shadow-lg">
         <Card imgSrc="/weather-app.png" title="Weather App">
           <p>
             Lorem ipsum laoreet congue aliquet senectus netus non mollis vel

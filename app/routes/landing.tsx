@@ -4,7 +4,7 @@ import OrbDecoration from "~/components/orb-decoration";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Andrew Smith" },
+    { title: "Andrew Smith's Portfolio" },
     {
       name: "description",
       content: "The landing page for Andrew Smith's portfolio.",
@@ -15,87 +15,113 @@ export function meta({}: Route.MetaArgs) {
 export default function Landing() {
   return (
     <div className="justify-items-center self-center">
-      <main className="relative z-10 flex max-w-5xl items-center gap-400">
-        <section className="rounded-lg border border-neutral-50/45 bg-neutral-200/25">
-          <div className="mb-500 p-200">
-            <h1 className="text-500 mb-200 font-semibold">Andrew Smith</h1>
-            <section className="grid gap-200">
-              <p>
-                A self taught web developer with a Bsc. Computer Science
-                (Ordinary Degree) from the University of Edinburgh.
-              </p>
-              <p>
-                I’m currently based in Manchester, UK and seeking
-                employment.{" "}
-              </p>
-              <p>
-                You can learn more about me, or check out some of the projects I
-                have been working on via the relevant pages below.
-              </p>
-            </section>
-          </div>
+      <BackgroundDecorations />
 
-          <nav>
-            <ul className="text-100 md:text-100 grid grid-cols-2 justify-items-center gap-[2px] font-medium lg:grid-cols-4">
-              <li className="rounded-br-reg hover:bg-purple w-full border-2 border-neutral-100/20 bg-neutral-200/30 text-center md:rounded-br-none md:rounded-bl-lg">
-                <Link className="block w-full py-100" to="about">
-                  About Me
-                </Link>
-              </li>
-              <li className="rounded-bl-reg hover:bg-purple w-full border-2 border-neutral-100/20 bg-neutral-200/30 text-center md:rounded-bl-none">
-                <Link className="block w-full py-100" to="projects">
-                  Projects
-                </Link>
-              </li>
-              <li className="rounded-tr-reg hover:bg-purple w-full rounded-bl-lg border-2 border-neutral-100/20 bg-neutral-200/30 text-center md:rounded-tr-none md:rounded-bl-none">
-                <Link className="block w-full py-100" to="projects">
-                  Contact
-                </Link>
-              </li>
-              <li className="rounded-tl-reg hover:bg-purple w-full rounded-br-lg border-2 border-neutral-100/20 bg-neutral-200/30 text-center md:rounded-tl-none">
-                <a
-                  className="block w-full py-100"
-                  href="https://github.com/ahndrou"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  GitHub
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </section>
-
-        <div
-          aria-hidden
-          className="top-[-330px] right-[-160px] hidden lg:block"
-        >
-          <OrbDecoration diameter={"350px"} />
-        </div>
+      <main className="bg-bg-surface border-brdr-surface rounded-reg relative flex max-w-5xl items-center border">
+        <DecorationSection />
+        <MainSection />
       </main>
+    </div>
+  );
+}
 
-      <div
-        aria-hidden
-        className="absolute top-[0] left-[0] h-full w-full overflow-clip lg:hidden"
-      >
-        <div className="absolute top-[-330px] right-[-160px]">
-          <OrbDecoration diameter={"450"} />
-        </div>
-        <div className="absolute top-[-80px] left-[-90px]">
-          <OrbDecoration diameter={"180"} />
-        </div>
-        <div className="absolute bottom-[-390px] left-[-100px]">
-          <OrbDecoration diameter={"480"} />
-        </div>
+function BackgroundDecorations() {
+  return (
+    <div
+      aria-hidden
+      className="absolute top-[0] left-[0] h-full w-full overflow-clip"
+    >
+      <div className="absolute top-[-330px] right-[-160px]">
+        <OrbDecoration diameter={"450"} />
+      </div>
+      <div className="absolute top-[-80px] left-[-90px]">
+        <OrbDecoration diameter={"180"} />
+      </div>
+      <div className="absolute bottom-[-390px] left-[-100px]">
+        <OrbDecoration diameter={"480"} />
       </div>
     </div>
   );
 }
 
-function NavLink({ children, to }: { children: string; to: string }) {
+function DecorationSection() {
   return (
-    <li>
-      <Link to={to}>{children}</Link>
+    <div aria-hidden className="hidden px-200 lg:block">
+      <OrbDecoration diameter={"350px"} />
+    </div>
+  );
+}
+
+function MainSection() {
+  return (
+    <section className="border-brdr-surface border-l">
+      <div className="p-200">
+        <h1 className="text-500 text-txt-heading-1 mb-200 font-semibold">
+          Andrew Smith
+        </h1>
+        <section className="grid gap-500">
+          <BodyCopy />
+          <Navigation />
+        </section>
+      </div>
+    </section>
+  );
+}
+
+function BodyCopy() {
+  return (
+    <section className="grid gap-200">
+      <p>
+        A self taught web developer with a Bsc. Computer Science (Ordinary
+        Degree) from the University of Edinburgh.
+      </p>
+      <p>I’m currently based in Manchester, UK and seeking employment. </p>
+      <p>
+        You can learn more about me, or check out some of the projects I have
+        been working on via the relevant pages below.
+      </p>
+    </section>
+  );
+}
+
+function Navigation() {
+  return (
+    <nav>
+      <ul className="text-100 md:text-100 grid grid-cols-2 justify-items-center gap-100 font-medium lg:grid-cols-4">
+        <ListItem>
+          <Link className="block w-full py-100" to="about">
+            About Me
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link className="block w-full py-100" to="projects">
+            Projects
+          </Link>
+        </ListItem>
+        <ListItem>
+          <Link className="block w-full py-100" to="projects">
+            Contact
+          </Link>
+        </ListItem>
+        <ListItem>
+          <a
+            className="block w-full py-100"
+            href="https://github.com/ahndrou"
+            target="_blank"
+            rel="noopener"
+          >
+            GitHub
+          </a>
+        </ListItem>
+      </ul>
+    </nav>
+  );
+}
+
+function ListItem({ children }: { children: React.ReactElement }) {
+  return (
+    <li className="bg-bg-link border-brdr-link rounded-reg w-full border text-center">
+      {children}
     </li>
   );
 }

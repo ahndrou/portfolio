@@ -13,12 +13,12 @@ export function meta({}: Route.MetaArgs) {
 export default function Contact() {
   return (
     <div className="grid gap-300">
-      <h1 className="text-500 rounded-lg bg-neutral-200/25 p-300 leading-none font-bold">
+      <h1 className="text-500 rounded-lg bg-neutral-200/25 p-300 leading-none font-bold shadow-lg">
         Get in Touch
       </h1>
 
       <div className="grid gap-200 lg:grid-cols-2">
-        <section className="text-100 grid gap-500 rounded-lg bg-neutral-200/25 p-300">
+        <section className="text-100 grid gap-500 rounded-lg bg-neutral-200/25 p-300 shadow-lg">
           <p>
             I’m currently seeking employment and would love to hear about any
             opportunities! You can contact me by email using the form provided,
@@ -34,7 +34,7 @@ export default function Contact() {
           </a>
         </section>
 
-        <form className="grid gap-200 rounded-lg bg-neutral-200/25 p-300">
+        <form className="grid gap-200 rounded-lg bg-neutral-200/25 p-300 shadow-lg">
           <label>
             <span className="hidden">Name</span>
             <input
