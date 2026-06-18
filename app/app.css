@@ -28,6 +28,7 @@ html {
   --color-brdr-surface: var(--clr-green-800);
   --color-txt-body: var(--clr-neutral-cool-0);
   --color-txt-link: var(--clr-neutral-cool-50);
+  --color-txt-link-active: var(--clr-green-200);
   --color-txt-heading-1: var(--clr-green-200);
   --color-txt-heading-2: var(--clr-green-200);
 
