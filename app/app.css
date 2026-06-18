@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-manrope: "Manrope";
+  --font-body: var(--font-ibm-plex-sans);
+  --font-heading: var(--font-ibm-plex-mono);
 
   --color-*: initial;
   --color-bg-page: var(--clr-neutral-cool-1000);
@@ -48,4 +49,7 @@ html {
   --clr-green-400: #58945a;
   --clr-green-700: #478049;
   --clr-green-800: #233b29;
+
+  --font-ibm-plex-mono: "IBM Plex Mono";
+  --font-ibm-plex-sans: "IBM Plex Sans";
 }

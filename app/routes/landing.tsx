@@ -56,7 +56,7 @@ function MainSection() {
   return (
     <section className="border-brdr-surface border-l">
       <div className="p-200">
-        <h1 className="text-500 text-txt-heading-1 mb-200 font-semibold">
+        <h1 className="text-500 text-txt-heading-1 font-heading mb-200 font-medium">
           Andrew Smith
         </h1>
         <section className="grid gap-500">
