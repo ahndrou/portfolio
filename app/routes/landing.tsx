@@ -120,7 +120,7 @@ function Navigation() {
 
 function ListItem({ children }: { children: React.ReactElement }) {
   return (
-    <li className="bg-bg-link border-brdr-link rounded-reg w-full border text-center">
+    <li className="bg-bg-link border-brdr-link rounded-reg font-button w-full border text-center">
       {children}
     </li>
   );
