@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+html {
+  --clr-neutral-cool-0: #e6e6e6;
+  --clr-neutral-cool-50: #dbdbdb;
+  --clr-neutral-cool-800: #19181b;
+  --clr-neutral-cool-1000: #0e1010;
+  --clr-neutral-green-400: #272927;
+  --clr-green-200: #70b272;
+  --clr-green-400: #58945a;
+  --clr-green-700: #478049;
+  --clr-green-800: #233b29;
+
+  --font-ibm-plex-mono: "IBM Plex Mono";
+  --font-ibm-plex-sans: "IBM Plex Sans";
+}
+
 @theme inline {
   --font-body: var(--font-ibm-plex-sans);
   --font-heading: var(--font-ibm-plex-mono);
@@ -40,17 +55,16 @@
   --radius-reg: 6px;
 }
 
-html {
-  --clr-neutral-cool-0: #e6e6e6;
-  --clr-neutral-cool-50: #dbdbdb;
-  --clr-neutral-cool-800: #19181b;
-  --clr-neutral-cool-1000: #0e1010;
-  --clr-neutral-green-400: #272927;
-  --clr-green-200: #70b272;
-  --clr-green-400: #58945a;
-  --clr-green-700: #478049;
-  --clr-green-800: #233b29;
+@utility drop-glow {
+  filter: drop-shadow(0 0 2px var(--clr-green-400));
+}
 
-  --font-ibm-plex-mono: "IBM Plex Mono";
-  --font-ibm-plex-sans: "IBM Plex Sans";
+@utility box-glow {
+  box-shadow:
+    0 0 1px var(--clr-green-400),
+    inset 0 0 1px var(--clr-green-400);
+}
+
+@utility box-glow-divider {
+  box-shadow: 0 0 1px var(--clr-green-400);
 }

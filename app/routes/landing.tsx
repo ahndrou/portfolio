@@ -17,8 +17,9 @@ export default function Landing() {
     <div className="justify-items-center self-center">
       <BackgroundDecorations />
 
-      <main className="bg-bg-surface border-brdr-surface rounded-reg relative flex max-w-5xl items-center border">
+      <main className="bg-bg-surface border-brdr-surface rounded-reg box-glow relative flex max-w-4xl items-center border">
         <DecorationSection />
+        <DividerLine />
         <MainSection />
       </main>
     </div>
@@ -29,7 +30,7 @@ function BackgroundDecorations() {
   return (
     <div
       aria-hidden
-      className="absolute top-[0] left-[0] h-full w-full overflow-clip"
+      className="absolute top-[0] left-[0] h-full w-full overflow-clip brightness-30"
     >
       <div className="absolute top-[-330px] right-[-160px]">
         <OrbDecoration diameter={"450"} />
@@ -46,7 +47,7 @@ function BackgroundDecorations() {
 
 function DecorationSection() {
   return (
-    <div aria-hidden className="hidden px-200 lg:block">
+    <div aria-hidden className="hidden px-300 lg:block">
       <OrbDecoration diameter={"350px"} />
     </div>
   );
@@ -54,11 +55,12 @@ function DecorationSection() {
 
 function MainSection() {
   return (
-    <section className="border-brdr-surface border-l">
-      <div className="p-200">
+    <section className="border-brdr-surface">
+      <div className="p-300">
         <h1 className="text-500 text-txt-heading-1 font-heading mb-200 font-medium">
           Andrew Smith
         </h1>
+
         <section className="grid gap-500">
           <BodyCopy />
           <Navigation />
@@ -123,5 +125,14 @@ function ListItem({ children }: { children: React.ReactElement }) {
     <li className="bg-bg-link border-brdr-link rounded-reg font-button w-full border text-center">
       {children}
     </li>
+  );
+}
+
+function DividerLine() {
+  return (
+    <div
+      className="bg-brdr-surface box-glow-divider w-px self-stretch"
+      aria-hidden
+    />
   );
 }

@@ -19,13 +19,22 @@ export default function OrbDecoration({ diameter }: OrbDecorationProps) {
     >
       <defs>
         <radialGradient id={id}>
-          <stop offset="0%" stopColor="#3B38D4" />
-          <stop offset="75%" stopColor="#4E4DC2" />
-          <stop offset="100%" stopColor="#6363C2" />
+          <stop offset="0%" stopColor="hsl(241, 60%, 47%)" />
+          <stop offset="75%" stopColor="hsl(240, 44%, 48%)" />
+          <stop offset="100%" stopColor="hsl(240, 39%, 52%)" />
         </radialGradient>
       </defs>
 
-      <circle r="50" cy="50" cx="50" fill={`url(#${id})`} />
+      <circle
+        r="50"
+        cy="50"
+        cx="50"
+        fill={`url(#${id})`}
+        stroke={"var(--clr-green-400)"}
+        strokeWidth={"2"}
+        vector-effect="non-scaling-stroke"
+        className="drop-glow"
+      />
     </svg>
   );
 }
