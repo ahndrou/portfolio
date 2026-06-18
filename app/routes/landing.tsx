@@ -91,17 +91,17 @@ function Navigation() {
     <nav>
       <ul className="text-100 md:text-100 grid grid-cols-2 justify-items-center gap-100 font-medium lg:grid-cols-4">
         <ListItem>
-          <Link className="block w-full py-100" to="about">
+          <Link className="block w-full py-100" to="about" viewTransition>
             About Me
           </Link>
         </ListItem>
         <ListItem>
-          <Link className="block w-full py-100" to="projects">
+          <Link className="block w-full py-100" to="projects" viewTransition>
             Projects
           </Link>
         </ListItem>
         <ListItem>
-          <Link className="block w-full py-100" to="projects">
+          <Link className="block w-full py-100" to="projects" viewTransition>
             Contact
           </Link>
         </ListItem>
