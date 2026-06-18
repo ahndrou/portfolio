@@ -14,13 +14,13 @@ export function meta({}: Route.MetaArgs) {
 export default function About() {
   return (
     <div className="grid gap-300">
-      <h1 className="text-500 text-txt-heading-1 rounded-reg bg-bg-surface border-brdr-surface box-glow border p-300 leading-none font-medium">
+      <h1 className="text-500 text-txt-heading-1 font-heading rounded-reg bg-bg-surface border-brdr-surface box-glow border p-300 leading-none font-medium">
         About Me
       </h1>
 
       <section className="border-brdr-surface rounded-reg bg-bg-surface box-glow gap-400 border p-300 *:mb-400 md:columns-2">
         <article className="grid gap-100">
-          <h2 className="text-400 text-txt-heading-2 font-heading font-medium">
+          <h2 className="text-400 text-txt-heading-2 font-heading">
             Hi! I'm Andrew
           </h2>
 
@@ -37,7 +37,7 @@ export default function About() {
         </article>
 
         <article className="grid gap-100">
-          <h2 className="text-400 text-txt-heading-2 font-heading font-medium">
+          <h2 className="text-400 text-txt-heading-2 font-heading">
             Recent Interests
           </h2>
           <section className="*:mb-200">
@@ -71,7 +71,7 @@ export default function About() {
         </article>
 
         <article className="grid gap-100">
-          <h2 className="text-400 text-txt-heading-2 font-heading font-medium">
+          <h2 className="text-400 text-txt-heading-2 font-heading">
             Other Interests
           </h2>
           <section className="*:mb-200">
