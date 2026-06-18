@@ -14,13 +14,16 @@ export function meta({}: Route.MetaArgs) {
 export default function About() {
   return (
     <div className="grid gap-300">
-      <h1 className="text-500 rounded-lg bg-neutral-200/25 p-300 leading-none font-bold shadow-lg">
+      <h1 className="text-500 text-txt-heading-1 rounded-reg bg-bg-surface border-brdr-surface box-glow border p-300 leading-none font-medium">
         About Me
       </h1>
 
-      <section className="gap-400 rounded-lg bg-neutral-200/25 p-300 shadow-lg *:mb-400 md:columns-2">
+      <section className="border-brdr-surface rounded-reg bg-bg-surface box-glow gap-400 border p-300 *:mb-400 md:columns-2">
         <article className="grid gap-100">
-          <h2 className="text-500 font-semibold">Hi! I'm Andrew</h2>
+          <h2 className="text-400 text-txt-heading-2 font-heading font-medium">
+            Hi! I'm Andrew
+          </h2>
+
           <section className="*:mb-200">
             <p className="font-light">
               I’m a <span className="font-semibold">frontend-focused</span> web
@@ -34,7 +37,9 @@ export default function About() {
         </article>
 
         <article className="grid gap-100">
-          <h2 className="text-500 font-semibold">Recent Interests</h2>
+          <h2 className="text-400 text-txt-heading-2 font-heading font-medium">
+            Recent Interests
+          </h2>
           <section className="*:mb-200">
             <p className="font-light">
               I am{" "}
@@ -66,7 +71,9 @@ export default function About() {
         </article>
 
         <article className="grid gap-100">
-          <h2 className="text-500 font-semibold">Other Interests</h2>
+          <h2 className="text-400 text-txt-heading-2 font-heading font-medium">
+            Other Interests
+          </h2>
           <section className="*:mb-200">
             <p className="font-light">
               Outside of web development, I enjoy tinkering with{" "}
