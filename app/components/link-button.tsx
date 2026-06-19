@@ -11,7 +11,7 @@ export function LinkButton({
   return (
     <Link
       to={to}
-      className="bg-purple text-100 flex items-center justify-center rounded-lg py-100 text-center"
+      className="text-100 rounded-reg bg-bg-link border-brdr-link box-glow font-button flex items-center justify-center border py-0 text-center"
     >
       {children}
     </Link>
