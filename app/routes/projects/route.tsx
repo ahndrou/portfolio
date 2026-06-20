@@ -1,6 +1,8 @@
+import DividerLine from "~/components/divider-line";
 import type { Route } from "./+types/route";
 import { Card } from "./card";
-import { Links } from "./links";
+
+import cards from "./card-data.json";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -15,29 +17,34 @@ export function meta({}: Route.MetaArgs) {
 export default function Projects() {
   return (
     <div className="grid gap-300">
-      <h1 className="text-500 rounded-lg bg-neutral-200/25 px-300 py-200 font-bold shadow-lg">
-        Projects
-      </h1>
-
-      <section className="text-100 grid gap-500 rounded-lg bg-neutral-200/25 p-300 shadow-lg">
-        <Card imgSrc="/weather-app.png" title="Weather App">
-          <p>
-            Lorem ipsum laoreet congue aliquet senectus netus non mollis vel
-            venenatis enim velit rutrum nunc nisi viverra condimentum vel ipsum.
-            Lorem ipsum laoreet congue aliquet senectus netus non mollis vel
-            venenatis enim velit rutrum nunc nisi viverra condimentum vel ipsum.
-          </p>
-        </Card>
-
-        <Card imgSrc="/weather-app.png" title="Weather App">
-          <p>
-            Lorem ipsum laoreet congue aliquet senectus netus non mollis vel
-            venenatis enim velit rutrum nunc nisi viverra condimentum vel ipsum.
-            Lorem ipsum laoreet congue aliquet senectus netus non mollis vel
-            venenatis enim velit rutrum nunc nisi viverra condimentum vel ipsum.
-          </p>
-        </Card>
-      </section>
+      <Heading />
+      <CardList />
     </div>
+  );
+}
+
+function Heading() {
+  return (
+    <h1 className="text-500 rounded-reg bg-bg-surface border-brdr-surface box-glow font-heading text-txt-heading-1 border px-300 py-200 font-medium">
+      Projects
+    </h1>
+  );
+}
+
+function CardList() {
+  return (
+    <ol className="text-100 rounded-reg bg-bg-surface border-brdr-surface box-glow grid list-none content-center gap-300 border">
+      {cards.map((card, i) => (
+        <li>
+          <Card
+            title={card.title}
+            imgSrc={card.imgSrc}
+            paragraphs={card.paragraphs}
+          />
+
+          {i !== cards.length - 1 && <DividerLine height="1px" />}
+        </li>
+      ))}
+    </ol>
   );
 }

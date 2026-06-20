@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import type { Route } from "./+types/landing";
 import OrbDecoration from "~/components/orb-decoration";
+import DividerLine from "~/components/divider-line";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -19,7 +20,7 @@ export default function Landing() {
 
       <main className="bg-bg-surface border-brdr-surface rounded-reg box-glow relative flex max-w-4xl items-center border">
         <DecorationSection />
-        <DividerLine />
+        <DividerLine width={"1px"} />
         <MainSection />
       </main>
     </div>
@@ -91,23 +92,23 @@ function Navigation() {
     <nav>
       <ul className="text-100 md:text-100 grid grid-cols-2 justify-items-center gap-100 font-medium lg:grid-cols-4">
         <ListItem>
-          <Link className="block w-full py-100" to="about" viewTransition>
+          <Link className="block w-full" to="about" viewTransition>
             About Me
           </Link>
         </ListItem>
         <ListItem>
-          <Link className="block w-full py-100" to="projects" viewTransition>
+          <Link className="block w-full" to="projects" viewTransition>
             Projects
           </Link>
         </ListItem>
         <ListItem>
-          <Link className="block w-full py-100" to="projects" viewTransition>
+          <Link className="block w-full" to="projects" viewTransition>
             Contact
           </Link>
         </ListItem>
         <ListItem>
           <a
-            className="block w-full py-100"
+            className="block w-full"
             href="https://github.com/ahndrou"
             target="_blank"
             rel="noopener"
@@ -122,17 +123,8 @@ function Navigation() {
 
 function ListItem({ children }: { children: React.ReactElement }) {
   return (
-    <li className="bg-bg-link border-brdr-link rounded-reg font-button w-full border text-center">
+    <li className="bg-bg-link border-brdr-link rounded-reg font-button box-glow w-full border py-0 text-center">
       {children}
     </li>
-  );
-}
-
-function DividerLine() {
-  return (
-    <div
-      className="bg-brdr-surface box-glow-divider w-px self-stretch"
-      aria-hidden
-    />
   );
 }

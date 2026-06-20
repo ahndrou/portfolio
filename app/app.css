@@ -24,7 +24,7 @@ html {
   --color-bg-page: var(--clr-neutral-cool-1000);
   --color-bg-surface: var(--clr-neutral-cool-800);
   --color-bg-link: var(--clr-neutral-green-400);
-  --color-brdr-link: var(--clr-green-200);
+  --color-brdr-link: var(--clr-green-400);
   --color-brdr-surface: var(--clr-green-800);
   --color-txt-body: var(--clr-neutral-cool-0);
   --color-txt-link: var(--clr-neutral-cool-50);
