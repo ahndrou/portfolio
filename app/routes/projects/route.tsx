@@ -25,7 +25,7 @@ export default function Projects() {
 
 function Heading() {
   return (
-    <h1 className="text-500 rounded-reg bg-bg-surface border-brdr-surface box-glow font-heading text-txt-heading-1 border px-300 py-200 font-medium">
+    <h1 className="text-500 rounded-reg bg-bg-surface border-brdr-surface box-glow font-heading text-txt-heading-1 border px-300 py-200 font-medium lg:px-400">
       Projects
     </h1>
   );
@@ -33,14 +33,16 @@ function Heading() {
 
 function CardList() {
   return (
-    <ol className="text-100 rounded-reg bg-bg-surface border-brdr-surface box-glow grid list-none content-center gap-300 border">
+    <ol className="text-100 rounded-reg bg-bg-surface border-brdr-surface box-glow grid list-none content-center border">
       {cards.map((card, i) => (
         <li>
-          <Card
-            title={card.title}
-            imgSrc={card.imgSrc}
-            paragraphs={card.paragraphs}
-          />
+          <div className="p-300 lg:px-400 lg:py-500">
+            <Card
+              title={card.title}
+              imgSrc={card.imgSrc}
+              paragraphs={card.paragraphs}
+            />
+          </div>
 
           {i !== cards.length - 1 && <DividerLine height="1px" />}
         </li>
