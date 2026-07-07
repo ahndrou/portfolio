@@ -19,8 +19,8 @@ export default function Contact() {
       </h1>
 
       <div className="bg-bg-surface border-brdr-surface rounded-reg box-glow grid border lg:grid-cols-2">
-        <div>
-          <section className="text-100 row-divider grid gap-200 p-300">
+        <div className="grid grid-rows-2">
+          <section className="text-100 row-divider grid content-start gap-200 p-300">
             <p>
               I’m currently seeking employment and would love to hear about any
               opportunities!
@@ -32,7 +32,7 @@ export default function Contact() {
             </p>
           </section>
 
-          <section className="max-lg:row-divider grid gap-300 p-300">
+          <section className="max-lg:row-divider grid content-start gap-300 p-300">
             <h2 className="text-txt-heading-2 text-400 font-heading leading-none">
               LinkedIn
             </h2>
@@ -44,7 +44,7 @@ export default function Contact() {
           </section>
         </div>
 
-        <section className="lg:col-divider grid gap-300 p-300 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+        <section className="lg:col-divider grid gap-300 p-300 lg:col-start-2 lg:row-start-1">
           <h2 className="font-heading text-400 text-txt-heading-2 leading-none">
             Email
           </h2>
