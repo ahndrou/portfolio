@@ -102,7 +102,7 @@ function Navigation() {
           </Link>
         </ListItem>
         <ListItem>
-          <Link className="block w-full" to="projects" viewTransition>
+          <Link className="block w-full" to="contact" viewTransition>
             Contact
           </Link>
         </ListItem>

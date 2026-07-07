@@ -18,35 +18,33 @@ export default function Contact() {
         Get in Touch
       </h1>
 
-      <div className="bg-bg-surface border-brdr-surface rounded-reg box-glow grid gap-200 border lg:grid-cols-2">
-        <section className="text-100 grid gap-200 p-300">
-          <p>
-            I’m currently seeking employment and would love to hear about any
-            opportunities!
-          </p>
+      <div className="bg-bg-surface border-brdr-surface rounded-reg box-glow grid border lg:grid-cols-2">
+        <div>
+          <section className="text-100 row-divider grid gap-200 p-300">
+            <p>
+              I’m currently seeking employment and would love to hear about any
+              opportunities!
+            </p>
 
-          <p>
-            You can contact me by email using the form provided, or
-            alternatively by sending me a message on LinkedIn.
-          </p>
-        </section>
+            <p>
+              You can contact me by email using the form provided, or
+              alternatively by sending me a message on LinkedIn.
+            </p>
+          </section>
 
-        <DividerLine height={1} />
+          <section className="max-lg:row-divider grid gap-300 p-300">
+            <h2 className="text-txt-heading-2 text-400 font-heading leading-none">
+              LinkedIn
+            </h2>
 
-        <section className="grid gap-300 p-300">
-          <h2 className="text-txt-heading-2 text-400 font-heading leading-none">
-            LinkedIn
-          </h2>
+            <a className="bg-bg-link border-brdr-link rounded-reg flex cursor-pointer items-center gap-100 justify-self-start border px-200 py-100">
+              <LinkedInSVG />
+              Visit my LinkedIn profile
+            </a>
+          </section>
+        </div>
 
-          <a className="bg-bg-link border-brdr-link rounded-reg flex cursor-pointer items-center gap-100 justify-self-start border px-200 py-100">
-            <LinkedInSVG />
-            Visit my LinkedIn profile
-          </a>
-        </section>
-
-        <DividerLine height={1} />
-
-        <section className="grid gap-300 p-300">
+        <section className="lg:col-divider grid gap-300 p-300 lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <h2 className="font-heading text-400 text-txt-heading-2 leading-none">
             Email
           </h2>
