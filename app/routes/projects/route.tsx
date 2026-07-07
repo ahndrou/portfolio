@@ -36,7 +36,7 @@ function CardList() {
     <ol className="text-100 rounded-reg bg-bg-surface border-brdr-surface box-glow grid list-none content-center border">
       {cards.map((card, i) => (
         <li>
-          <div className="p-300 lg:px-400 lg:py-500">
+          <div className="p-300 lg:p-400">
             <Card
               title={card.title}
               imgSrc={card.imgSrc}
