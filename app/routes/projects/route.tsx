@@ -1,4 +1,3 @@
-import DividerLine from "~/components/divider-line";
 import type { Route } from "./+types/route";
 import { Card } from "./card";
 
@@ -35,7 +34,7 @@ function CardList() {
   return (
     <ol className="text-100 rounded-reg bg-bg-surface border-brdr-surface box-glow grid list-none content-center border">
       {cards.map((card, i) => (
-        <li>
+        <li className="row-divider">
           <div className="p-300 lg:p-400">
             <Card
               title={card.title}
@@ -43,8 +42,6 @@ function CardList() {
               paragraphs={card.paragraphs}
             />
           </div>
-
-          {i !== cards.length - 1 && <DividerLine height="1px" />}
         </li>
       ))}
     </ol>

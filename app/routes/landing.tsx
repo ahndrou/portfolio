@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import type { Route } from "./+types/landing";
 import OrbDecoration from "~/components/orb-decoration";
-import DividerLine from "~/components/divider-line";
 import { BackgroundDecorations } from "~/components/background-decorations";
 
 export function meta({}: Route.MetaArgs) {
@@ -21,7 +20,6 @@ export default function Landing() {
 
       <main className="bg-bg-surface border-brdr-surface rounded-reg box-glow relative flex max-w-4xl items-center border">
         <DecorationSection />
-        <DividerLine width={"1px"} />
         <MainSection />
       </main>
     </div>
@@ -38,7 +36,7 @@ function DecorationSection() {
 
 function MainSection() {
   return (
-    <section className="border-brdr-surface">
+    <section className="border-brdr-surface col-divider">
       <div className="p-300">
         <h1 className="text-500 text-txt-heading-1 font-heading mb-200 font-medium [view-transition-name:name]">
           Andrew Smith

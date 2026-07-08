@@ -74,7 +74,7 @@ html {
 @utility row-divider {
   position: relative;
 
-  &::after {
+  &:not(:last-of-type)::after {
     content: "";
     position: absolute;
     bottom: 0;

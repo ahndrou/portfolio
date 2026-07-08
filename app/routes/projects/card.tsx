@@ -1,6 +1,4 @@
-import type React from "react";
 import { Links } from "./links";
-import DividerLine from "~/components/divider-line";
 
 export function Card({
   imgSrc,
