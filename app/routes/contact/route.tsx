@@ -1,6 +1,6 @@
 import type { Route } from "./+types/route";
-import { EmailForm } from "./emailForm";
-import { LinkedInSVG } from "./linkedInSVG";
+import { EmailForm } from "./email-form";
+import { LinkedInSVG } from "./linked-in-svg";
 
 export function meta({}: Route.MetaArgs) {
   return [
