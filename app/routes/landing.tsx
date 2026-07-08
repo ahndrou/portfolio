@@ -58,7 +58,7 @@ function MainSection() {
   return (
     <section className="border-brdr-surface">
       <div className="p-300">
-        <h1 className="text-500 text-txt-heading-1 font-heading mb-200 font-medium">
+        <h1 className="text-500 text-txt-heading-1 font-heading mb-200 font-medium [view-transition-name:name]">
           Andrew Smith
         </h1>
 
@@ -92,23 +92,35 @@ function Navigation() {
     <nav>
       <ul className="text-100 md:text-100 grid grid-cols-2 justify-items-center gap-100 font-medium lg:grid-cols-4">
         <ListItem>
-          <Link className="block w-full" to="about" viewTransition>
+          <Link
+            className="block w-full [view-transition-name:about-link]"
+            to="about"
+            viewTransition
+          >
             About Me
           </Link>
         </ListItem>
         <ListItem>
-          <Link className="block w-full" to="projects" viewTransition>
+          <Link
+            className="block w-full [view-transition-name:projects-link]"
+            to="projects"
+            viewTransition
+          >
             Projects
           </Link>
         </ListItem>
         <ListItem>
-          <Link className="block w-full" to="contact" viewTransition>
+          <Link
+            className="block w-full [view-transition-name:contact-link]"
+            to="contact"
+            viewTransition
+          >
             Contact
           </Link>
         </ListItem>
         <ListItem>
           <a
-            className="block w-full"
+            className="block w-full [view-transition-name:github-link]"
             href="https://github.com/ahndrou"
             target="_blank"
             rel="noopener"

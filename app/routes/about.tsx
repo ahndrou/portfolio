@@ -14,7 +14,7 @@ export function meta({}: Route.MetaArgs) {
 export default function About() {
   return (
     <div className="grid gap-300">
-      <h1 className="text-500 text-txt-heading-1 font-heading rounded-reg bg-bg-surface border-brdr-surface box-glow border p-300 leading-none font-medium lg:px-400">
+      <h1 className="text-500 text-txt-heading-1 font-heading rounded-reg bg-bg-surface border-brdr-surface box-glow border p-300 px-300 py-200 font-medium lg:px-400">
         About Me
       </h1>
 

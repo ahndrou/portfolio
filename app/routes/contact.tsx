@@ -37,7 +37,7 @@ export default function Contact() {
               LinkedIn
             </h2>
 
-            <a className="bg-bg-link border-brdr-link rounded-reg flex cursor-pointer items-center gap-100 justify-self-start border px-200 py-100">
+            <a className="bg-bg-link border-brdr-link rounded-reg box-glow flex cursor-pointer items-center gap-100 justify-self-start border px-200 py-100">
               <LinkedInSVG />
               Visit my LinkedIn profile
             </a>
