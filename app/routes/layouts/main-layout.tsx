@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import { BackgroundDecorations } from "~/components/background-decorations";
 import NavBar from "~/components/nav-bar";
 
 export default function MainLayout() {
