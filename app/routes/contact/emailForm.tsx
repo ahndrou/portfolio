@@ -16,7 +16,7 @@ function Input({ name }: { name: string }) {
       <span className="hidden">{name}</span>
       <input
         placeholder={`${name}:`}
-        className="bg-bg-link border-brdr-surface box-glow text-100 rounded-reg w-full justify-center border px-200 py-100 placeholder:capitalize"
+        className="bg-bg-link border-brdr-surface box-glow text-100 rounded-reg focus-visible:outline-brdr-link w-full justify-center border px-200 py-100 placeholder:capitalize focus-visible:outline-solid"
       />
     </label>
   );
@@ -28,7 +28,7 @@ function MessageTextArea() {
       <span className="hidden">Message</span>
       <textarea
         placeholder="Message:"
-        className="bg-bg-link border-brdr-surface box-glow text-100 rounded-reg h-[10rem] w-full justify-center border px-200 py-100"
+        className="bg-bg-link border-brdr-surface box-glow text-100 rounded-reg focus-visible:outline-brdr-link h-[10rem] w-full justify-center border px-200 py-100 focus-visible:outline-solid"
       />
     </label>
   );
