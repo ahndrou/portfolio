@@ -5,10 +5,17 @@ export function EmailForm() {
         name="contact"
         method="POST"
         data-netlify="true"
+        netlify-honeypot="bot-field"
         className="grid gap-200"
       >
         {/* Necessary when using Netlify forms with client-rendered or SSR forms. */}
         <input type="hidden" name="form-name" value="contact" />
+
+        <label className="hidden">
+          If this visually hidden input is filled in, the submission is flagged
+          as spam.
+          <input type="text" name="bot-field" />
+        </label>
 
         <SimpleInput name="name" />
         <SimpleInput name="email" />
