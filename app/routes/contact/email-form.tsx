@@ -3,7 +3,7 @@ export function EmailForm() {
     <>
       <form
         name="contact"
-        method="post"
+        method="POST"
         data-netlify="true"
         className="grid gap-200"
       >
