@@ -1,12 +1,14 @@
 export function EmailForm() {
   return (
-    <form name="contact" className="netlify grid gap-200">
-      <Input name="name" />
-      <Input name="email" />
-      <Input name="subject" />
-      <MessageTextArea />
-      <SubmitButton />
-    </form>
+    <>
+      <form name="contact" data-netlify="true" className="grid gap-200">
+        <Input name="name" />
+        <Input name="email" />
+        <Input name="subject" />
+        <MessageTextArea />
+        <SubmitButton />
+      </form>
+    </>
   );
 }
 
