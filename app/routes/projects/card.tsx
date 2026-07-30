@@ -4,10 +4,14 @@ export function Card({
   imgSrc,
   title,
   paragraphs,
+  websiteUrl,
+  githubUrl,
 }: {
   imgSrc: string;
   title: string;
   paragraphs: string[];
+  websiteUrl: string;
+  githubUrl: string;
 }) {
   return (
     <article className="grid grid-rows-[auto_1fr] gap-x-400 gap-y-300 [grid-template-areas:'heading'_'img'_'details'] lg:gap-y-200 lg:[grid-template-areas:'img_heading'_'img_details']">
@@ -22,12 +26,16 @@ export function Card({
         />
       </div>
 
-      <div className="flex flex-col [grid-area:details]">
+      <div className="flex flex-col gap-100 [grid-area:details]">
         {paragraphs.map((content) => (
           <p>{content}</p>
         ))}
 
-        <Links className="mbs-300 lg:mbs-auto" />
+        <Links
+          githubUrl={githubUrl}
+          websiteUrl={websiteUrl}
+          className="mbs-300 lg:mbs-auto"
+        />
       </div>
     </article>
   );

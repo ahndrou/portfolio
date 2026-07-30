@@ -1,7 +1,7 @@
 import type { Route } from "./+types/route";
 import { Card } from "./card";
 
-import cards from "./card-data.json";
+import { projects } from "./project-data";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -33,13 +33,15 @@ function Heading() {
 function CardList() {
   return (
     <ol className="text-100 rounded-reg bg-bg-surface border-brdr-surface box-glow grid list-none content-center border">
-      {cards.map((card, i) => (
-        <li className="row-divider">
+      {projects.map((project) => (
+        <li key={project.slug} className="row-divider">
           <div className="p-300 lg:p-400">
             <Card
-              title={card.title}
-              imgSrc={card.imgSrc}
-              paragraphs={card.paragraphs}
+              title={project.title}
+              imgSrc={project.imgSrc}
+              paragraphs={project.paragraphs}
+              githubUrl={project.githubUrl}
+              websiteUrl={project.websiteUrl}
             />
           </div>
         </li>
