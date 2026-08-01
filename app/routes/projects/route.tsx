@@ -42,6 +42,7 @@ function CardList() {
               paragraphs={project.paragraphs}
               githubUrl={project.githubUrl}
               websiteUrl={project.websiteUrl}
+              techList={project.techList}
             />
           </div>
         </li>

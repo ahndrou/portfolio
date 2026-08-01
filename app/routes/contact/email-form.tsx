@@ -37,7 +37,7 @@ function SimpleInput({ name }: { name: string }) {
         type="text"
         name={name}
         placeholder={`${name}:`}
-        className="bg-bg-link border-brdr-surface box-glow text-100 rounded-reg focus-visible:outline-brdr-link w-full justify-center border px-200 py-100 placeholder:capitalize focus-visible:outline-solid"
+        className="bg-bg-surface-2 border-brdr-surface box-glow text-100 rounded-reg focus-visible:outline-brdr-link w-full justify-center border px-200 py-100 placeholder:capitalize focus-visible:outline-solid"
       />
     </label>
   );
@@ -50,7 +50,7 @@ function MessageTextArea() {
       <textarea
         name="message"
         placeholder="Message:"
-        className="bg-bg-link border-brdr-surface box-glow text-100 rounded-reg focus-visible:outline-brdr-link h-[10rem] w-full justify-center border px-200 py-100 focus-visible:outline-solid"
+        className="bg-bg-surface-2 border-brdr-surface box-glow text-100 rounded-reg focus-visible:outline-brdr-link h-[10rem] w-full justify-center border px-200 py-100 focus-visible:outline-solid"
       />
     </label>
   );

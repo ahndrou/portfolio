@@ -7,6 +7,7 @@ interface Project {
   websiteUrl: string;
   githubUrl: string;
   paragraphs: string[];
+  techList: string[];
 }
 
 export const projects: Project[] = [
@@ -21,5 +22,6 @@ export const projects: Project[] = [
       "Uses two OpenMeteo API endpoints to produce a weather forecast.",
       "I learned a lot about asynchronous requests and state, as well as schema validation using Zod. This was also a nice opportunity for me to play around with view transitions for a more polished UX.",
     ],
+    techList: ["Zod", "OpenMeteo API", "Tailwind CSS"],
   },
 ];

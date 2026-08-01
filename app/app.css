@@ -19,10 +19,18 @@ html {
   --font-body: var(--font-ibm-plex-sans);
   --font-heading: var(--font-ibm-plex-mono);
   --font-button: var(--font-ibm-plex-mono);
+  --font-mono: var(--font-ibm-plex-mono);
 
+  /* TODO: Move from component variables to more general semantic ones. I feel these are too fine grained and I often want to use
+  the same colour for multiple borders for example - they don't need to be specific to a particular component. */
   --color-*: initial;
   --color-bg-page: var(--clr-neutral-cool-1000);
   --color-bg-surface: var(--clr-neutral-cool-800);
+  --color-bg-surface-2: var(--clr-neutral-cool-1000);
+  /* I want to remove the 'bg' prefix here. */
+  --color-bg-surface-3: var(--clr-neutral-cool-800);
+  /* This is the new naming convention I want to change to. Surface-3 uses the outline-3 colour for its border.*/
+  --color-outline-3: var(--clr-neutral-green-400);
   --color-bg-link: var(--clr-neutral-green-400);
   --color-bg-button: var(--clr-green-700);
   --color-brdr-link: var(--clr-green-400);

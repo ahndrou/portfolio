@@ -1,4 +1,5 @@
 import { Links } from "./links";
+import TechList from "./tech-list";
 
 export function Card({
   imgSrc,
@@ -6,12 +7,14 @@ export function Card({
   paragraphs,
   websiteUrl,
   githubUrl,
+  techList,
 }: {
   imgSrc: string;
   title: string;
   paragraphs: string[];
   websiteUrl: string;
   githubUrl: string;
+  techList: string[];
 }) {
   return (
     <article className="grid grid-rows-[auto_1fr] gap-x-400 gap-y-300 [grid-template-areas:'heading'_'img'_'details'] lg:gap-y-200 lg:[grid-template-areas:'img_heading'_'img_details']">
@@ -26,16 +29,18 @@ export function Card({
         />
       </div>
 
-      <div className="flex flex-col gap-100 [grid-area:details]">
-        {paragraphs.map((content) => (
-          <p>{content}</p>
-        ))}
+      <div className="grid gap-100 [grid-area:details]">
+        <div>
+          {paragraphs.map((content) => (
+            <p>{content}</p>
+          ))}
+        </div>
 
-        <Links
-          githubUrl={githubUrl}
-          websiteUrl={websiteUrl}
-          className="mbs-300 lg:mbs-auto"
-        />
+        <div className="mbs-300 grid gap-200 lg:mbs-auto">
+          <TechList technologies={techList} />
+
+          <Links githubUrl={githubUrl} websiteUrl={websiteUrl} />
+        </div>
       </div>
     </article>
   );
