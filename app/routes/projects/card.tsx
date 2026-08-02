@@ -30,13 +30,13 @@ export function Card({
       </div>
 
       <div className="grid gap-100 [grid-area:details]">
-        <div>
+        <div className="grid gap-100">
           {paragraphs.map((content) => (
             <p>{content}</p>
           ))}
         </div>
 
-        <div className="mbs-300 grid gap-200 lg:mbs-auto">
+        <div className="mbs-300 grid gap-300 lg:mbs-auto">
           <TechList technologies={techList} />
 
           <Links githubUrl={githubUrl} websiteUrl={websiteUrl} />

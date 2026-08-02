@@ -31,9 +31,9 @@ html {
   --color-bg-surface-3: var(--clr-neutral-cool-800);
   /* This is the new naming convention I want to change to. Surface-3 uses the outline-3 colour for its border.*/
   --color-outline-3: var(--clr-neutral-green-400);
-  --color-bg-link: var(--clr-neutral-green-400);
+  --color-bg-link: var(--clr-green-800);
   --color-bg-button: var(--clr-green-700);
-  --color-brdr-link: var(--clr-green-400);
+  --color-brdr-link: var(--clr-green-700);
   --color-brdr-surface: var(--clr-green-800);
   --color-txt-body: var(--clr-neutral-cool-0);
   --color-txt-link: var(--clr-neutral-cool-50);
