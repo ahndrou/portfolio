@@ -34,7 +34,7 @@ function CardList() {
   return (
     <ol className="text-100 rounded-reg bg-bg-surface border-brdr-surface box-glow grid list-none content-center border">
       {projects.map((project) => (
-        <li key={project.slug} className="row-divider">
+        <li key={project.slug} className="row-divider py-300">
           <div className="p-300 lg:p-400">
             <Card
               title={project.title}
