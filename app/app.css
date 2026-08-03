@@ -30,6 +30,7 @@ html {
   /* I want to remove the 'bg' prefix here. */
   --color-bg-surface-3: var(--clr-neutral-cool-800);
   /* This is the new naming convention I want to change to. Surface-3 uses the outline-3 colour for its border.*/
+  --color-outline-2: var(--clr-green-800);
   --color-outline-3: var(--clr-neutral-green-400);
   --color-bg-link: var(--clr-green-800);
   --color-bg-button: var(--clr-green-700);
