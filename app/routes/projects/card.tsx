@@ -17,19 +17,12 @@ export function Card({
   techList: string[];
 }) {
   return (
-    <article className="grid grid-rows-[auto_1fr] gap-x-400 gap-y-300 [grid-template-areas:'heading'_'img'_'details'] lg:gap-y-200 lg:[grid-template-areas:'img_heading'_'img_details']">
-      <h2 className="text-400 text-txt-heading-2 font-heading leading-none [grid-area:heading]">
-        {title}
-      </h2>
+    <article className="grid grid-rows-[auto_1fr] gap-x-400 gap-y-300 lg:gap-y-200">
+      <ProjectImage src={imgSrc} />
 
-      <div className="[grid-area:img] lg:w-[600px]">
-        <img
-          className="border-brdr-surface rounded-reg drop-glow block h-full w-full border object-cover"
-          src={imgSrc}
-        />
-      </div>
+      <Heading heading={title} />
 
-      <div className="grid gap-100 [grid-area:details]">
+      <div className="grid gap-100">
         <div className="grid gap-100">
           {paragraphs.map((content) => (
             <p>{content}</p>
@@ -43,5 +36,24 @@ export function Card({
         </div>
       </div>
     </article>
+  );
+}
+
+function Heading({ heading }: { heading: string }) {
+  return (
+    <h2 className="text-400 text-txt-heading-2 font-heading leading-none">
+      {heading}
+    </h2>
+  );
+}
+
+function ProjectImage({ src }: { src: string }) {
+  return (
+    <div className="drop-glow rounded-reg border-brdr-surface max-h-[600px] min-h-[350px] overflow-clip border">
+      <img
+        className="block h-full w-full object-cover lg:object-top"
+        src={src}
+      />
+    </div>
   );
 }
