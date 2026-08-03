@@ -32,7 +32,7 @@ function PageTitle() {
 function PageContent() {
   return (
     <div className="bg-bg-surface border-brdr-surface rounded-reg box-glow grid border lg:grid-cols-2">
-      <div className="grid grid-rows-[auto_auto]">
+      <div className="grid grid-rows-[auto_1fr]">
         <TextSection />
         <LinkedInSection />
       </div>
