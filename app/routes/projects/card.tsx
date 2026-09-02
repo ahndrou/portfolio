@@ -19,12 +19,14 @@ export function Card({
   return (
     <article className="surface border-line grid grid-rows-[auto_1fr] gap-4 overflow-clip rounded-lg border">
       <ProjectImage src={imgSrc} />
-      <div className="grid gap-4 rounded-md p-3">
-        <Heading heading={title} />
-        <ProjectBlurb paragraphs={paragraphs} />
+      <div className="grid grid-cols-[2fr_1fr] items-start gap-4 rounded-md p-6">
+        <div className="grid gap-5">
+          <Heading heading={title} />
+          <ProjectBlurb paragraphs={paragraphs} />
+          <Links githubUrl={githubUrl} websiteUrl={websiteUrl} />
+        </div>
+        <TechList technologies={techList} />
       </div>
-      <TechList technologies={techList} />
-      <Links githubUrl={githubUrl} websiteUrl={websiteUrl} />
     </article>
   );
 }
@@ -48,7 +50,7 @@ function ProjectImage({ src }: { src: string }) {
 
 function ProjectBlurb({ paragraphs }: { paragraphs: string[] }) {
   return (
-    <div className="text-text-muted grid w-[80ch] gap-3">
+    <div className="text-text-muted grid gap-3">
       {paragraphs.map((content) => (
         <p>{content}</p>
       ))}
