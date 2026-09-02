@@ -1,7 +1,7 @@
 export default function TechList({ technologies }: { technologies: string[] }) {
   return (
-    <section className="bg-bg border-line grid gap-2 rounded-md border p-3">
-      <h3 className="text-accent font-medium">Technologies Used</h3>
+    <section className="grid gap-2 rounded-md p-3">
+      <h3 className="text-text-quiet font-mono uppercase">Built with</h3>
 
       <ol className="flex flex-wrap gap-2">
         {technologies.map((tech) => (

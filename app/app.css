@@ -60,3 +60,7 @@
     height: 1px;
   }
 }
+
+@utility surface {
+  background: var(--surface);
+}
