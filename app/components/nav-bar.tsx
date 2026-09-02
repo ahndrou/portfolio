@@ -11,7 +11,7 @@ export default function NavBar() {
 
   return (
     <nav className="@container mx-auto w-full max-w-5xl py-4 text-sm font-medium">
-      <ul className="flex gap-6">
+      <ul className="flex items-center gap-6">
         <li className="grow [view-transition-name:name]">
           <Link to="/" viewTransition>
             Andrew Smith
@@ -19,28 +19,27 @@ export default function NavBar() {
         </li>
 
         {links.map(({ to, label, transitionName }) => (
-          <li
-            key={to}
-            className={`@max-[40ch]:hidden ${location.pathname === to ? "text-accent" : ""}`}
-          >
+          <li key={to}>
             <Link
               to={to}
               viewTransition
-              className={`[view-transition-name:${transitionName}]`}
+              className={`[view-transition-name:${transitionName}] hover:text-text flex items-center rounded-md p-3 @max-[40ch]:hidden ${location.pathname === to ? "bg-fill text-text" : "text-text-muted"}`}
             >
               {label}
             </Link>
           </li>
         ))}
 
-        <li className="@max-[40ch]:hidden">
+        <li>
           <a
             href="https://github.com/ahndrou"
             target="_blank"
             rel="noopener"
-            className="[view-transition-name:github-link]"
+            className="border-line-strong hover:bg-fill rounded-md border p-3 [view-transition-name:github-link] @max-[40ch]:hidden"
           >
-            GitHub
+            <span className="after:ml-1 after:inline-block after:content-['↗']">
+              GitHub
+            </span>
           </a>
         </li>
 
