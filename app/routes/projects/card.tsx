@@ -20,7 +20,7 @@ export function Card({
     <article className="surface border-line grid grid-rows-[auto_1fr] gap-4 overflow-clip rounded-lg border">
       <ProjectImage src={imgSrc} />
       <div className="grid grid-cols-[2fr_1fr] items-start gap-4 rounded-md p-6">
-        <div className="grid gap-5">
+        <div className="grid gap-4">
           <Heading heading={title} />
           <ProjectBlurb paragraphs={paragraphs} />
           <Links githubUrl={githubUrl} websiteUrl={websiteUrl} />

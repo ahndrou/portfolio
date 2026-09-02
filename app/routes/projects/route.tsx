@@ -29,14 +29,14 @@ export default function Projects() {
         </p>
       </header>
 
-      <main>
+      <main className="grid gap-5">
         <h2 className="text-text-quiet trail-line font-mono text-xs tracking-wide uppercase">
           Selected Works
         </h2>
 
-        <ol className="grid list-none content-center text-sm">
+        <ol className="grid list-none content-center gap-4 text-sm">
           {projects.map((project) => (
-            <li key={project.slug} className="row-divider py-4">
+            <li key={project.slug}>
               <Card
                 title={project.title}
                 imgSrc={project.imgSrc}
