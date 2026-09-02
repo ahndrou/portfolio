@@ -1,50 +1,38 @@
 import { Link, useLocation } from "react-router";
 
+const links = [
+  { to: "/about", label: "About Me", transitionName: "about-link" },
+  { to: "/projects", label: "Projects", transitionName: "projects-link" },
+  { to: "/contact", label: "Contact", transitionName: "contact-link" },
+];
+
 export default function NavBar() {
   const location = useLocation();
 
   return (
-    <nav className="text-sm @container mx-auto w-full max-w-5xl p-4 font-medium">
-      <ul className="flex gap-4">
+    <nav className="@container mx-auto w-full max-w-5xl py-4 text-sm font-medium">
+      <ul className="flex gap-6">
         <li className="grow [view-transition-name:name]">
           <Link to="/" viewTransition>
             Andrew Smith
           </Link>
         </li>
 
-        <li
-          className={`@max-[40ch]:hidden ${location.pathname === "/about" && "text-accent"}`}
-        >
-          <Link
-            to="/about"
-            viewTransition
-            className="[view-transition-name:about-link]"
+        {links.map(({ to, label, transitionName }) => (
+          <li
+            key={to}
+            className={`@max-[40ch]:hidden ${location.pathname === to ? "text-accent" : ""}`}
           >
-            About Me
-          </Link>
-        </li>
-        <li
-          className={`@max-[40ch]:hidden ${location.pathname === "/projects" && "text-accent"}`}
-        >
-          <Link
-            to="/projects"
-            viewTransition
-            className="[view-transition-name:projects-link]"
-          >
-            Projects
-          </Link>
-        </li>
-        <li
-          className={`@max-[40ch]:hidden ${location.pathname === "/contact" && "text-accent"}`}
-        >
-          <Link
-            to="/contact"
-            viewTransition
-            className="[view-transition-name:contact-link]"
-          >
-            Contact
-          </Link>
-        </li>
+            <Link
+              to={to}
+              viewTransition
+              className={`[view-transition-name:${transitionName}]`}
+            >
+              {label}
+            </Link>
+          </li>
+        ))}
+
         <li className="@max-[40ch]:hidden">
           <a
             href="https://github.com/ahndrou"
