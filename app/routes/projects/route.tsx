@@ -15,9 +15,9 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Projects() {
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-7">
       <Heading />
-      <CardList />
+      <SelectedWorks />
     </div>
   );
 }
@@ -35,6 +35,17 @@ function Heading() {
         A collection of projects I have worked on to further my skills. Each one
         is deployed with a well documented public repository.
       </p>
+    </div>
+  );
+}
+
+function SelectedWorks() {
+  return (
+    <div>
+      <h2 className="text-text-quiet trail-line font-mono text-xs tracking-wide uppercase">
+        Selected Works
+      </h2>
+      <CardList />
     </div>
   );
 }
