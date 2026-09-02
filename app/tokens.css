@@ -15,7 +15,7 @@
 
   --accent: #f0b429;
   --accent-ink: #07130c; /* text on accent fill */
-  --accent-: rgba(240, 180, 41, 0.35);
+  --accent-glow: rgba(240, 180, 41, 0.35);
 
   --line: rgba(255, 255, 255, 0.08); /* hairlines */
   --line-strong: rgba(255, 255, 255, 0.14); /* button borders */
