@@ -10,8 +10,8 @@ export default function NavBar() {
   const location = useLocation();
 
   return (
-    <nav className="@container mx-auto w-full max-w-5xl py-4 text-sm">
-      <ul className="flex items-center gap-6">
+    <nav className="border-line @container sticky top-[0] w-full border-b py-4 text-sm backdrop-blur-2xl">
+      <ul className="mx-auto flex max-w-5xl items-center gap-6">
         <li className="text-md grow [view-transition-name:name]">
           <Link to="/" viewTransition>
             Andrew Smith

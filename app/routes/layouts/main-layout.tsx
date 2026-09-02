@@ -3,14 +3,11 @@ import NavBar from "~/components/nav-bar";
 
 export default function MainLayout() {
   return (
-    <div className="flex flex-col items-center">
-      <header className="border-b-line sticky top-[0] mb-6 w-full border-b backdrop-blur-2xl">
-        <NavBar />
-      </header>
-
-      <main className="w-full max-w-5xl grow">
+    <div className="grid content-start justify-center gap-7">
+      <NavBar />
+      <div className="grid max-w-5xl gap-7">
         <Outlet />
-      </main>
+      </div>
     </div>
   );
 }

@@ -13,12 +13,14 @@ export function meta({}: Route.MetaArgs) {
 
 export default function About() {
   return (
-    <div className="grid gap-4">
-      <h1 className="text-text-strong font-display surface border-line rounded-lg border p-4 px-4 py-3 text-xl font-medium lg:px-5">
-        About Me
-      </h1>
+    <>
+      <header>
+        <h1 className="text-text-strong font-display surface border-line rounded-lg border p-4 px-4 py-3 text-xl font-medium lg:px-5">
+          About Me
+        </h1>
+      </header>
 
-      <section className="border-line surface gap-5 rounded-lg border p-4 *:mb-5 md:columns-2 lg:p-5">
+      <main className="border-line surface gap-5 rounded-lg border p-4 *:mb-5 md:columns-2 lg:p-5">
         <article className="grid gap-2">
           <h2 className="text-accent font-display text-lg">Hi! I'm Andrew</h2>
 
@@ -77,7 +79,7 @@ export default function About() {
             </p>
           </section>
         </article>
-      </section>
-    </div>
+      </main>
+    </>
   );
 }
