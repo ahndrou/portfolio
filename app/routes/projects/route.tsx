@@ -25,11 +25,13 @@ export default function Projects() {
 function Heading() {
   return (
     <div>
-      <span className="text-xs">Portfolio - 2026</span>
-      <h1 className="text-xl font-display text-text-strong font-semibold">
+      <span className="text-accent font-mono text-xs tracking-wide uppercase">
+        Portfolio - 2026
+      </span>
+      <h1 className="font-display text-text-strong text-xl font-semibold">
         Projects
       </h1>
-      <p className="text-base">
+      <p className="text-text-muted max-w-4xl text-base">
         A collection of projects I have worked on to further my skills. Each one
         is deployed with a well documented public repository.
       </p>
@@ -39,7 +41,7 @@ function Heading() {
 
 function CardList() {
   return (
-    <ol className="text-sm grid list-none content-center">
+    <ol className="grid list-none content-center text-sm">
       {projects.map((project) => (
         <li key={project.slug} className="row-divider py-4">
           <div>

@@ -15,7 +15,7 @@
 
   --accent: #f0b429;
   --accent-ink: #07130c; /* text on accent fill */
-  --accent-glow: rgba(240, 180, 41, 0.35);
+  --accent-: rgba(240, 180, 41, 0.35);
 
   --line: rgba(255, 255, 255, 0.08); /* hairlines */
   --line-strong: rgba(255, 255, 255, 0.14); /* button borders */
@@ -59,7 +59,7 @@
   --radius-lg: 20px; /* cards */
   --radius-pill: 999px;
 
-  --glow: 0 0 12px var(--accent-glow);
+  --: 0 0 12px var(--accent-);
   --blur: blur(14px);
   /* No drop shadows — depth is hairlines, low-alpha washes and blur. */
 }

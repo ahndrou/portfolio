@@ -18,7 +18,7 @@ export default function Landing() {
     <div className="justify-items-center self-center">
       <BackgroundDecorations />
 
-      <main className="surface border-line rounded-lg glow relative flex max-w-4xl items-center border">
+      <main className="surface border-line relative flex max-w-4xl items-center rounded-lg border">
         <DecorationSection />
         <MainSection />
       </main>
@@ -38,7 +38,7 @@ function MainSection() {
   return (
     <section className="border-line col-divider">
       <div className="p-4">
-        <h1 className="text-xl text-text-strong font-display mb-3 font-medium [view-transition-name:name]">
+        <h1 className="text-text-strong font-display mb-3 text-xl font-medium [view-transition-name:name]">
           Andrew Smith
         </h1>
 
@@ -70,7 +70,7 @@ function BodyCopy() {
 function Navigation() {
   return (
     <nav>
-      <ul className="text-sm md:text-sm grid grid-cols-2 justify-items-center gap-2 font-medium lg:grid-cols-4">
+      <ul className="grid grid-cols-2 justify-items-center gap-2 text-sm font-medium md:text-sm lg:grid-cols-4">
         <ListItem>
           <Link
             className="block w-full [view-transition-name:about-link]"
@@ -115,7 +115,7 @@ function Navigation() {
 
 function ListItem({ children }: { children: React.ReactElement }) {
   return (
-    <li className="bg-fill-strong border-line-strong rounded-md font-mono glow w-full border py-1 text-center">
+    <li className="bg-fill-strong border-line-strong w-full rounded-md border py-1 text-center font-mono">
       {children}
     </li>
   );

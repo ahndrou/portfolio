@@ -37,7 +37,7 @@ function SimpleInput({ name }: { name: string }) {
         type="text"
         name={name}
         placeholder={`${name}:`}
-        className="bg-bg border-line glow text-sm rounded-md focus-visible:outline-accent w-full justify-center border px-3 py-2 placeholder:capitalize focus-visible:outline-solid"
+        className="bg-bg border-line focus-visible:outline-accent w-full justify-center rounded-md border px-3 py-2 text-sm placeholder:capitalize focus-visible:outline-solid"
       />
     </label>
   );
@@ -50,7 +50,7 @@ function MessageTextArea() {
       <textarea
         name="message"
         placeholder="Message:"
-        className="bg-bg border-line glow text-sm rounded-md focus-visible:outline-accent h-[10rem] w-full justify-center border px-3 py-2 focus-visible:outline-solid"
+        className="bg-bg border-line focus-visible:outline-accent h-[10rem] w-full justify-center rounded-md border px-3 py-2 text-sm focus-visible:outline-solid"
       />
     </label>
   );
@@ -62,7 +62,7 @@ function SubmitButton() {
       <span className="hidden">Submit</span>
       <button
         type="submit"
-        className="text-sm rounded-md bg-accent text-accent-ink font-mono flex w-full cursor-pointer items-center justify-center py-2 text-center font-medium"
+        className="bg-accent text-accent-ink flex w-full cursor-pointer items-center justify-center rounded-md py-2 text-center font-mono text-sm font-medium"
       >
         Submit
       </button>

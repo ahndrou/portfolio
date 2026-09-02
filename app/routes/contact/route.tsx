@@ -23,7 +23,7 @@ export default function Contact() {
 
 function PageTitle() {
   return (
-    <h1 className="surface text-xl text-text-strong font-display border-line rounded-lg glow border px-4 py-3 font-medium lg:px-5">
+    <h1 className="surface text-text-strong font-display border-line rounded-lg border px-4 py-3 text-xl font-medium lg:px-5">
       Get in Touch
     </h1>
   );
@@ -31,7 +31,7 @@ function PageTitle() {
 
 function PageContent() {
   return (
-    <div className="surface border-line rounded-lg glow grid border lg:grid-cols-2">
+    <div className="surface border-line grid rounded-lg border lg:grid-cols-2">
       <div className="grid grid-rows-[auto_1fr]">
         <TextSection />
         <LinkedInSection />
@@ -44,7 +44,7 @@ function PageContent() {
 
 function TextSection() {
   return (
-    <section className="text-sm row-divider grid content-start gap-3 p-5">
+    <section className="row-divider grid content-start gap-3 p-5 text-sm">
       <p>
         I’m currently seeking employment and would love to hear about any
         opportunities!
@@ -61,11 +61,11 @@ function TextSection() {
 function LinkedInSection() {
   return (
     <section className="max-lg:row-divider grid gap-4 self-start p-5">
-      <h2 className="text-accent text-lg font-display leading-none">
+      <h2 className="text-accent font-display text-lg leading-none">
         LinkedIn
       </h2>
 
-      <a className="bg-fill-strong border-line-strong rounded-md glow flex cursor-pointer items-center gap-2 justify-self-start border px-3 py-2">
+      <a className="bg-fill-strong border-line-strong flex cursor-pointer items-center gap-2 justify-self-start rounded-md border px-3 py-2">
         <LinkedInSVG />
         Visit my LinkedIn profile
       </a>
@@ -76,9 +76,7 @@ function LinkedInSection() {
 function EmailSection() {
   return (
     <section className="lg:col-divider grid gap-4 p-5">
-      <h2 className="font-display text-lg text-accent leading-none">
-        Email
-      </h2>
+      <h2 className="font-display text-accent text-lg leading-none">Email</h2>
 
       <EmailForm />
     </section>

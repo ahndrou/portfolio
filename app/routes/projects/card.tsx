@@ -19,7 +19,7 @@ export function Card({
   return (
     <article className="grid grid-rows-[auto_1fr] gap-4">
       <ProjectImage src={imgSrc} />
-      <div className="bg-bg border-line rounded-md glow grid gap-4 border p-3">
+      <div className="bg-bg border-line grid gap-4 rounded-md border p-3">
         <Heading heading={title} />
         <ProjectBlurb paragraphs={paragraphs} />
       </div>
@@ -31,7 +31,7 @@ export function Card({
 
 function Heading({ heading }: { heading: string }) {
   return (
-    <h2 className="text-lg text-accent font-display leading-none font-medium">
+    <h2 className="text-accent font-display text-lg leading-none font-medium">
       {heading}
     </h2>
   );
@@ -39,7 +39,7 @@ function Heading({ heading }: { heading: string }) {
 
 function ProjectImage({ src }: { src: string }) {
   return (
-    <div className="drop-glow rounded-lg border-line max-h-[600px] min-h-[350px] overflow-clip border">
+    <div className="border-line max-h-[600px] min-h-[350px] overflow-clip rounded-lg border">
       <img
         className="block h-full w-full object-cover lg:object-top"
         src={src}

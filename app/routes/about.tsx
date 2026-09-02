@@ -14,15 +14,13 @@ export function meta({}: Route.MetaArgs) {
 export default function About() {
   return (
     <div className="grid gap-4">
-      <h1 className="text-xl text-text-strong font-display rounded-lg surface border-line glow border p-4 px-4 py-3 font-medium lg:px-5">
+      <h1 className="text-text-strong font-display surface border-line rounded-lg border p-4 px-4 py-3 text-xl font-medium lg:px-5">
         About Me
       </h1>
 
-      <section className="border-line rounded-lg surface glow gap-5 border p-4 *:mb-5 md:columns-2 lg:p-5">
+      <section className="border-line surface gap-5 rounded-lg border p-4 *:mb-5 md:columns-2 lg:p-5">
         <article className="grid gap-2">
-          <h2 className="text-lg text-accent font-display">
-            Hi! I'm Andrew
-          </h2>
+          <h2 className="text-accent font-display text-lg">Hi! I'm Andrew</h2>
 
           <section className="*:mb-3">
             <p className="font-light">
@@ -37,9 +35,7 @@ export default function About() {
         </article>
 
         <article className="grid gap-2">
-          <h2 className="text-lg text-accent font-display">
-            Recent Interests
-          </h2>
+          <h2 className="text-accent font-display text-lg">Recent Interests</h2>
           <section className="*:mb-3">
             <p className="font-light">
               I am{" "}
@@ -71,9 +67,7 @@ export default function About() {
         </article>
 
         <article className="grid gap-2">
-          <h2 className="text-lg text-accent font-display">
-            Other Interests
-          </h2>
+          <h2 className="text-accent font-display text-lg">Other Interests</h2>
           <section className="*:mb-3">
             <p className="font-light">
               Outside of web development, I enjoy tinkering with{" "}

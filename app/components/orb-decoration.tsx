@@ -33,7 +33,7 @@ export default function OrbDecoration({ diameter }: OrbDecorationProps) {
         stroke={"var(--accent)"}
         strokeWidth={"2"}
         vector-effect="non-scaling-stroke"
-        className="drop-glow"
+        className=""
       />
     </svg>
   );
