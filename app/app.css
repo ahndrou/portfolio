@@ -47,3 +47,16 @@
 @utility glow {
   filter: drop-shadow(0 0 6px var(--accent-glow));
 }
+
+@utility trail-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &::after {
+    content: "";
+    background: linear-gradient(to right, currentColor, transparent);
+    flex-grow: 1;
+    height: 1px;
+  }
+}

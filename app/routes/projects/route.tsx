@@ -25,7 +25,7 @@ export default function Projects() {
 function Heading() {
   return (
     <div>
-      <span className="text-accent font-mono text-xs tracking-wide uppercase">
+      <span className="text-accent trail-line font-mono text-xs tracking-wide uppercase">
         Portfolio - 2026
       </span>
       <h1 className="font-display text-text-strong text-xl font-semibold">
