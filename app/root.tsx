@@ -37,7 +37,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="relative flex min-h-dvh scrollbar-gutter-stable p-200 *:grow lg:p-300">
+      <body className="relative flex min-h-dvh scrollbar-gutter-stable *:grow">
         <BackgroundDecorations />
         {children}
         <ScrollRestoration />

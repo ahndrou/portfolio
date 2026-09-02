@@ -4,7 +4,7 @@ export default function NavBar() {
   const location = useLocation();
 
   return (
-    <nav className="text-100 @container w-full font-medium">
+    <nav className="text-100 @container mx-auto w-full max-w-5xl p-300 font-medium">
       <ul className="flex gap-300">
         <li className="grow [view-transition-name:name]">
           <Link to="/" viewTransition>

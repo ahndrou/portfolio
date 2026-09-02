@@ -5,7 +5,7 @@ import NavBar from "~/components/nav-bar";
 export default function MainLayout() {
   return (
     <div className="flex flex-col items-center">
-      <header className="bg-bg-surface rounded-reg border-brdr-surface box-glow mb-500 w-full max-w-5xl border px-300 py-200">
+      <header className="mb-500 w-full border-b border-b-[#E7ECE8]">
         <NavBar />
       </header>
 
