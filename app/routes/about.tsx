@@ -13,18 +13,18 @@ export function meta({}: Route.MetaArgs) {
 
 export default function About() {
   return (
-    <div className="grid gap-300">
-      <h1 className="text-500 text-txt-heading-1 font-heading rounded-reg bg-bg-surface border-brdr-surface box-glow border p-300 px-300 py-200 font-medium lg:px-400">
+    <div className="grid gap-4">
+      <h1 className="text-xl text-text-strong font-display rounded-lg surface border-line glow border p-4 px-4 py-3 font-medium lg:px-5">
         About Me
       </h1>
 
-      <section className="border-brdr-surface rounded-reg bg-bg-surface box-glow gap-400 border p-300 *:mb-400 md:columns-2 lg:p-400">
-        <article className="grid gap-100">
-          <h2 className="text-400 text-txt-heading-2 font-heading">
+      <section className="border-line rounded-lg surface glow gap-5 border p-4 *:mb-5 md:columns-2 lg:p-5">
+        <article className="grid gap-2">
+          <h2 className="text-lg text-accent font-display">
             Hi! I'm Andrew
           </h2>
 
-          <section className="*:mb-200">
+          <section className="*:mb-3">
             <p className="font-light">
               I’m a <span className="font-semibold">frontend-focused</span> web
               developer with strong technical fundamentals backed by a{" "}
@@ -36,11 +36,11 @@ export default function About() {
           </section>
         </article>
 
-        <article className="grid gap-100">
-          <h2 className="text-400 text-txt-heading-2 font-heading">
+        <article className="grid gap-2">
+          <h2 className="text-lg text-accent font-display">
             Recent Interests
           </h2>
-          <section className="*:mb-200">
+          <section className="*:mb-3">
             <p className="font-light">
               I am{" "}
               <span className="font-semibold">always trying to improve</span> my
@@ -70,11 +70,11 @@ export default function About() {
           </section>
         </article>
 
-        <article className="grid gap-100">
-          <h2 className="text-400 text-txt-heading-2 font-heading">
+        <article className="grid gap-2">
+          <h2 className="text-lg text-accent font-display">
             Other Interests
           </h2>
-          <section className="*:mb-200">
+          <section className="*:mb-3">
             <p className="font-light">
               Outside of web development, I enjoy tinkering with{" "}
               <span className="font-semibold">3D modelling</span> in Blender, as

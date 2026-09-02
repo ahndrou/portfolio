@@ -6,7 +6,7 @@ export function EmailForm() {
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
-        className="grid gap-200"
+        className="grid gap-3"
       >
         {/* Necessary when using Netlify forms with client-rendered or SSR forms. */}
         <input type="hidden" name="form-name" value="contact" />
@@ -37,7 +37,7 @@ function SimpleInput({ name }: { name: string }) {
         type="text"
         name={name}
         placeholder={`${name}:`}
-        className="bg-bg-surface-2 border-brdr-surface box-glow text-100 rounded-reg focus-visible:outline-brdr-link w-full justify-center border px-200 py-100 placeholder:capitalize focus-visible:outline-solid"
+        className="bg-bg border-line glow text-sm rounded-md focus-visible:outline-accent w-full justify-center border px-3 py-2 placeholder:capitalize focus-visible:outline-solid"
       />
     </label>
   );
@@ -50,7 +50,7 @@ function MessageTextArea() {
       <textarea
         name="message"
         placeholder="Message:"
-        className="bg-bg-surface-2 border-brdr-surface box-glow text-100 rounded-reg focus-visible:outline-brdr-link h-[10rem] w-full justify-center border px-200 py-100 focus-visible:outline-solid"
+        className="bg-bg border-line glow text-sm rounded-md focus-visible:outline-accent h-[10rem] w-full justify-center border px-3 py-2 focus-visible:outline-solid"
       />
     </label>
   );
@@ -62,7 +62,7 @@ function SubmitButton() {
       <span className="hidden">Submit</span>
       <button
         type="submit"
-        className="text-100 rounded-reg bg-bg-button font-button flex w-full cursor-pointer items-center justify-center py-100 text-center font-medium"
+        className="text-sm rounded-md bg-accent text-accent-ink font-mono flex w-full cursor-pointer items-center justify-center py-2 text-center font-medium"
       >
         Submit
       </button>

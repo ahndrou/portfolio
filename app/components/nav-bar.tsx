@@ -4,8 +4,8 @@ export default function NavBar() {
   const location = useLocation();
 
   return (
-    <nav className="text-100 @container mx-auto w-full max-w-5xl p-300 font-medium">
-      <ul className="flex gap-300">
+    <nav className="text-sm @container mx-auto w-full max-w-5xl p-4 font-medium">
+      <ul className="flex gap-4">
         <li className="grow [view-transition-name:name]">
           <Link to="/" viewTransition>
             Andrew Smith
@@ -13,7 +13,7 @@ export default function NavBar() {
         </li>
 
         <li
-          className={`@max-[40ch]:hidden ${location.pathname === "/about" && "text-txt-link-active"}`}
+          className={`@max-[40ch]:hidden ${location.pathname === "/about" && "text-accent"}`}
         >
           <Link
             to="/about"
@@ -24,7 +24,7 @@ export default function NavBar() {
           </Link>
         </li>
         <li
-          className={`@max-[40ch]:hidden ${location.pathname === "/projects" && "text-txt-link-active"}`}
+          className={`@max-[40ch]:hidden ${location.pathname === "/projects" && "text-accent"}`}
         >
           <Link
             to="/projects"
@@ -35,7 +35,7 @@ export default function NavBar() {
           </Link>
         </li>
         <li
-          className={`@max-[40ch]:hidden ${location.pathname === "/contact" && "text-txt-link-active"}`}
+          className={`@max-[40ch]:hidden ${location.pathname === "/contact" && "text-accent"}`}
         >
           <Link
             to="/contact"

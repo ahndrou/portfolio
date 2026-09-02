@@ -4,7 +4,7 @@ import NavBar from "~/components/nav-bar";
 export default function MainLayout() {
   return (
     <div className="flex flex-col items-center">
-      <header className="mb-500 w-full border-b border-b-[#E7ECE8]">
+      <header className="mb-6 w-full border-b border-b-line">
         <NavBar />
       </header>
 

@@ -1,9 +1,9 @@
 export default function TechList({ technologies }: { technologies: string[] }) {
   return (
-    <section className="bg-bg-surface-2 rounded-reg border-brdr-surface box-glow grid gap-100 border p-200">
-      <h3 className="text-txt-heading-2 font-medium">Technologies Used</h3>
+    <section className="bg-bg rounded-md border-line glow grid gap-2 border p-3">
+      <h3 className="text-accent font-medium">Technologies Used</h3>
 
-      <ol className="flex flex-wrap gap-100">
+      <ol className="flex flex-wrap gap-2">
         {technologies.map((tech) => (
           <TechItem technology={tech} />
         ))}
@@ -16,7 +16,7 @@ function TechItem({ technology }: { technology: string }) {
   return (
     <li
       key={technology}
-      className="bg-bg-surface-3 rounded-reg text-0 border-outline-3 grow border px-100 py-0 text-center font-mono"
+      className="bg-fill rounded-sm text-xs border-line grow border px-2 py-1 text-center font-mono"
     >
       {technology}
     </li>

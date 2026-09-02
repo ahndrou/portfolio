@@ -15,7 +15,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Projects() {
   return (
-    <div className="grid gap-300">
+    <div className="grid gap-4">
       <Heading />
       <CardList />
     </div>
@@ -24,17 +24,24 @@ export default function Projects() {
 
 function Heading() {
   return (
-    <h1 className="text-500 font-heading text-txt-heading-1 font-medium">
-      Projects
-    </h1>
+    <div>
+      <span className="text-xs">Portfolio - 2026</span>
+      <h1 className="text-xl font-display text-text-strong font-semibold">
+        Projects
+      </h1>
+      <p className="text-base">
+        A collection of projects I have worked on to further my skills. Each one
+        is deployed with a well documented public repository.
+      </p>
+    </div>
   );
 }
 
 function CardList() {
   return (
-    <ol className="text-100 grid list-none content-center">
+    <ol className="text-sm grid list-none content-center">
       {projects.map((project) => (
-        <li key={project.slug} className="row-divider py-300">
+        <li key={project.slug} className="row-divider py-4">
           <div>
             <Card
               title={project.title}

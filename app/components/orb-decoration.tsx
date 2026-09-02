@@ -30,7 +30,7 @@ export default function OrbDecoration({ diameter }: OrbDecorationProps) {
         cy="50"
         cx="50"
         fill={`url(#${id})`}
-        stroke={"var(--clr-green-400)"}
+        stroke={"var(--accent)"}
         strokeWidth={"2"}
         vector-effect="non-scaling-stroke"
         className="drop-glow"

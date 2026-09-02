@@ -1,83 +1,59 @@
 @import "tailwindcss";
-
-html {
-  --clr-neutral-cool-0: #e6e6e6;
-  --clr-neutral-cool-50: #dbdbdb;
-  --clr-neutral-cool-800: #19181b;
-  --clr-neutral-cool-1000: #0e1010;
-  --clr-neutral-green-400: #272927;
-  --clr-green-200: hsl(122, 35%, 57%);
-  --clr-green-400: #58945a;
-  --clr-green-700: #478049;
-  --clr-green-800: #233b29;
-
-  --font-ibm-plex-mono: "IBM Plex Mono";
-  --font-ibm-plex-sans: "IBM Plex Sans";
-}
+@import "./tokens.css";
 
 @theme inline {
-  --font-body: var(--font-ibm-plex-sans);
-  --font-heading: var(--font-ibm-plex-mono);
-  --font-button: var(--font-ibm-plex-mono);
-  --font-mono: var(--font-ibm-plex-mono);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 
-  /* TODO: Move from component variables to more general semantic ones. I feel these are too fine grained and I often want to use
-  the same colour for multiple borders for example - they don't need to be specific to a particular component. */
   --color-*: initial;
-  --color-bg-page: var(--clr-neutral-cool-1000);
-  --color-bg-surface: var(--clr-neutral-cool-800);
-  --color-bg-surface-2: var(--clr-neutral-cool-1000);
-  /* I want to remove the 'bg' prefix here. */
-  --color-bg-surface-3: var(--clr-neutral-cool-800);
-  /* This is the new naming convention I want to change to. Surface-3 uses the outline-3 colour for its border.*/
-  --color-outline-2: var(--clr-green-800);
-  --color-outline-3: var(--clr-neutral-green-400);
-  --color-bg-link: var(--clr-green-800);
-  --color-bg-button: var(--clr-green-700);
-  --color-brdr-link: var(--clr-green-700);
-  --color-brdr-surface: var(--clr-green-800);
-  --color-txt-body: var(--clr-neutral-cool-0);
-  --color-txt-link: var(--clr-neutral-cool-50);
-  --color-txt-link-active: var(--clr-green-200);
-  --color-txt-heading-1: var(--clr-green-200);
-  --color-txt-heading-2: var(--clr-green-200);
+  --color-bg: var(--bg);
+  --color-bg-media: var(--bg-media);
+  --color-text: var(--text);
+  --color-text-strong: var(--text-strong);
+  --color-text-muted: var(--text-muted);
+  --color-text-quiet: var(--text-quiet);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fill: var(--fill);
+  --color-fill-strong: var(--fill-strong);
 
   --text-*: initial;
-  /* Scale is a 'major third' scale - geometric with multiplier 1.25, base 18px. */
-  --text-0: 0.9rem;
-  --text-100: 1.125rem;
-  --text-200: 1.406rem;
-  --text-300: 1.758rem;
-  --text-400: 2.198rem;
-  --text-500: 2.7469rem;
-  --text-600: 3.4331rem;
+  --text-xs: var(--text-xs);
+  --text-sm: var(--text-sm);
+  --text-base: var(--text-base);
+  --text-md: var(--text-md);
+  --text-lg: var(--text-lg);
+  --text-xl: var(--text-xl);
 
   --spacing-*: initial;
-  /* Scale is a geometric sequence with multiplier 1.75, base 4px. */
-  --spacing-0: 0.25rem;
-  --spacing-100: 0.4375rem;
-  --spacing-200: 0.7656rem;
-  --spacing-300: 1.34rem;
-  --spacing-400: 2.345rem;
-  --spacing-500: 4.1031rem;
-  --spacing-600: 7.1806rem;
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-5: var(--space-5);
+  --spacing-6: var(--space-6);
+  --spacing-7: var(--space-7);
 
   --radius-*: initial;
-  --radius-reg: 6px;
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-pill: var(--radius-pill);
+}
+
+@utility glow {
+  box-shadow: var(--glow);
 }
 
 @utility drop-glow {
-  filter: drop-shadow(0 0 2px var(--clr-green-400));
+  filter: drop-shadow(0 0 6px var(--accent-glow));
 }
 
-@utility box-glow {
-  box-shadow:
-    0 0 1px var(--clr-green-400),
-    inset 0 0 1px var(--clr-green-400);
-}
-
-@utility box-glow-divider {
-  box-shadow: 0 0 1px var(--clr-green-400);
+@utility surface {
+  background: var(--surface);
 }
 
 @utility row-divider {
@@ -89,9 +65,7 @@ html {
     bottom: 0;
     width: 100%;
     height: 1px;
-    background: var(--color-brdr-surface);
-
-    @apply box-glow-divider;
+    background: var(--line);
   }
 }
 
@@ -103,8 +77,6 @@ html {
     position: absolute;
     width: 1px;
     height: 100%;
-    background: var(--color-brdr-surface);
-
-    @apply box-glow-divider;
+    background: var(--line);
   }
 }

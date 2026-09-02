@@ -18,7 +18,7 @@ export default function Landing() {
     <div className="justify-items-center self-center">
       <BackgroundDecorations />
 
-      <main className="bg-bg-surface border-brdr-surface rounded-reg box-glow relative flex max-w-4xl items-center border">
+      <main className="surface border-line rounded-lg glow relative flex max-w-4xl items-center border">
         <DecorationSection />
         <MainSection />
       </main>
@@ -28,7 +28,7 @@ export default function Landing() {
 
 function DecorationSection() {
   return (
-    <div aria-hidden className="hidden px-300 lg:block">
+    <div aria-hidden className="hidden px-4 lg:block">
       <OrbDecoration diameter={"350px"} />
     </div>
   );
@@ -36,13 +36,13 @@ function DecorationSection() {
 
 function MainSection() {
   return (
-    <section className="border-brdr-surface col-divider">
-      <div className="p-300">
-        <h1 className="text-500 text-txt-heading-1 font-heading mb-200 font-medium [view-transition-name:name]">
+    <section className="border-line col-divider">
+      <div className="p-4">
+        <h1 className="text-xl text-text-strong font-display mb-3 font-medium [view-transition-name:name]">
           Andrew Smith
         </h1>
 
-        <section className="grid gap-500">
+        <section className="grid gap-6">
           <BodyCopy />
           <Navigation />
         </section>
@@ -53,7 +53,7 @@ function MainSection() {
 
 function BodyCopy() {
   return (
-    <section className="grid gap-200">
+    <section className="grid gap-3">
       <p>
         A self taught web developer with a Bsc. Computer Science (Ordinary
         Degree) from the University of Edinburgh.
@@ -70,7 +70,7 @@ function BodyCopy() {
 function Navigation() {
   return (
     <nav>
-      <ul className="text-100 md:text-100 grid grid-cols-2 justify-items-center gap-100 font-medium lg:grid-cols-4">
+      <ul className="text-sm md:text-sm grid grid-cols-2 justify-items-center gap-2 font-medium lg:grid-cols-4">
         <ListItem>
           <Link
             className="block w-full [view-transition-name:about-link]"
@@ -115,7 +115,7 @@ function Navigation() {
 
 function ListItem({ children }: { children: React.ReactElement }) {
   return (
-    <li className="bg-bg-link border-brdr-link rounded-reg font-button box-glow w-full border py-0 text-center">
+    <li className="bg-fill-strong border-line-strong rounded-md font-mono glow w-full border py-1 text-center">
       {children}
     </li>
   );

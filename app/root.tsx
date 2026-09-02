@@ -21,7 +21,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;450;500&family=JetBrains+Mono:wght@400;500&display=swap",
   },
 ];
 
@@ -29,7 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className="font-body text-txt-body text-100 bg-bg-page overflow-y-scroll"
+      className="font-body text-text text-sm bg-bg overflow-y-scroll"
     >
       <head>
         <meta charSet="utf-8" />

@@ -1,0 +1,65 @@
+:root {
+  /* — Color ————————————————————————————— */
+  --bg: #0a0b0a; /* page canvas */
+  --bg-media: #07110c; /* media wells - media is loaded into these spots */
+  --surface: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.035),
+    rgba(255, 255, 255, 0.012)
+  ); /* A very subtle gradient for use on surfaces such as cards. */
+
+  --text: #e7ece8; /* body */
+  --text-strong: #f7fbf8; /* headings */
+  --text-muted: #9aa5a0; /* secondary prose */
+  --text-quiet: #7c8781; /* labels, dates */
+
+  --accent: #f0b429;
+  --accent-ink: #07130c; /* text on accent fill */
+  --accent-glow: rgba(240, 180, 41, 0.35);
+
+  --line: rgba(255, 255, 255, 0.08); /* hairlines */
+  --line-strong: rgba(255, 255, 255, 0.14); /* button borders */
+  --fill: rgba(255, 255, 255, 0.05); /* tags, ghost hover */
+  --fill-strong: rgba(255, 255, 255, 0.06); /* active nav */
+
+  /* — Type ————————————————————————————— */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --text-xl: clamp(44px, 6vw, 76px); /* page title */
+  --text-lg: 34px; /* card title */
+  --text-md: 23px; /* row title */
+  --text-base: 17px; /* prose */
+  --text-sm: 15px; /* UI, buttons */
+  --text-xs: 12px; /* mono labels */
+
+  --leading-tight: 0.98;
+  --leading-body: 1.6;
+  --tracking-tight: -0.03em; /* display */
+  --tracking-wide: 0.14em; /* uppercase mono labels */
+  --measure: 56ch;
+
+  /* — Space ———————————————————————————— */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --page-max: 1080px;
+  --page-gutter: clamp(20px, 5vw, 32px);
+  --card-pad: clamp(24px, 4vw, 40px);
+
+  /* — Shape & depth ——————————————————— */
+  --radius-sm: 8px; /* tags, nav */
+  --radius-md: 10px; /* buttons */
+  --radius-lg: 20px; /* cards */
+  --radius-pill: 999px;
+
+  --glow: 0 0 12px var(--accent-glow);
+  --blur: blur(14px);
+  /* No drop shadows — depth is hairlines, low-alpha washes and blur. */
+}
