@@ -14,16 +14,23 @@ interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Space Shooter",
-    slug: "space-shooter",
+    title: "Asteroid Field",
+    slug: "asteroid-field",
     imgSrc: spaceShooter,
     websiteUrl: "https://3d-asteroids.netlify.app/",
     githubUrl: "https://github.com/ahndrou/Space-Shooter",
     paragraphs: [
-      "A 3D space shooter loosely based on the classic game Asteroids.",
-      "Implemented using ThreeJS with custom GLSL shaders and physics using RapierJS.",
+      "A 3D, third-person shooter game playable in the browser. The user controls a small spaceship, aiming to destroy as many enemies as possible whilst avoiding collisions.",
+      "Complete with physics, enemy navigation AI, custom shaders, a scoring system, player lives and game-over/restart mechanics.",
     ],
-    techList: ["ThreeJS", "Rapier Physics", "GLSL", "Zustand", "React"],
+    techList: [
+      "ThreeJS",
+      "Rapier Physics",
+      "GLSL",
+      "Zustand",
+      "Navigation AI",
+      "React",
+    ],
   },
   {
     title: "Weather Forecast",
