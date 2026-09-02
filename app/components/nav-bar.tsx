@@ -10,9 +10,9 @@ export default function NavBar() {
   const location = useLocation();
 
   return (
-    <nav className="@container mx-auto w-full max-w-5xl py-4 text-sm font-medium">
+    <nav className="@container mx-auto w-full max-w-5xl py-4 text-sm">
       <ul className="flex items-center gap-6">
-        <li className="grow [view-transition-name:name]">
+        <li className="text-md grow [view-transition-name:name]">
           <Link to="/" viewTransition>
             Andrew Smith
           </Link>
