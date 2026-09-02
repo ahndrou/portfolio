@@ -14,12 +14,14 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Contact() {
   return (
-    <div className="grid gap-4">
-      <h1 className="surface text-text-strong font-display border-line rounded-lg border px-4 py-3 text-xl font-medium lg:px-5">
-        Get in Touch
-      </h1>
+    <>
+      <header>
+        <h1 className="surface text-text-strong font-display border-line rounded-lg border px-4 py-3 text-xl font-medium lg:px-5">
+          Get in Touch
+        </h1>
+      </header>
 
-      <div className="surface border-line grid rounded-lg border lg:grid-cols-2">
+      <main className="surface border-line grid rounded-lg border lg:grid-cols-2">
         <div className="grid grid-rows-[auto_1fr]">
           <section className="row-divider grid content-start gap-3 p-5 text-sm">
             <p>
@@ -52,7 +54,7 @@ export default function Contact() {
 
           <EmailForm />
         </section>
-      </div>
-    </div>
+      </main>
+    </>
   );
 }
