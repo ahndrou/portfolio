@@ -29,7 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className="font-body text-text text-sm bg-bg overflow-y-scroll"
+      className="font-body text-text bg-bg overflow-y-scroll text-base"
     >
       <head>
         <meta charSet="utf-8" />
