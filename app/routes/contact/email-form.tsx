@@ -6,7 +6,7 @@ export function EmailForm() {
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
-        className="grid gap-3"
+        className="grid grid-cols-2 gap-5"
       >
         {/* Necessary when using Netlify forms with client-rendered or SSR forms. */}
         <input type="hidden" name="form-name" value="contact" />
@@ -19,9 +19,9 @@ export function EmailForm() {
 
         <SimpleInput name="name" />
         <SimpleInput name="email" />
-        <SimpleInput name="subject" />
+        <SimpleInput name="subject" className="col-span-2" />
 
-        <MessageTextArea />
+        <MessageTextArea className="col-span-2" />
 
         <SubmitButton />
       </form>
@@ -29,28 +29,42 @@ export function EmailForm() {
   );
 }
 
-function SimpleInput({ name }: { name: string }) {
+function SimpleInput({
+  name,
+  className,
+}: {
+  name: string;
+  className?: string;
+}) {
+  const cn = `grid gap-2 ${className}`;
+
   return (
-    <label>
-      <span className="hidden">{name}</span>
+    <label className={cn}>
+      <span className="text-text-quiet font-mono text-xs tracking-wide uppercase">
+        {name}
+      </span>
       <input
         type="text"
         name={name}
         placeholder={`${name}:`}
-        className="bg-bg border-line focus-visible:outline-accent w-full justify-center rounded-md border px-3 py-2 text-sm placeholder:capitalize focus-visible:outline-solid"
+        className="border-line surface focus-visible:outline-line-strong w-full justify-center rounded-md border px-3 py-2 text-sm placeholder:capitalize focus-visible:outline-solid"
       />
     </label>
   );
 }
 
-function MessageTextArea() {
+function MessageTextArea({ className }: { className?: string }) {
+  const cn = `grid gap-2 ${className}`;
+
   return (
-    <label>
-      <span className="hidden">Message</span>
+    <label className={cn}>
+      <span className="text-text-quiet font-mono text-xs tracking-wide uppercase">
+        Message
+      </span>
       <textarea
         name="message"
         placeholder="Message:"
-        className="bg-bg border-line focus-visible:outline-accent h-[10rem] w-full justify-center rounded-md border px-3 py-2 text-sm focus-visible:outline-solid"
+        className="border-line surface focus-visible:outline-line-strong h-[10rem] w-full justify-center rounded-md border px-3 py-2 text-sm focus-visible:outline-solid"
       />
     </label>
   );
@@ -58,13 +72,13 @@ function MessageTextArea() {
 
 function SubmitButton() {
   return (
-    <label>
-      <span className="hidden">Submit</span>
+    <label className="max-w-[12rem]">
+      <span className="hidden">Send message</span>
       <button
         type="submit"
         className="bg-accent text-accent-ink flex w-full cursor-pointer items-center justify-center rounded-md py-2 text-center font-mono text-sm font-medium"
       >
-        Submit
+        Send Message
       </button>
     </label>
   );
