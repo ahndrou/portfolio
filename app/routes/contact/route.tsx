@@ -37,7 +37,7 @@ export default function Contact() {
             <EmailForm />
           </div>
 
-          <div className="grid basis-xs content-start gap-6">
+          <div className="grid content-start gap-6 md:basis-xs">
             <section className="grid gap-1">
               <h3 className="text-text-quiet mb-1 font-mono text-xs tracking-wide uppercase">
                 Direct
