@@ -16,43 +16,52 @@ export default function Contact() {
   return (
     <>
       <header>
-        <h1 className="surface text-text-strong font-display border-line rounded-lg border px-4 py-3 text-xl font-medium lg:px-5">
+        <span className="trail-line text-accent font-mono text-xs tracking-wide uppercase">
+          Contact - Open to work
+        </span>
+        <h1 className="text-text-strong font-display text-xl font-semibold">
           Get in Touch
         </h1>
+        <p className="text-text-muted max-w-2xl">
+          I’m currently seeking employment and would love to hear about any
+          opportunities. Send me a message below, or reach me on LinkedIn.
+        </p>
       </header>
 
-      <main className="surface border-line grid rounded-lg border lg:grid-cols-2">
-        <div className="grid grid-rows-[auto_1fr]">
-          <section className="row-divider grid content-start gap-3 p-5 text-sm">
-            <p>
-              I’m currently seeking employment and would love to hear about any
-              opportunities!
-            </p>
+      <main className="grid gap-5">
+        <h2 className="trail-line text-text-quiet font-mono text-xs tracking-wide uppercase">
+          Send a message
+        </h2>
 
-            <p>
-              You can contact me by email using the form provided, or
-              alternatively by sending me a message on LinkedIn.
-            </p>
-          </section>
+        <section className="flex gap-6">
+          <div className="grow">
+            <EmailForm />
+          </div>
 
-          <section className="max-lg:row-divider grid gap-4 self-start p-5">
-            <h2 className="text-accent font-display text-lg leading-none">
-              LinkedIn
-            </h2>
+          <div className="grid basis-xs content-start gap-6">
+            <section className="grid gap-1">
+              <h3 className="text-text-quiet mb-1 font-mono text-xs tracking-wide uppercase">
+                Direct
+              </h3>
+              <span>LinkedIn</span>
+              <span>GitHub</span>
+            </section>
 
-            <a className="bg-fill-strong border-line-strong flex cursor-pointer items-center gap-2 justify-self-start rounded-md border px-3 py-2">
-              <LinkedInSVG />
-              Visit my LinkedIn profile
-            </a>
-          </section>
-        </div>
+            <section className="grid gap-1">
+              <h3 className="text-text-quiet mb-1 font-mono text-xs tracking-wide uppercase">
+                Based In
+              </h3>
+              <span>Manchester, UK</span>
+              <span className="text-text-muted">Remote or Hybrid</span>
+            </section>
 
-        <section className="lg:col-divider grid gap-4 p-5">
-          <h2 className="font-display text-accent text-lg leading-none">
-            Email
-          </h2>
-
-          <EmailForm />
+            <section className="grid gap-1">
+              <h3 className="text-text-quiet mb-1 font-mono text-xs tracking-wide uppercase">
+                Status
+              </h3>
+              <span>Available for work</span>
+            </section>
+          </div>
         </section>
       </main>
     </>

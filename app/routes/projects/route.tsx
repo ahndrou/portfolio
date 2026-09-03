@@ -23,7 +23,7 @@ export default function Projects() {
         <h1 className="font-display text-text-strong text-xl font-semibold">
           Projects
         </h1>
-        <p className="text-text-muted max-w-4xl text-base">
+        <p className="text-text-muted max-w-2xl text-base">
           A collection of projects I have worked on to further my skills. Each
           one is deployed with a well documented public repository.
         </p>
