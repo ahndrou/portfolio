@@ -14,13 +14,16 @@ export function meta({}: Route.MetaArgs) {
 export default function Contact() {
   return (
     <>
-      <header>
-        <span className="trail-line text-accent font-mono text-xs tracking-wide uppercase">
-          Contact - Open to work
-        </span>
-        <h1 className="text-text-strong font-display text-xl font-semibold">
-          Get in Touch
-        </h1>
+      <header className="grid gap-5">
+        <div className="grid gap-3">
+          <span className="trail-line text-accent font-mono text-xs tracking-wide uppercase">
+            Contact - Open to work
+          </span>
+          <h1 className="text-text-strong font-display text-xl leading-tight font-semibold">
+            Get in Touch
+          </h1>
+        </div>
+
         <p className="text-text-muted max-w-2xl">
           I’m currently seeking employment and would love to hear about any
           opportunities. Send me a message below, or reach me on LinkedIn.

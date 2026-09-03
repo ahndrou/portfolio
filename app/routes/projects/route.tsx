@@ -16,13 +16,16 @@ export function meta({}: Route.MetaArgs) {
 export default function Projects() {
   return (
     <>
-      <header>
-        <span className="text-accent trail-line font-mono text-xs tracking-wide uppercase">
-          Portfolio - 2026
-        </span>
-        <h1 className="font-display text-text-strong text-xl font-semibold">
-          Projects
-        </h1>
+      <header className="grid gap-5">
+        <div className="grid gap-3">
+          <span className="text-accent trail-line font-mono text-xs tracking-wide uppercase">
+            Portfolio - 2026
+          </span>
+          <h1 className="font-display text-text-strong text-xl leading-tight font-semibold">
+            Projects
+          </h1>
+        </div>
+
         <p className="text-text-muted max-w-2xl text-base">
           A collection of projects I have worked on to further my skills. Each
           one is deployed with a well documented public repository.
