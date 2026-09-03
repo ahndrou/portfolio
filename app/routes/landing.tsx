@@ -32,7 +32,7 @@ export default function Landing() {
           <Link
             to="/projects"
             viewTransition
-            className="bg-accent text-accent-ink rounded-md px-4 py-3 text-sm font-medium"
+            className="bg-accent text-accent-ink hover:glow rounded-md px-4 py-3 text-sm font-medium"
           >
             View projects
           </Link>
