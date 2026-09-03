@@ -19,7 +19,7 @@ export default function Contact() {
           <span className="trail-line text-accent font-mono text-xs tracking-wide uppercase">
             Contact - Open to work
           </span>
-          <h1 className="text-text-strong font-display text-xl leading-tight font-semibold">
+          <h1 className="text-text-strong font-display text-xl leading-tight font-medium">
             Get in Touch
           </h1>
         </div>

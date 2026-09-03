@@ -16,16 +16,19 @@ export default function Landing() {
     <>
       <header className="grid gap-5">
         <div className="grid gap-3">
-          <span className="trail-line text-accent text-xs tracking-wide uppercase">
+          <span className="trail-line text-accent font-mono text-xs tracking-wide uppercase">
             Home - Open to work
           </span>
-          <h1 className="text-xl leading-tight font-medium">Andrew Smith</h1>
+          <h1 className="font-display text-text-strong text-xl leading-tight font-semibold">
+            Andrew Smith
+          </h1>
         </div>
+
         <p className="text-text-muted max-w-lg">
           Self-taught web developer with a BSc in Computer Science from the
           University of Edinburgh. Based in Manchester, UK.
         </p>
-        <nav className="flex gap-2">
+        <nav className="flex gap-3">
           <Link
             to="/projects"
             viewTransition
@@ -43,7 +46,44 @@ export default function Landing() {
         </nav>
       </header>
 
-      <main>Main</main>
+      <main className="grid gap-5">
+        <h2 className="trail-line text-text-quiet font-mono text-xs tracking-wide uppercase">
+          About
+        </h2>
+
+        <section className="surface border-line grid grid-cols-1 gap-5 rounded-lg border p-5 md:grid-cols-2">
+          <div className="grid content-start gap-2">
+            <h3 className="leading-tight font-medium">Hi, I'm Andrew</h3>
+            <p className="text-text-muted">
+              Frontend-focused, with fundamentals from two years of self-study
+              on top of the degree.
+            </p>
+          </div>
+
+          <div className="grid content-start gap-2">
+            <h3 className="leading-tight font-medium">Recent Interests</h3>
+            <p className="text-text-muted">
+              Interactive browser experiences — a 3D game built with ThreeJS,
+              custom shaders and physics.
+            </p>
+          </div>
+
+          <div className="grid content-start gap-2">
+            <h3 className="leading-tight font-medium">Currently Exploring</h3>
+            <p className="text-text-muted">
+              TypeScript across projects, and reading up on server-side
+              rendering.
+            </p>
+          </div>
+
+          <div className="grid content-start gap-2">
+            <h3 className="leading-tight font-medium">Other Interests</h3>
+            <p className="text-text-muted">
+              3D modelling in Blender, and sharpening design skills generally.
+            </p>
+          </div>
+        </section>
+      </main>
     </>
   );
 }
