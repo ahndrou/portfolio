@@ -59,7 +59,6 @@
   --radius-lg: 20px; /* cards */
   --radius-pill: 999px;
 
-  --: 0 0 12px var(--accent-);
   --blur: blur(14px);
   /* No drop shadows — depth is hairlines, low-alpha washes and blur. */
 }
