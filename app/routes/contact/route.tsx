@@ -43,8 +43,12 @@ export default function Contact() {
               <h3 className="text-text-quiet mb-1 font-mono text-xs tracking-wide uppercase">
                 Direct
               </h3>
-              <span>LinkedIn</span>
-              <span>GitHub</span>
+              <a
+                href="https://www.linkedin.com/in/andrew-smith-5a1b2132b/"
+                className="hover:text-accent after:ml-1 after:inline-block after:content-['↗']"
+              >
+                LinkedIn
+              </a>
             </section>
 
             <section className="grid gap-1">
