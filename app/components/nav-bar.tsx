@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router";
 
 const links = [
-  { to: "/", label: "Home", transitionName: "home-link" },
-  { to: "/projects", label: "Projects", transitionName: "projects-link" },
-  { to: "/contact", label: "Contact", transitionName: "contact-link" },
+  { to: "/", label: "Home" },
+  { to: "/projects", label: "Projects" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export default function NavBar() {
@@ -12,18 +12,18 @@ export default function NavBar() {
   return (
     <nav className="border-line @container sticky top-[0] w-full border-b py-4 text-sm backdrop-blur-2xl">
       <ul className="mx-auto flex max-w-5xl items-center gap-6 px-6 lg:px-0">
-        <li className="text-md grow [view-transition-name:name]">
+        <li className="text-md grow">
           <Link to="/" viewTransition>
             Andrew Smith
           </Link>
         </li>
 
-        {links.map(({ to, label, transitionName }) => (
+        {links.map(({ to, label }) => (
           <li key={to}>
             <Link
               to={to}
               viewTransition
-              className={`[view-transition-name:${transitionName}] hover:text-text flex items-center rounded-md p-3 @max-[40ch]:hidden ${location.pathname === to ? "bg-fill text-text" : "text-text-muted"}`}
+              className={`hover:text-text flex items-center rounded-md p-3 @max-[40ch]:hidden ${location.pathname === to ? "bg-fill text-text" : "text-text-muted"}`}
             >
               {label}
             </Link>
@@ -35,7 +35,7 @@ export default function NavBar() {
             href="https://github.com/ahndrou"
             target="_blank"
             rel="noopener"
-            className="border-line-strong hover:bg-fill rounded-md border p-3 [view-transition-name:github-link] @max-[40ch]:hidden"
+            className="border-line-strong hover:bg-fill rounded-md border p-3 @max-[40ch]:hidden"
           >
             <span className="after:ml-1 after:inline-block after:content-['↗']">
               GitHub
