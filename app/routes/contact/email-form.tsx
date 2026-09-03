@@ -17,11 +17,18 @@ export function EmailForm() {
           <input type="text" name="bot-field" />
         </label>
 
-        <SimpleInput name="name" />
-        <SimpleInput name="email" />
-        <SimpleInput name="subject" className="col-span-2" />
+        <SimpleInput name="name" placeholder="John Doe" />
+        <SimpleInput name="email" placeholder="john.doe@example.com" />
+        <SimpleInput
+          name="subject"
+          placeholder="Reaching out about an opportunity"
+          className="col-span-2"
+        />
 
-        <MessageTextArea className="col-span-2" />
+        <MessageTextArea
+          placeholder="Hi there, I came across your background and thought you might be a great fit for an opportunity we have open. Would love to share more if you're interested."
+          className="col-span-2"
+        />
 
         <SubmitButton />
       </form>
@@ -32,8 +39,10 @@ export function EmailForm() {
 function SimpleInput({
   name,
   className,
+  placeholder,
 }: {
   name: string;
+  placeholder: string;
   className?: string;
 }) {
   const cn = `grid gap-2 ${className}`;
@@ -46,14 +55,20 @@ function SimpleInput({
       <input
         type="text"
         name={name}
-        placeholder={`${name}:`}
-        className="border-line surface focus-visible:outline-line-strong w-full justify-center rounded-md border px-3 py-2 text-sm placeholder:capitalize focus-visible:outline-solid"
+        placeholder={placeholder}
+        className="border-line surface focus-visible:outline-line-strong w-full justify-center rounded-md border px-3 py-2 text-sm focus-visible:outline-solid"
       />
     </label>
   );
 }
 
-function MessageTextArea({ className }: { className?: string }) {
+function MessageTextArea({
+  className,
+  placeholder,
+}: {
+  className?: string;
+  placeholder: string;
+}) {
   const cn = `grid gap-2 ${className}`;
 
   return (
@@ -63,7 +78,7 @@ function MessageTextArea({ className }: { className?: string }) {
       </span>
       <textarea
         name="message"
-        placeholder="Message:"
+        placeholder={placeholder}
         className="border-line surface focus-visible:outline-line-strong h-[10rem] w-full justify-center rounded-md border px-3 py-2 text-sm focus-visible:outline-solid"
       />
     </label>
