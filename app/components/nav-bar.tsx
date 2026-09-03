@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router";
 
 const links = [
-  { to: "/about", label: "About Me", transitionName: "about-link" },
+  { to: "/", label: "Home", transitionName: "home-link" },
   { to: "/projects", label: "Projects", transitionName: "projects-link" },
   { to: "/contact", label: "Contact", transitionName: "contact-link" },
 ];
@@ -11,7 +11,7 @@ export default function NavBar() {
 
   return (
     <nav className="border-line @container sticky top-[0] w-full border-b py-4 text-sm backdrop-blur-2xl">
-      <ul className="mx-auto flex max-w-5xl items-center gap-6">
+      <ul className="mx-auto flex max-w-5xl items-center gap-6 px-6 lg:px-0">
         <li className="text-md grow [view-transition-name:name]">
           <Link to="/" viewTransition>
             Andrew Smith

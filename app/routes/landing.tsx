@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import type { Route } from "./+types/landing";
 import OrbDecoration from "~/components/orb-decoration";
-import { BackgroundDecorations } from "~/components/background-decorations";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -16,9 +15,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Landing() {
   return (
     <div className="justify-items-center self-center">
-      <BackgroundDecorations />
-
-      <main className="surface border-line relative flex max-w-4xl items-center rounded-lg border">
+      <main className="surface border-line relative flex items-center rounded-lg border">
         <DecorationSection />
         <MainSection />
       </main>
