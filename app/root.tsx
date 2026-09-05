@@ -10,7 +10,7 @@ import {
 import "./app.css";
 
 import type { Route } from "./+types/root";
-import { BackgroundDecorations } from "./components/background-decorations";
+import { BackgroundDecorations } from "./components/background/background-decorations";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
