@@ -16,7 +16,7 @@ const fs = `
   uniform float time;
 
   void main() {
-    vec2 uv = gl_FragCoord.xy / resolution;
+    vec2 uv = gl_FragCoord.xy / resolution.y;
     float color = 0.0;
     // lifted from glslsandbox.com
     color += sin( uv.x * cos( time / 3.0 ) * 60.0 ) + cos( uv.y * cos( time / 2.80 ) * 10.0 );
@@ -56,7 +56,7 @@ export function BackgroundDecorations() {
 
     bufferInfo.current = TWGL.createBufferInfoFromArrays(gl.current, arrays);
 
-    requestAnimationFrame(render);
+    rafID.current = requestAnimationFrame(render);
 
     return () => {
       if (rafID.current === null) return;
@@ -72,6 +72,7 @@ export function BackgroundDecorations() {
     ) {
       throw new Error("Tried rendering before setup has been completed.");
     }
+
     const uniforms = {
       time: time * 0.001,
       resolution: [gl.current.canvas.width, gl.current.canvas.height],
@@ -90,11 +91,8 @@ export function BackgroundDecorations() {
   }
 
   return (
-    <div
-      aria-hidden
-      className="absolute top-[0] bottom-[0] left-[0] -z-20 w-full overflow-clip"
-    >
-      <canvas ref={canvas} style={{ width: "100%", height: "100%" }}></canvas>
+    <div aria-hidden className="fixed top-[0] left-[0] -z-20 h-full w-full">
+      <canvas ref={canvas} className="h-full w-full"></canvas>
     </div>
   );
 }
