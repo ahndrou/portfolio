@@ -45,6 +45,7 @@ export function Background() {
 
   function render(time: DOMHighResTimeStamp) {
     if (
+      canvas.current === null ||
       gl.current === null ||
       programInfo.current === null ||
       bufferInfo.current === null
@@ -52,9 +53,18 @@ export function Background() {
       throw new Error("Tried rendering before setup has been completed.");
     }
 
+    // WebGL canvas (buffer) size is set independently from HTML canvas element size. This
+    // keeps them in sync. Important to avoid stretching/squashing issues.
+    TWGL.resizeCanvasToDisplaySize(canvas.current);
+
+    // Whilst the above line determines the pixels available in the buffer, this line
+    // tells WebGL the area of the buffer that clip space coordinates ([-1, -1], [1, 1]) map onto.
+    // We could use this to transform the position/scale of the render on the buffer.
+    gl.current.viewport(0, 0, canvas.current.width, canvas.current.height);
+
     const uniforms = {
       time: time * 0.001,
-      resolution: [gl.current.canvas.width, gl.current.canvas.height],
+      resolution: [canvas.current.width, canvas.current.height],
     };
 
     gl.current.useProgram(programInfo.current.program);
