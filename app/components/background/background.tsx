@@ -11,6 +11,19 @@ const arrays = {
 
 export function Background() {
   const canvas = useRef<HTMLCanvasElement | null>(null);
+
+  useBackgroundEffect(canvas);
+
+  return (
+    <div aria-hidden className="fixed top-[0] left-[0] -z-20 h-full w-full">
+      <canvas ref={canvas} className="h-full w-full"></canvas>
+    </div>
+  );
+}
+
+function useBackgroundEffect(
+  canvasRef: React.RefObject<HTMLCanvasElement | null>,
+) {
   const gl = useRef<WebGLRenderingContext | null>(null);
   const programInfo = useRef<TWGL.ProgramInfo | null>(null);
   const bufferInfo = useRef<TWGL.BufferInfo | null>(null);
@@ -18,7 +31,9 @@ export function Background() {
   const rafID = useRef<number | null>(null);
 
   useEffect(() => {
-    gl.current = canvas.current!.getContext("webgl");
+    const canvas = canvasRef.current;
+
+    gl.current = canvas!.getContext("webgl");
 
     if (gl.current === null) {
       throw new Error("WebGL context wasn't retrieved properly.");
@@ -44,8 +59,10 @@ export function Background() {
   }, []);
 
   function render(time: DOMHighResTimeStamp) {
+    const canvas = canvasRef.current;
+
     if (
-      canvas.current === null ||
+      canvas === null ||
       gl.current === null ||
       programInfo.current === null ||
       bufferInfo.current === null
@@ -55,16 +72,16 @@ export function Background() {
 
     // WebGL canvas (buffer) size is set independently from HTML canvas element size. This
     // keeps them in sync. Important to avoid stretching/squashing issues.
-    TWGL.resizeCanvasToDisplaySize(canvas.current);
+    TWGL.resizeCanvasToDisplaySize(canvas);
 
     // Whilst the above line determines the pixels available in the buffer, this line
     // tells WebGL the area of the buffer that clip space coordinates ([-1, -1], [1, 1]) map onto.
     // We could use this to transform the position/scale of the render on the buffer.
-    gl.current.viewport(0, 0, canvas.current.width, canvas.current.height);
+    gl.current.viewport(0, 0, canvas.width, canvas.height);
 
     const uniforms = {
       time: time * 0.001,
-      resolution: [canvas.current.width, canvas.current.height],
+      resolution: [canvas.width, canvas.height],
     };
 
     gl.current.useProgram(programInfo.current.program);
@@ -78,10 +95,4 @@ export function Background() {
 
     rafID.current = requestAnimationFrame(render);
   }
-
-  return (
-    <div aria-hidden className="fixed top-[0] left-[0] -z-20 h-full w-full">
-      <canvas ref={canvas} className="h-full w-full"></canvas>
-    </div>
-  );
 }
