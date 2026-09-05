@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import * as TWGL from "twgl.js";
 
-import vertex from "./shaders/vertex.glsl";
-import fragment from "./shaders/fragment.glsl";
+import vertex from "./shaders/background.vert.glsl";
+import fragment from "./shaders/background.frag.glsl";
 
 // Vertex positions for a plane.
 const arrays = {
