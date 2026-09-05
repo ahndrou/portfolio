@@ -9,7 +9,7 @@ const arrays = {
   position: [-1, -1, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1, 1, 0],
 };
 
-export function BackgroundDecorations() {
+export function Background() {
   const canvas = useRef<HTMLCanvasElement | null>(null);
   const gl = useRef<WebGLRenderingContext | null>(null);
   const programInfo = useRef<TWGL.ProgramInfo | null>(null);

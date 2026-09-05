@@ -10,7 +10,7 @@ import {
 import "./app.css";
 
 import type { Route } from "./+types/root";
-import { BackgroundDecorations } from "./components/background/background-decorations";
+import { Background } from "./components/background/background";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -38,7 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="relative flex min-h-dvh scrollbar-gutter-stable *:grow">
-        <BackgroundDecorations />
+        <Background />
         {children}
         <ScrollRestoration />
         <Scripts />
