@@ -32,13 +32,29 @@ float combinedSDF(vec2 p) {
     return strength;
 }
 
+const vec3 CORE_COLOR = vec3(0.2, 0.2, 0.8);
+const vec3 GLOW_COLOR = vec3(0., 0., 1.);
+const float GLOW_FALLOFF = 25.0;
+const float GLOW_BOOST = 1.;
+
+const float EDGE_WIDTH = 0.002;
+
 void main() {
+    // Normalized pixel coordinates (-aspect, 0 -> aspect, 1).
     vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy)  / resolution.y;
 
-    float strength = combinedSDF(uv);
-    strength = smoothstep(0., 0.01, strength);
+    // Create inner color.
+    float SD = combinedSDF(uv);
+    float minSD = smoothstep(EDGE_WIDTH, -EDGE_WIDTH, SD);
+    vec3 color = CORE_COLOR * minSD;
 
-    vec3 color = vec3(0.5, 0.2, 0.6) * strength;
+    // Create a glow around the edge of the SDF shapes.
+    float glowIntensity = exp(-max(SD, 0.0) * GLOW_FALLOFF);
+    // Remove glow color from inside of shapes.
+    float glowMask = smoothstep(-EDGE_WIDTH, EDGE_WIDTH, SD);
+
+    vec3 glow = GLOW_COLOR * glowMask * glowIntensity * GLOW_BOOST;
+    color += glow;
 
     gl_FragColor = vec4(color, 1.0);
 }

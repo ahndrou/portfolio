@@ -18,7 +18,10 @@ export function Background() {
   useBackgroundEffect(canvas);
 
   return (
-    <div aria-hidden className="fixed top-[0] left-[0] -z-20 h-full w-full">
+    <div
+      aria-hidden
+      className="fixed top-[0] left-[0] -z-20 h-full w-full blur-md"
+    >
       <canvas ref={canvas} className="h-full w-full"></canvas>
     </div>
   );
