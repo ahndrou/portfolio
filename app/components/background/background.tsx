@@ -9,6 +9,9 @@ const arrays = {
   position: [-1, -1, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1, 1, 0],
 };
 
+// Must match POSITIONS_LENGTH in the fragment shader.
+const POSITIONS_LENGTH = 2;
+
 export function Background() {
   const canvas = useRef<HTMLCanvasElement | null>(null);
 
@@ -30,12 +33,17 @@ function useBackgroundEffect(
 
   const rafID = useRef<number | null>(null);
 
+  const positions = useRef<Vec2[]>(createPositions());
+
   const uniforms = useRef<{
-    time: null | number;
-    resolution: [null | number, null | number];
+    time: number;
+    resolution: [number, number];
+    positions: Float32Array;
   }>({
-    time: null,
-    resolution: [null, null],
+    time: 0,
+    resolution: [0, 0],
+    // WebGL takes a uniform array as one flat run of floats, not an array of arrays.
+    positions: new Float32Array(POSITIONS_LENGTH * 2),
   });
 
   useEffect(() => {
@@ -87,10 +95,12 @@ function useBackgroundEffect(
     // We could use this to transform the position/scale of the render on the buffer.
     gl.current.viewport(0, 0, canvas.width, canvas.height);
 
-    uniforms.current = {
-      time: time * 0.001,
-      resolution: [canvas.width, canvas.height],
-    };
+    positions.current = updatePositions(positions.current);
+
+    uniforms.current.time = time * 0.001;
+    uniforms.current.resolution[0] = canvas.width;
+    uniforms.current.resolution[1] = canvas.height;
+    Vec2.arrayToFloat32Array(positions.current, uniforms.current.positions);
 
     gl.current.useProgram(programInfo.current.program);
     TWGL.setBuffersAndAttributes(
@@ -102,5 +112,37 @@ function useBackgroundEffect(
     TWGL.drawBufferInfo(gl.current, bufferInfo.current);
 
     rafID.current = requestAnimationFrame(render);
+  }
+}
+
+function createPositions(): Vec2[] {
+  return [new Vec2(0.3, 0.4), new Vec2(0.4, 0.45)];
+}
+
+function updatePositions(currentPositions: Vec2[]): Vec2[] {
+  return currentPositions;
+}
+
+/**
+ * A very simple 2D vector class.
+ */
+class Vec2 {
+  x: number;
+  y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  // Storing state in a Float32Array directly would accumulate floating point errors.
+  // Storage as an array of Vec2 and converting when needed avoids accumulation.
+  // Probably not significant here but worth baring in mind.
+  static arrayToFloat32Array(vecs: Vec2[], target: Float32Array): Float32Array {
+    for (let i = 0; i < vecs.length; i++) {
+      target[i * 2] = vecs[i].x;
+      target[i * 2 + 1] = vecs[i].y;
+    }
+    return target;
   }
 }
