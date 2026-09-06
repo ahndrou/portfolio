@@ -18,10 +18,7 @@ export function Background() {
   useBackgroundEffect(canvas);
 
   return (
-    <div
-      aria-hidden
-      className="fixed top-[0] left-[0] -z-20 h-full w-full blur-md"
-    >
+    <div aria-hidden className="fixed top-[0] left-[0] -z-20 h-full w-full">
       <canvas ref={canvas} className="h-full w-full"></canvas>
     </div>
   );
@@ -37,6 +34,7 @@ function useBackgroundEffect(
   const rafID = useRef<number | null>(null);
 
   const positions = useRef<Vec2[]>(createPositions());
+  const velocities = useRef<Vec2[]>(createVelocities());
 
   const uniforms = useRef<{
     time: number;
@@ -98,7 +96,11 @@ function useBackgroundEffect(
     // We could use this to transform the position/scale of the render on the buffer.
     gl.current.viewport(0, 0, canvas.width, canvas.height);
 
-    positions.current = updatePositions(positions.current);
+    positions.current = updatePositions(
+      positions.current,
+      velocities.current,
+      time,
+    );
 
     uniforms.current.time = time * 0.001;
     uniforms.current.resolution[0] = canvas.width;
@@ -122,8 +124,25 @@ function createPositions(): Vec2[] {
   return [new Vec2(0.3, 0.4), new Vec2(0.4, 0.45)];
 }
 
-function updatePositions(currentPositions: Vec2[]): Vec2[] {
-  return currentPositions;
+function createVelocities() {
+  return [new Vec2(0.5, 0.4), new Vec2(0.4, -0.45)];
+}
+
+function updatePositions(
+  currentPositions: Vec2[],
+  velocities: Vec2[],
+  time: DOMHighResTimeStamp,
+): Vec2[] {
+  const newPositions = [];
+
+  for (let i = 0; i < currentPositions.length; i++) {
+    const newPosition = currentPositions[i].add(
+      velocities[i].multiplyByScalar(time * 0.0000001),
+    );
+    newPositions.push(newPosition);
+  }
+
+  return newPositions;
 }
 
 /**
@@ -136,6 +155,18 @@ class Vec2 {
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
+  }
+
+  add(other: Vec2) {
+    return new Vec2(this.x + other.x, this.y + other.y);
+  }
+
+  multiply(other: Vec2) {
+    return new Vec2(this.x * other.x, this.y * other.y);
+  }
+
+  multiplyByScalar(scalar: number) {
+    return new Vec2(this.x * scalar, this.y * scalar);
   }
 
   // Storing state in a Float32Array directly would accumulate floating point errors.
