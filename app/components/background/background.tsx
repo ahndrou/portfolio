@@ -30,6 +30,14 @@ function useBackgroundEffect(
 
   const rafID = useRef<number | null>(null);
 
+  const uniforms = useRef<{
+    time: null | number;
+    resolution: [null | number, null | number];
+  }>({
+    time: null,
+    resolution: [null, null],
+  });
+
   useEffect(() => {
     const canvas = canvasRef.current;
 
@@ -79,7 +87,7 @@ function useBackgroundEffect(
     // We could use this to transform the position/scale of the render on the buffer.
     gl.current.viewport(0, 0, canvas.width, canvas.height);
 
-    const uniforms = {
+    uniforms.current = {
       time: time * 0.001,
       resolution: [canvas.width, canvas.height],
     };
@@ -90,7 +98,7 @@ function useBackgroundEffect(
       programInfo.current,
       bufferInfo.current,
     );
-    TWGL.setUniforms(programInfo.current, uniforms);
+    TWGL.setUniforms(programInfo.current, uniforms.current);
     TWGL.drawBufferInfo(gl.current, bufferInfo.current);
 
     rafID.current = requestAnimationFrame(render);
