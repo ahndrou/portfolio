@@ -37,11 +37,9 @@ function useBackgroundEffect(
   const boidsFlock = useRef<Flock | null>(null);
 
   const uniforms = useRef<{
-    time: number;
     resolution: [number, number];
     positions: Float32Array;
   }>({
-    time: 0,
     resolution: [0, 0],
     // WebGL requires an array of Vec2s be passed as a flat Float32Array.
     positions: new Float32Array(BOIDS_COUNT * 2),

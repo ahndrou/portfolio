@@ -7,7 +7,6 @@ precision mediump float;
 const float SMIN_FUNCTION_WEIGHTING = 0.05;
 
 uniform vec2 resolution;
-uniform float time;
 uniform vec2 positions[MAX_POINTS];
 
 // A smooth-minimum function. Smoothly interpolates between the two
