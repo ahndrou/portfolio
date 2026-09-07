@@ -106,7 +106,7 @@ function useBackgroundEffect(
     // We could use this to transform the position/scale of the render on the buffer.
     gl.current.viewport(0, 0, canvas.width, canvas.height);
 
-    updateBoids(boidsFlock, time);
+    updateBoids(boidsFlock.current, time);
 
     uniforms.current.time = time * 0.001;
     uniforms.current.resolution[0] = canvas.width;
@@ -126,9 +126,6 @@ function useBackgroundEffect(
   }
 }
 
-function updateBoids(
-  boidsRef: React.RefObject<Flock | null>,
-  time: DOMHighResTimeStamp,
-) {
-  return null;
+function updateBoids(boids: Flock, time: DOMHighResTimeStamp) {
+  boids.update(time * 0.00000001);
 }

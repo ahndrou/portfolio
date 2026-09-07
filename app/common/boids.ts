@@ -10,7 +10,10 @@ export class Boid {
     //  The mass of the boid will dictate how responsive it is to flocking forces
     this.mass = 1;
     this.position = new Vec2(xPos, yPos);
-    this.velocity = new Vec2(0, 0);
+    this.velocity = new Vec2(
+      Math.random() * 2.0 - 0.5,
+      Math.random() * 2.0 - 0.5,
+    ).normalize();
     this.acceleration = new Vec2(0, 0);
   }
 
@@ -24,8 +27,8 @@ export class Boid {
   }
 
   updatePosition(time: number) {
-    this.velocity.add(this.acceleration);
-    this.position.add(this.velocity.multiplyByScalar(time));
+    this.velocity = this.velocity.add(this.acceleration);
+    this.position = this.position.add(this.velocity.multiplyByScalar(time));
 
     // Acceleration is accumulated each frame. As such, it is important it is
     // reset.
@@ -55,6 +58,12 @@ export class Flock {
 
   addBoid(boid: Boid) {
     this.boids.push(boid);
+  }
+
+  update(time: number) {
+    for (const boid of this.boids) {
+      boid.update(time);
+    }
   }
 
   /**
