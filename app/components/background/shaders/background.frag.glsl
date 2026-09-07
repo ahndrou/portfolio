@@ -1,6 +1,6 @@
 precision mediump float;
 
-const int POSITIONS_LENGTH = 2;
+const int POSITIONS_LENGTH = 6;
 // A distance threshold for when the values involved begin to merge.
 const float SMIN_FUNCTION_WEIGHTING = 0.07;
 
@@ -33,7 +33,7 @@ float combinedSDF(vec2 p) {
 }
 
 const vec3 CORE_COLOR = vec3(0.2, 0.2, 0.8);
-const vec3 GLOW_COLOR = vec3(0., 0., 1.);
+const vec3 GLOW_COLOR = vec3(0., 0.5, 0.6);
 const float GLOW_FALLOFF = 20.;
 const float GLOW_BOOST = 1.;
 

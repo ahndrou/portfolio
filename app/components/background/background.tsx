@@ -4,6 +4,7 @@ import { Vec2 } from "~/common/maths";
 
 import vertex from "./shaders/background.vert.glsl";
 import fragment from "./shaders/background.frag.glsl";
+import { Boid, Flock } from "~/common/boids";
 
 // Vertex positions for a plane.
 const arrays = {
@@ -11,7 +12,7 @@ const arrays = {
 };
 
 // Must match POSITIONS_LENGTH in the fragment shader.
-const POSITIONS_LENGTH = 2;
+const BOIDS_COUNT = 6;
 
 export function Background() {
   const canvas = useRef<HTMLCanvasElement | null>(null);
@@ -34,8 +35,7 @@ function useBackgroundEffect(
 
   const rafID = useRef<number | null>(null);
 
-  const positions = useRef<Vec2[]>(createPositions());
-  const velocities = useRef<Vec2[]>(createVelocities());
+  const boidsFlock = useRef<Flock>(initializeBoids());
 
   const uniforms = useRef<{
     time: number;
@@ -44,8 +44,8 @@ function useBackgroundEffect(
   }>({
     time: 0,
     resolution: [0, 0],
-    // WebGL takes a uniform array as one flat run of floats, not an array of arrays.
-    positions: new Float32Array(POSITIONS_LENGTH * 2),
+    // WebGL requires an array of Vec2s be passed as a flat Float32Array.
+    positions: new Float32Array(BOIDS_COUNT * 2),
   });
 
   useEffect(() => {
@@ -97,16 +97,12 @@ function useBackgroundEffect(
     // We could use this to transform the position/scale of the render on the buffer.
     gl.current.viewport(0, 0, canvas.width, canvas.height);
 
-    positions.current = updatePositions(
-      positions.current,
-      velocities.current,
-      time,
-    );
+    updateBoids(boidsFlock, time);
 
     uniforms.current.time = time * 0.001;
     uniforms.current.resolution[0] = canvas.width;
     uniforms.current.resolution[1] = canvas.height;
-    Vec2.arrayToFloat32Array(positions.current, uniforms.current.positions);
+    boidsFlock.current.toFlatPositionArray(uniforms.current.positions);
 
     gl.current.useProgram(programInfo.current.program);
     TWGL.setBuffersAndAttributes(
@@ -121,27 +117,19 @@ function useBackgroundEffect(
   }
 }
 
-function createPositions(): Vec2[] {
-  return [new Vec2(0.3, 0.4), new Vec2(0.4, 0.45)];
-}
+function initializeBoids(): Flock {
+  const flock = new Flock();
 
-function createVelocities() {
-  return [new Vec2(0.5, 0.4), new Vec2(0.4, -0.45)];
-}
-
-function updatePositions(
-  currentPositions: Vec2[],
-  velocities: Vec2[],
-  time: DOMHighResTimeStamp,
-): Vec2[] {
-  const newPositions = [];
-
-  for (let i = 0; i < currentPositions.length; i++) {
-    const newPosition = currentPositions[i].add(
-      velocities[i].multiplyByScalar(time * 0.0000001),
-    );
-    newPositions.push(newPosition);
+  for (let i = 0; i < BOIDS_COUNT; i++) {
+    flock.addBoid(new Boid(Math.random(), Math.random()));
   }
 
-  return newPositions;
+  return flock;
+}
+
+function updateBoids(
+  boidsRef: React.RefObject<Flock | null>,
+  time: DOMHighResTimeStamp,
+) {
+  return null;
 }
