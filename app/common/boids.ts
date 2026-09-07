@@ -39,11 +39,15 @@ export class Boid {
 export class Flock {
   boids: Boid[] = [];
 
-  static createRandomFlock(size: number) {
+  static createRandomFlock(size: number, resolution: { x: number; y: number }) {
     const flock = new Flock();
 
     for (let i = 0; i < size; i++) {
-      flock.addBoid(new Boid(Math.random(), Math.random()));
+      const x =
+        (Math.random() * resolution.x * 2.0 - resolution.x) / resolution.y;
+      const y =
+        (Math.random() * resolution.y * 2.0 - resolution.y) / resolution.y;
+      flock.addBoid(new Boid(x, y));
     }
 
     return flock;

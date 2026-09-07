@@ -10,7 +10,7 @@ const arrays = {
   position: [-1, -1, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1, 1, 0],
 };
 
-const BOIDS_COUNT = 6;
+const BOIDS_COUNT = 40;
 
 export function Background() {
   const canvas = useRef<HTMLCanvasElement | null>(null);
@@ -33,7 +33,7 @@ function useBackgroundEffect(
 
   const rafID = useRef<number | null>(null);
 
-  const boidsFlock = useRef<Flock>(Flock.createRandomFlock(BOIDS_COUNT));
+  const boidsFlock = useRef<Flock | null>(null);
 
   const uniforms = useRef<{
     time: number;
@@ -47,7 +47,12 @@ function useBackgroundEffect(
   });
 
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef.current!;
+
+    boidsFlock.current = Flock.createRandomFlock(BOIDS_COUNT, {
+      x: canvas!.width,
+      y: canvas!.height,
+    });
 
     gl.current = canvas!.getContext("webgl");
 
@@ -86,7 +91,8 @@ function useBackgroundEffect(
       canvas === null ||
       gl.current === null ||
       programInfo.current === null ||
-      bufferInfo.current === null
+      bufferInfo.current === null ||
+      boidsFlock.current === null
     ) {
       throw new Error("Tried rendering before setup has been completed.");
     }
