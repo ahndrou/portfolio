@@ -53,6 +53,10 @@ export class Vec2 {
     return new Vec2(this.x / length, this.y / length);
   }
 
+  magnitude() {
+    return Math.sqrt(this.x ** 2 + this.y ** 2);
+  }
+
   heading() {
     return Math.atan2(this.x, this.y);
   }

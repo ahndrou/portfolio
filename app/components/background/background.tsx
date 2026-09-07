@@ -4,6 +4,7 @@ import * as TWGL from "twgl.js";
 import vertex from "./shaders/background.vert.glsl";
 import fragment from "./shaders/background.frag.glsl";
 import { Flock } from "~/common/boids";
+import { Vec2 } from "~/common/maths";
 
 // Vertex positions for a plane.
 const arrays = {
@@ -11,11 +12,12 @@ const arrays = {
 };
 
 const BOIDS_COUNT = 30;
-const BOIDS_RADIUS = 0.2;
+const BOIDS_RADIUS = 0.3;
+const BOID_SPEED = 0.000001;
 
 const BG_COLOR = [0.0392, 0.0431, 0.0392];
 const BLOB_CORE_COLOR = [0.0411, 0.0451, 0.0411];
-const BLOB_GLOW_COLOR = [0.0461, 0.0451, 0.0411];
+const BLOB_GLOW_COLOR = [0.0581, 0.0581, 0.0411];
 
 export function Background() {
   const canvas = useRef<HTMLCanvasElement | null>(null);
@@ -23,7 +25,10 @@ export function Background() {
   useBackgroundEffect(canvas);
 
   return (
-    <div aria-hidden className="fixed top-[0] left-[0] -z-20 h-full w-full">
+    <div
+      aria-hidden
+      className="fixed top-[0] left-[0] -z-20 h-full w-full blur-lg"
+    >
       <canvas ref={canvas} className="h-full w-full"></canvas>
     </div>
   );
@@ -40,6 +45,10 @@ function useBackgroundEffect(
   const previousRafTime = useRef<number | null>(null);
 
   const boidsFlock = useRef<Flock | null>(null);
+
+  // Cursor position in the shader's coordinate space. Null when
+  // cursor is outside of the window.
+  const cursor = useRef<Vec2 | null>(null);
 
   const uniforms = useRef<{
     resolution: [number, number];
@@ -87,7 +96,34 @@ function useBackgroundEffect(
 
     rafID.current = requestAnimationFrame(render);
 
+    function onPointerMove(event: PointerEvent) {
+      if (cursor.current === null) cursor.current = new Vec2(0, 0);
+
+      const rect = canvas.getBoundingClientRect();
+      // Avoid division by zero.
+      if (rect.height === 0) return;
+
+      cursor.current.set(
+        ((event.clientX - rect.left) * 2 - rect.width) / rect.height,
+        // Clip space has y pointing up, the DOM has it pointing down.
+        ((rect.bottom - event.clientY) * 2 - rect.height) / rect.height,
+      );
+    }
+
+    function onPointerOut(event: PointerEvent) {
+      // Only fires with a null relatedTarget when the cursor leaves the window.
+      // Setting it back to null avoids a stale value being left in cursor.current
+      // which would keep applying steering forces.
+      if (event.relatedTarget === null) cursor.current = null;
+    }
+
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerout", onPointerOut);
+
     return () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerout", onPointerOut);
+
       if (rafID.current === null) return;
       else cancelAnimationFrame(rafID.current);
     };
@@ -125,7 +161,12 @@ function useBackgroundEffect(
     const timeDelta = time - previousRafTime.current;
     previousRafTime.current = time;
 
-    updateBoids(boidsFlock.current, timeDelta, [canvas.width, canvas.height]);
+    updateBoids(
+      boidsFlock.current,
+      timeDelta,
+      [canvas.width, canvas.height],
+      cursor.current,
+    );
 
     uniforms.current.resolution[0] = canvas.width;
     uniforms.current.resolution[1] = canvas.height;
@@ -148,6 +189,8 @@ function updateBoids(
   boids: Flock,
   timeDelta: number,
   resolution: [number, number],
+  cursor: Vec2 | null,
 ) {
-  boids.update(timeDelta * 0.0001, resolution);
+  if (cursor !== null) boids.avoidPosition(cursor);
+  boids.update(timeDelta * BOID_SPEED, resolution);
 }

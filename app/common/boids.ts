@@ -5,6 +5,10 @@ import { Vec2 } from "./maths";
 // close to another boid with my 'blob' shader makes the SDF shape
 // visibly snap to a drastically different size.
 const WRAP_BOUND_FACTOR = 1.125;
+const MAX_FORCE = 0.5;
+// The distance over which the steering force falls to 1/e of MAX_FORCE.
+// Smaller values keep the influence tight around the avoided position.
+const FORCE_DECAY_LENGTH = 0.2;
 
 export class Boid {
   radius;
@@ -22,14 +26,16 @@ export class Boid {
     this.acceleration = new Vec2(0, 0);
   }
 
-  applyForce(force: Vec2) {
-    // Mass is proportional to width.
-    this.acceleration.x += force.x / this.radius;
-    this.acceleration.y += force.y / this.radius;
-  }
-
-  update(timeDelta: number, resolution: [number, number]) {
-    this.updatePosition(timeDelta, resolution);
+  avoidPosition(pos: Vec2) {
+    const displacement = this.position.sub(pos);
+    // Boids close to the avoided position are pushed hardest, with the force
+    // decaying exponentially as they get further away.
+    const strength =
+      MAX_FORCE * Math.exp(-displacement.magnitude() / FORCE_DECAY_LENGTH);
+    const steeringAcceleration = displacement
+      .normalize()
+      .multiplyByScalar(strength);
+    this.acceleration = steeringAcceleration;
   }
 
   updatePosition(timeDelta: number, resolution: [number, number]) {
@@ -85,9 +91,15 @@ export class Flock {
     this.boids.push(boid);
   }
 
+  avoidPosition(pos: Vec2) {
+    for (const boid of this.boids) {
+      boid.avoidPosition(pos);
+    }
+  }
+
   update(time: number, resolution: [number, number]) {
     for (const boid of this.boids) {
-      boid.update(time, resolution);
+      boid.updatePosition(time, resolution);
     }
   }
 
