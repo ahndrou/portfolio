@@ -1,6 +1,6 @@
 :root {
   /* — Color ————————————————————————————— */
-  --bg: #0a0b0a; /* page canvas */
+  --bg: rgb(10, 11, 10); /* page canvas */
   --bg-media: #07110c; /* media wells - media is loaded into these spots */
   --surface: linear-gradient(
     180deg,

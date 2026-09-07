@@ -13,6 +13,10 @@ const arrays = {
 const BOIDS_COUNT = 30;
 const BOIDS_RADIUS = 0.2;
 
+const BG_COLOR = [0.0392, 0.0431, 0.0392];
+const BLOB_CORE_COLOR = [0.0411, 0.0451, 0.0411];
+const BLOB_GLOW_COLOR = [0.0461, 0.0451, 0.0411];
+
 export function Background() {
   const canvas = useRef<HTMLCanvasElement | null>(null);
 
@@ -40,10 +44,16 @@ function useBackgroundEffect(
   const uniforms = useRef<{
     resolution: [number, number];
     positions: Float32Array;
+    bgColor: Float32Array;
+    coreColor: Float32Array;
+    glowColor: Float32Array;
   }>({
     resolution: [0, 0],
     // WebGL requires an array of Vec2s be passed as a flat Float32Array.
     positions: new Float32Array(BOIDS_COUNT * 2),
+    bgColor: Float32Array.from(BG_COLOR),
+    coreColor: Float32Array.from(BLOB_CORE_COLOR),
+    glowColor: Float32Array.from(BLOB_GLOW_COLOR),
   });
 
   useEffect(() => {
@@ -117,7 +127,6 @@ function useBackgroundEffect(
 
     updateBoids(boidsFlock.current, timeDelta, [canvas.width, canvas.height]);
 
-    uniforms.current.time = time * 0.001;
     uniforms.current.resolution[0] = canvas.width;
     uniforms.current.resolution[1] = canvas.height;
     boidsFlock.current.toFlatPositionArray(uniforms.current.positions);

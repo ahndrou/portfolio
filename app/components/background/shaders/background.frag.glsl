@@ -9,6 +9,9 @@ const float SMIN_FUNCTION_WEIGHTING = 0.05;
 
 uniform vec2 resolution;
 uniform vec2 positions[MAX_POINTS];
+uniform vec3 bgColor;
+uniform vec3 coreColor;
+uniform vec3 glowColor;
 
 // A smooth-minimum function. Smoothly interpolates between the two
 // values rather than giving an abrupt chance like a regular min function.
@@ -34,8 +37,6 @@ float combinedSDF(vec2 p) {
     return strength;
 }
 
-const vec3 CORE_COLOR = vec3(0.2, 0.2, 0.8);
-const vec3 GLOW_COLOR = vec3(0., 0.5, 0.6);
 const float GLOW_FALLOFF = 20.;
 const float GLOW_BOOST = 1.;
 
@@ -48,15 +49,16 @@ void main() {
     // Create inner color.
     float SD = combinedSDF(uv);
     float minSD = smoothstep(EDGE_WIDTH, -EDGE_WIDTH, SD);
-    vec3 color = CORE_COLOR * minSD;
+    vec3 color = coreColor * minSD;
 
     // Create a glow around the edge of the SDF shapes.
     float glowIntensity = exp(-max(SD, 0.0) * GLOW_FALLOFF);
     // Remove glow color from inside of shapes.
     float glowMask = smoothstep(-EDGE_WIDTH, EDGE_WIDTH, SD);
 
-    vec3 glow = GLOW_COLOR * glowMask * glowIntensity * GLOW_BOOST;
+    vec3 glow = glowColor * glowMask * glowIntensity * GLOW_BOOST;
     color += glow;
+    color += bgColor * (1.0 - minSD + glowMask * glowIntensity);
 
     gl_FragColor = vec4(color, 1.0);
 }
