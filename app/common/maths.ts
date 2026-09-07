@@ -30,7 +30,7 @@ export class Vec2 {
     const length = Math.sqrt(this.x * this.x + this.y * this.y);
 
     // Avoid division by zero.
-    if (length === 0) return { x: 0, y: 0 };
+    if (length === 0) return new Vec2(0, 0);
 
     return new Vec2(this.x / length, this.y / length);
   }
