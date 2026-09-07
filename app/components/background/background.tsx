@@ -11,6 +11,7 @@ const arrays = {
 };
 
 const BOIDS_COUNT = 30;
+const BOIDS_RADIUS = 0.2;
 
 export function Background() {
   const canvas = useRef<HTMLCanvasElement | null>(null);
@@ -59,10 +60,9 @@ function useBackgroundEffect(
       throw new Error("WebGL context wasn't retrieved properly.");
     }
 
-    const modifiedFragment = fragment.replace(
-      "#define MAX_POINTS 1",
-      `#define MAX_POINTS ${BOIDS_COUNT}`,
-    );
+    const modifiedFragment = fragment
+      .replace("#define MAX_POINTS 1", `#define MAX_POINTS ${BOIDS_COUNT}`)
+      .replace("#define RADIUS 0.1", `#define RADIUS ${BOIDS_RADIUS}`);
 
     programInfo.current = TWGL.createProgramInfo(gl.current, [
       vertex,

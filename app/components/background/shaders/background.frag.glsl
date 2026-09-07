@@ -1,5 +1,6 @@
-// This should be replaced in JS with the actual value - don't change it here.
-#define MAX_POINTS 1
+// These should be replaced in JS with the actual value - don't change it here.
+#define MAX_POINTS 1 // DON'T TOUCH!
+#define RADIUS 0.1 // DON'T TOUCH!
 
 precision mediump float;
 
@@ -24,10 +25,10 @@ float circleSDF(vec2 p, vec2 center, float radius) {
 }
 
 float combinedSDF(vec2 p) {
-    float strength = circleSDF(p, positions[0], 0.1);
+    float strength = circleSDF(p, positions[0], RADIUS);
 
     for (int i = 1; i < MAX_POINTS; i++) {
-        strength = smin(strength, circleSDF(p, positions[i], 0.1), SMIN_FUNCTION_WEIGHTING);
+        strength = smin(strength, circleSDF(p, positions[i], RADIUS), SMIN_FUNCTION_WEIGHTING);
     }
 
     return strength;
