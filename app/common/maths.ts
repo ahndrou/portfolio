@@ -26,17 +26,17 @@ export class Vec2 {
     return new Vec2(this.x * scalar, this.y * scalar);
   }
 
-  heading() {
-    return Math.atan2(this.x, this.y);
-  }
-
   normalize() {
     const length = Math.sqrt(this.x * this.x + this.y * this.y);
 
     // Avoid division by zero.
     if (length === 0) return { x: 0, y: 0 };
 
-    return { x: this.x / length, y: this.y / length };
+    return new Vec2(this.x / length, this.y / length);
+  }
+
+  heading() {
+    return Math.atan2(this.x, this.y);
   }
 
   // Storing state in a Float32Array directly would accumulate floating point errors.
