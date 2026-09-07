@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import * as TWGL from "twgl.js";
-import { Vec2 } from "~/common/maths";
 
 import vertex from "./shaders/background.vert.glsl";
 import fragment from "./shaders/background.frag.glsl";
@@ -35,7 +34,7 @@ function useBackgroundEffect(
 
   const rafID = useRef<number | null>(null);
 
-  const boidsFlock = useRef<Flock>(initializeBoids());
+  const boidsFlock = useRef<Flock>(Flock.createRandomFlock(2));
 
   const uniforms = useRef<{
     time: number;
@@ -115,16 +114,6 @@ function useBackgroundEffect(
 
     rafID.current = requestAnimationFrame(render);
   }
-}
-
-function initializeBoids(): Flock {
-  const flock = new Flock();
-
-  for (let i = 0; i < BOIDS_COUNT; i++) {
-    flock.addBoid(new Boid(Math.random(), Math.random()));
-  }
-
-  return flock;
 }
 
 function updateBoids(
