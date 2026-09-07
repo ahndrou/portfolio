@@ -1,12 +1,14 @@
+// This should be replaced in JS with the actual value - don't change it here.
+#define MAX_POINTS 1
+
 precision mediump float;
 
-const int POSITIONS_LENGTH = 6;
 // A distance threshold for when the values involved begin to merge.
 const float SMIN_FUNCTION_WEIGHTING = 0.07;
 
 uniform vec2 resolution;
 uniform float time;
-uniform vec2 positions[POSITIONS_LENGTH];
+uniform vec2 positions[MAX_POINTS];
 
 // A smooth-minimum function. Smoothly interpolates between the two
 // values rather than giving an abrupt chance like a regular min function.
@@ -25,7 +27,7 @@ float circleSDF(vec2 p, vec2 center, float radius) {
 float combinedSDF(vec2 p) {
     float strength = circleSDF(p, positions[0], 0.1);
 
-    for (int i = 1; i < POSITIONS_LENGTH; i++) {
+    for (int i = 1; i < MAX_POINTS; i++) {
         strength = smin(strength, circleSDF(p, positions[i], 0.1), SMIN_FUNCTION_WEIGHTING);
     }
 

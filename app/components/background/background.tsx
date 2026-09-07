@@ -10,7 +10,6 @@ const arrays = {
   position: [-1, -1, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1, 1, 0],
 };
 
-// Must match POSITIONS_LENGTH in the fragment shader.
 const BOIDS_COUNT = 6;
 
 export function Background() {
@@ -34,7 +33,7 @@ function useBackgroundEffect(
 
   const rafID = useRef<number | null>(null);
 
-  const boidsFlock = useRef<Flock>(Flock.createRandomFlock(2));
+  const boidsFlock = useRef<Flock>(Flock.createRandomFlock(BOIDS_COUNT));
 
   const uniforms = useRef<{
     time: number;
@@ -56,9 +55,14 @@ function useBackgroundEffect(
       throw new Error("WebGL context wasn't retrieved properly.");
     }
 
+    const modifiedFragment = fragment.replace(
+      "#define MAX_POINTS 1",
+      `#define MAX_POINTS ${BOIDS_COUNT}`,
+    );
+
     programInfo.current = TWGL.createProgramInfo(gl.current, [
       vertex,
-      fragment,
+      modifiedFragment,
     ]);
 
     if (programInfo.current === null) {
