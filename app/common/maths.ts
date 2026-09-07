@@ -1,11 +1,15 @@
-/**
- * A very simple 2D vector class.
- */
+// Created from scratch rather than using a library just for fun.
+
 export class Vec2 {
   x: number;
   y: number;
 
   constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  set(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
@@ -20,6 +24,19 @@ export class Vec2 {
 
   multiplyByScalar(scalar: number) {
     return new Vec2(this.x * scalar, this.y * scalar);
+  }
+
+  heading() {
+    return Math.atan2(this.x, this.y);
+  }
+
+  normalize() {
+    const length = Math.sqrt(this.x * this.x + this.y * this.y);
+
+    // Avoid division by zero.
+    if (length === 0) return { x: 0, y: 0 };
+
+    return { x: this.x / length, y: this.y / length };
   }
 
   // Storing state in a Float32Array directly would accumulate floating point errors.
