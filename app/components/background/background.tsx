@@ -3,14 +3,14 @@ import * as TWGL from "twgl.js";
 
 import vertex from "./shaders/background.vert.glsl";
 import fragment from "./shaders/background.frag.glsl";
-import { Boid, Flock } from "~/common/boids";
+import { Flock } from "~/common/boids";
 
 // Vertex positions for a plane.
 const arrays = {
   position: [-1, -1, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1, 1, 0],
 };
 
-const BOIDS_COUNT = 40;
+const BOIDS_COUNT = 30;
 
 export function Background() {
   const canvas = useRef<HTMLCanvasElement | null>(null);
@@ -32,6 +32,7 @@ function useBackgroundEffect(
   const bufferInfo = useRef<TWGL.BufferInfo | null>(null);
 
   const rafID = useRef<number | null>(null);
+  const previousRafTime = useRef<number | null>(null);
 
   const boidsFlock = useRef<Flock | null>(null);
 
@@ -85,6 +86,13 @@ function useBackgroundEffect(
   }, []);
 
   function render(time: DOMHighResTimeStamp) {
+    // Runs on first frame only. There is no time delta to integrate yet.
+    if (previousRafTime.current === null) {
+      previousRafTime.current = time;
+      rafID.current = requestAnimationFrame(render);
+      return;
+    }
+
     const canvas = canvasRef.current;
 
     if (
@@ -106,7 +114,10 @@ function useBackgroundEffect(
     // We could use this to transform the position/scale of the render on the buffer.
     gl.current.viewport(0, 0, canvas.width, canvas.height);
 
-    updateBoids(boidsFlock.current, time);
+    const timeDelta = time - previousRafTime.current;
+    previousRafTime.current = time;
+
+    updateBoids(boidsFlock.current, timeDelta, [canvas.width, canvas.height]);
 
     uniforms.current.time = time * 0.001;
     uniforms.current.resolution[0] = canvas.width;
@@ -126,6 +137,10 @@ function useBackgroundEffect(
   }
 }
 
-function updateBoids(boids: Flock, time: DOMHighResTimeStamp) {
-  boids.update(time * 0.00000001);
+function updateBoids(
+  boids: Flock,
+  timeDelta: number,
+  resolution: [number, number],
+) {
+  boids.update(timeDelta * 0.0001, resolution);
 }

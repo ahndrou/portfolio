@@ -4,7 +4,7 @@
 precision mediump float;
 
 // A distance threshold for when the values involved begin to merge.
-const float SMIN_FUNCTION_WEIGHTING = 0.07;
+const float SMIN_FUNCTION_WEIGHTING = 0.05;
 
 uniform vec2 resolution;
 uniform float time;
