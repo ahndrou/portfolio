@@ -11,8 +11,8 @@ const arrays = {
   position: [-1, -1, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1, 1, 0],
 };
 
-const BOIDS_COUNT = 30;
-const BOIDS_RADIUS = 0.3;
+const BOIDS_COUNT = 100;
+const BOIDS_RADIUS = 0.025;
 // Converts the frame's milliseconds into the seconds the simulation is tuned
 // in. 0.001 runs it in real time; lower values slow the whole thing down
 // without changing the shape of the motion.
@@ -192,6 +192,7 @@ function updateBoids(
   cursor: Vec2 | null,
 ) {
   if (cursor !== null) boids.avoidPosition(cursor);
+  boids.containWithinBounds(resolution[0] / resolution[1], 1);
   boids.applyFriction();
-  boids.update(timeDelta * BOID_SPEED, resolution);
+  boids.update(timeDelta * BOID_SPEED);
 }

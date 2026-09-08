@@ -61,10 +61,6 @@ export class Vec2 {
     return Math.atan2(this.x, this.y);
   }
 
-  modComponents(xBound: number, yBound: number) {
-    return new Vec2(this.x % xBound, this.y % yBound);
-  }
-
   // Storing state in a Float32Array directly would accumulate floating point errors.
   // Storage as an array of Vec2 and converting when needed avoids accumulation.
   // Probably not significant here but worth baring in mind.
