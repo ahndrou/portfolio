@@ -9,9 +9,9 @@ const WRAP_BOUND_FACTOR = 1.125;
 // Controls the peak force applied.
 const MAX_FORCE = 3;
 
-// The distance over which the steering force falls to 1/e of MAX_FORCE.
-// Smaller values keep the influence tight around the avoided position.
-const FORCE_DECAY_LENGTH = 0.3;
+// The distance over which the steering force falls to 1/e of STEERING_FORCE_MAX.
+// Lower values keep the influence tight around the avoided position.
+const STEERING_FORCE_DECAY_LENGTH = 0.15;
 
 // Viscous drag. Deceleration is proportional to speed, so a boid sheds most of
 // a cursor kick immediately and then eases into a long, slow glide. Also caps
