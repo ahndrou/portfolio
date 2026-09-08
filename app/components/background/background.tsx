@@ -46,6 +46,10 @@ function useBackgroundEffect(
 
   const boidsFlock = useRef<Flock | null>(null);
 
+  // x-bound the flock was last simulated against. Used to detect aspect ratio
+  // changes so the flock can be stretched to match.
+  const previousXBound = useRef<number | null>(null);
+
   // Cursor position in the shader's coordinate space. Null when
   // cursor is outside of the window.
   const cursor = useRef<Vec2 | null>(null);
@@ -72,6 +76,8 @@ function useBackgroundEffect(
       x: canvas!.width,
       y: canvas!.height,
     });
+
+    previousXBound.current = canvas.width / canvas.height;
 
     gl.current = canvas!.getContext("webgl");
 
@@ -161,12 +167,22 @@ function useBackgroundEffect(
     const timeDelta = time - previousRafTime.current;
     previousRafTime.current = time;
 
-    updateBoids(
-      boidsFlock.current,
-      timeDelta,
-      [canvas.width, canvas.height],
-      cursor.current,
-    );
+    // The simulation space stretches with the canvas. Without this the
+    // containment force would only ever squeeze the flock inwards, leaving it
+    // bunched up after the window is widened again.
+    const xBound = canvas.width / canvas.height;
+
+    if (
+      previousXBound.current !== null &&
+      previousXBound.current > 0 &&
+      xBound !== previousXBound.current
+    ) {
+      boidsFlock.current.rescaleX(xBound / previousXBound.current);
+    }
+
+    previousXBound.current = xBound;
+
+    updateBoids(boidsFlock.current, timeDelta, xBound, cursor.current);
 
     uniforms.current.resolution[0] = canvas.width;
     uniforms.current.resolution[1] = canvas.height;
@@ -188,11 +204,11 @@ function useBackgroundEffect(
 function updateBoids(
   boids: Flock,
   timeDelta: number,
-  resolution: [number, number],
+  xBound: number,
   cursor: Vec2 | null,
 ) {
   if (cursor !== null) boids.avoidPosition(cursor);
-  boids.containWithinBounds(resolution[0] / resolution[1], 1);
+  boids.containWithinBounds(xBound, 1);
   boids.applyFriction();
   boids.update(timeDelta * BOID_SPEED);
 }

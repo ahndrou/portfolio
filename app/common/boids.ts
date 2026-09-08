@@ -70,6 +70,19 @@ export class Boid {
   }
 
   /**
+   * Remaps the boid's x position when the simulation's x-bound changes so the
+   * flock stretches and squashes with the canvas rather than being squeezed in
+   * one way by the containment force.
+   * @param scale Ratio of the new x-bound to the old one.
+   */
+  rescaleX(scale: number) {
+    this.position.set(this.position.x * scale, this.position.y);
+    // Velocity is remapped too so in-flight motion stays proportional to the
+    // new space.
+    this.velocity.set(this.velocity.x * scale, this.velocity.y);
+  }
+
+  /**
    * Uses the current acceleration and velocity to update position.
    * @param timeDelta Time delta for use in integration of acceleration and velocity.
    */
@@ -161,6 +174,12 @@ export class Flock {
   containWithinBounds(xBound: number, yBound: number) {
     for (const boid of this.boids) {
       boid.containWithinBounds(xBound, yBound);
+    }
+  }
+
+  rescaleX(scale: number) {
+    for (const boid of this.boids) {
+      boid.rescaleX(scale);
     }
   }
 
