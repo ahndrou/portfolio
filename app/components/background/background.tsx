@@ -13,7 +13,10 @@ const arrays = {
 
 const BOIDS_COUNT = 30;
 const BOIDS_RADIUS = 0.3;
-const BOID_SPEED = 0.000001;
+// Converts the frame's milliseconds into the seconds the simulation is tuned
+// in. 0.001 runs it in real time; lower values slow the whole thing down
+// without changing the shape of the motion.
+const BOID_SPEED = 0.001;
 
 const BG_COLOR = [0.0392, 0.0431, 0.0392];
 const BLOB_CORE_COLOR = [0.0411, 0.0451, 0.0411];
@@ -25,10 +28,7 @@ export function Background() {
   useBackgroundEffect(canvas);
 
   return (
-    <div
-      aria-hidden
-      className="fixed top-[0] left-[0] -z-20 h-full w-full blur-lg"
-    >
+    <div aria-hidden className="fixed top-[0] left-[0] -z-20 h-full w-full">
       <canvas ref={canvas} className="h-full w-full"></canvas>
     </div>
   );
@@ -192,5 +192,6 @@ function updateBoids(
   cursor: Vec2 | null,
 ) {
   if (cursor !== null) boids.avoidPosition(cursor);
+  boids.applyFriction();
   boids.update(timeDelta * BOID_SPEED, resolution);
 }

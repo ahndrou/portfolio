@@ -5,10 +5,18 @@ import { Vec2 } from "./maths";
 // close to another boid with my 'blob' shader makes the SDF shape
 // visibly snap to a drastically different size.
 const WRAP_BOUND_FACTOR = 1.125;
-const MAX_FORCE = 0.5;
+
+// Controls the peak force applied.
+const MAX_FORCE = 3;
+
 // The distance over which the steering force falls to 1/e of MAX_FORCE.
 // Smaller values keep the influence tight around the avoided position.
-const FORCE_DECAY_LENGTH = 0.2;
+const FORCE_DECAY_LENGTH = 0.3;
+
+// Viscous drag. Deceleration is proportional to speed, so a boid sheds most of
+// a cursor kick immediately and then eases into a long, slow glide. Also caps
+// the top speed at roughly MAX_FORCE / DRAG_COEFFICIENT.
+const DRAG_COEFFICIENT = 5.0;
 
 export class Boid {
   radius;
@@ -35,11 +43,19 @@ export class Boid {
     const steeringAcceleration = displacement
       .normalize()
       .multiplyByScalar(strength);
-    this.acceleration = steeringAcceleration;
+    this.acceleration = this.acceleration.add(steeringAcceleration);
+  }
+
+  applyFriction() {
+    const drag = this.velocity.multiplyByScalar(-DRAG_COEFFICIENT);
+    this.acceleration = this.acceleration.add(drag);
   }
 
   updatePosition(timeDelta: number, resolution: [number, number]) {
-    this.velocity = this.velocity.add(this.acceleration);
+    this.velocity = this.velocity.add(
+      this.acceleration.multiplyByScalar(timeDelta),
+    );
+
     this.position = this.position.add(
       this.velocity.multiplyByScalar(timeDelta),
     );
@@ -94,6 +110,12 @@ export class Flock {
   avoidPosition(pos: Vec2) {
     for (const boid of this.boids) {
       boid.avoidPosition(pos);
+    }
+  }
+
+  applyFriction() {
+    for (const boid of this.boids) {
+      boid.applyFriction();
     }
   }
 
