@@ -14,9 +14,10 @@ const DRAG_COEFFICIENT = 5.0;
 // bounds.
 const RETURN_COEFFICIENT = 3;
 
-// How far inside the bound a boid is returned to after going out of bounds.
-// Restoring force is applied until this distance from the given boundary.
-const RETURN_DEPTH = 0.75;
+// Controls how far inside the boundary the return target sits. Given as a
+// ratio of the boundary distance. Restoring force is applied until the boid reaches
+// this point.
+const RETURN_ANCHOR_BOUNDARY_RATIO = 0.75;
 
 export class Boid {
   position;
@@ -106,17 +107,15 @@ export class Boid {
 
   /**
    * Applies a returning force when a boid's centre leaves the view and applies it until
-     it reaches RETURN_DEPTH units inside the bound. Force is proportional to the distance
-     from the return target.
+     it reaches RETURN_ANCHOR_BOUNDARY_RATIO of the bound from the centre. Force is proportional to the
+     distance from the return target.
    * @param axis Component of position to get the restoring force for.
    * @param bound Distance of the boundary on the given axis. 
    * @returns Restoring force.
    */
   private getRestoringForce(axis: "x" | "y", bound: number) {
     const boidCoordinate = this.position[axis];
-    // Clamped in case of a viewport narrower than the restore depth, which
-    // would otherwise put the anchor past the centre of the screen.
-    const anchorDistance = Math.max(bound - RETURN_DEPTH, 0);
+    const anchorDistance = bound * RETURN_ANCHOR_BOUNDARY_RATIO;
 
     if (Math.abs(boidCoordinate) > bound) {
       this.returning[axis] = true;

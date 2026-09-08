@@ -11,8 +11,8 @@ const arrays = {
   position: [-1, -1, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1, 1, 0],
 };
 
-const BOIDS_COUNT = 100;
-const BOIDS_RADIUS = 0.025;
+const BOIDS_COUNT = 40;
+const BOIDS_RADIUS = 0.0125;
 // Converts the frame's milliseconds into the seconds the simulation is tuned
 // in. 0.001 runs it in real time; lower values slow the whole thing down
 // without changing the shape of the motion.
