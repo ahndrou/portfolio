@@ -8,6 +8,9 @@ precision mediump float;
 const float SMIN_FUNCTION_WEIGHTING = 0.05;
 
 uniform vec2 resolution;
+// Pixel length of one simulation unit. Set from JS so the aspect ratio
+// compensation lives in one place.
+uniform float unitScale;
 uniform vec2 positions[MAX_POINTS];
 uniform vec3 bgColor;
 uniform vec3 coreColor;
@@ -43,8 +46,9 @@ const float GLOW_BOOST = 1.;
 const float EDGE_WIDTH = 0.002;
 
 void main() {
-    // Normalized pixel coordinates (-aspect, 0 -> aspect, 1).
-    vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy)  / resolution.y;
+    // Normalized pixel coordinates, running from -resolution/unitScale in the
+    // bottom left to +resolution/unitScale in the top right.
+    vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / unitScale;
 
     // Create inner color.
     float SD = combinedSDF(uv);

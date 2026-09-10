@@ -71,16 +71,17 @@ export class Boid {
   }
 
   /**
-   * Remaps the boid's x position when the simulation's x-bound changes so the
-   * flock stretches and squashes with the canvas rather than being squeezed in
-   * one way by the containment force.
-   * @param scale Ratio of the new x-bound to the old one.
+   * Remaps the boid's position when the simulation's bounds change so the flock
+   * stretches and squashes with the canvas rather than being squeezed in one
+   * way by the containment force.
+   * @param xScale Ratio of the new x-bound to the old one.
+   * @param yScale Ratio of the new y-bound to the old one.
    */
-  rescaleX(scale: number) {
-    this.position.set(this.position.x * scale, this.position.y);
+  rescale(xScale: number, yScale: number) {
+    this.position.set(this.position.x * xScale, this.position.y * yScale);
     // Velocity is remapped too so in-flight motion stays proportional to the
     // new space.
-    this.velocity.set(this.velocity.x * scale, this.velocity.y);
+    this.velocity.set(this.velocity.x * xScale, this.velocity.y * yScale);
   }
 
   /**
@@ -140,14 +141,18 @@ export class Boid {
 export class Flock {
   boids: Boid[] = [];
 
-  static createRandomFlock(size: number, resolution: { x: number; y: number }) {
+  /**
+   * Creates a flock spread uniformly across the simulation space.
+   * @param size Number of boids to create.
+   * @param xBound X-axis boundary of the simulation space.
+   * @param yBound Y-axis boundary of the simulation space.
+   */
+  static createRandomFlock(size: number, xBound: number, yBound: number) {
     const flock = new Flock();
 
     for (let i = 0; i < size; i++) {
-      const x =
-        (Math.random() * resolution.x * 2.0 - resolution.x) / resolution.y;
-      const y =
-        (Math.random() * resolution.y * 2.0 - resolution.y) / resolution.y;
+      const x = (Math.random() * 2.0 - 1.0) * xBound;
+      const y = (Math.random() * 2.0 - 1.0) * yBound;
       flock.addBoid(new Boid(x, y));
     }
 
@@ -176,9 +181,9 @@ export class Flock {
     }
   }
 
-  rescaleX(scale: number) {
+  rescale(xScale: number, yScale: number) {
     for (const boid of this.boids) {
-      boid.rescaleX(scale);
+      boid.rescale(xScale, yScale);
     }
   }
 

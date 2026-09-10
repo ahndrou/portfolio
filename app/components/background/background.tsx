@@ -12,7 +12,8 @@ const arrays = {
 };
 
 const BOIDS_COUNT = 40;
-const BOIDS_RADIUS = 0.0125;
+const BOIDS_RADIUS = 0.0575;
+
 // Converts the frame's milliseconds into the seconds the simulation is tuned
 // in. 0.001 runs it in real time; lower values slow the whole thing down
 // without changing the shape of the motion.
@@ -21,6 +22,21 @@ const BOID_SPEED = 0.001;
 const BG_COLOR = [0.0392, 0.0431, 0.0392];
 const BLOB_CORE_COLOR = [0.0411, 0.0451, 0.0411];
 const BLOB_GLOW_COLOR = [0.0581, 0.0581, 0.0411];
+
+/**
+ * Maps a canvas size onto the simulation space shared by the boids and the
+ * shader. The unit length is scaled so that the space's area stays constant as
+ * the aspect ratio changes, keeping boid density - and so the amount of
+ * merging between blobs - at what it was tuned to be.
+ * @param width Canvas width in pixels.
+ * @param height Canvas height in pixels.
+ * @returns Pixel length of one simulation unit and the resulting boundaries.
+ */
+function simulationSpace(width: number, height: number) {
+  const unit = Math.sqrt(width * height);
+
+  return { unit, xBound: width / unit, yBound: height / unit };
+}
 
 export function Background() {
   const canvas = useRef<HTMLCanvasElement | null>(null);
@@ -46,9 +62,9 @@ function useBackgroundEffect(
 
   const boidsFlock = useRef<Flock | null>(null);
 
-  // x-bound the flock was last simulated against. Used to detect aspect ratio
-  // changes so the flock can be stretched to match.
-  const previousXBound = useRef<number | null>(null);
+  // Bounds the flock was last simulated against. Used to detect changes to the
+  // simulation space so the flock can be stretched to match.
+  const previousBounds = useRef<{ x: number; y: number } | null>(null);
 
   // Cursor position in the shader's coordinate space. Null when
   // cursor is outside of the window.
@@ -56,12 +72,14 @@ function useBackgroundEffect(
 
   const uniforms = useRef<{
     resolution: [number, number];
+    unitScale: number;
     positions: Float32Array;
     bgColor: Float32Array;
     coreColor: Float32Array;
     glowColor: Float32Array;
   }>({
     resolution: [0, 0],
+    unitScale: 0,
     // WebGL requires an array of Vec2s be passed as a flat Float32Array.
     positions: new Float32Array(BOIDS_COUNT * 2),
     bgColor: Float32Array.from(BG_COLOR),
@@ -72,12 +90,16 @@ function useBackgroundEffect(
   useEffect(() => {
     const canvas = canvasRef.current!;
 
-    boidsFlock.current = Flock.createRandomFlock(BOIDS_COUNT, {
-      x: canvas!.width,
-      y: canvas!.height,
-    });
+    // The canvas still has its default backing store size until this runs, so
+    // the flock would otherwise be seeded into the wrong space and jolted into
+    // place on the first rendered frame.
+    TWGL.resizeCanvasToDisplaySize(canvas);
 
-    previousXBound.current = canvas.width / canvas.height;
+    const { xBound, yBound } = simulationSpace(canvas.width, canvas.height);
+
+    boidsFlock.current = Flock.createRandomFlock(BOIDS_COUNT, xBound, yBound);
+
+    previousBounds.current = { x: xBound, y: yBound };
 
     gl.current = canvas!.getContext("webgl");
 
@@ -107,12 +129,16 @@ function useBackgroundEffect(
 
       const rect = canvas.getBoundingClientRect();
       // Avoid division by zero.
-      if (rect.height === 0) return;
+      if (rect.width === 0 || rect.height === 0) return;
+
+      // The backing store tracks the element's CSS pixel size one to one, so
+      // the rect maps onto the same simulation space the shader draws in.
+      const { unit } = simulationSpace(rect.width, rect.height);
 
       cursor.current.set(
-        ((event.clientX - rect.left) * 2 - rect.width) / rect.height,
+        ((event.clientX - rect.left) * 2 - rect.width) / unit,
         // Clip space has y pointing up, the DOM has it pointing down.
-        ((rect.bottom - event.clientY) * 2 - rect.height) / rect.height,
+        ((rect.bottom - event.clientY) * 2 - rect.height) / unit,
       );
     }
 
@@ -159,6 +185,13 @@ function useBackgroundEffect(
     // keeps them in sync. Important to avoid stretching/squashing issues.
     TWGL.resizeCanvasToDisplaySize(canvas);
 
+    // A collapsed canvas has no space to simulate in, and would put a division
+    // by zero through the whole mapping below.
+    if (canvas.width === 0 || canvas.height === 0) {
+      rafID.current = requestAnimationFrame(render);
+      return;
+    }
+
     // Whilst the above line determines the pixels available in the buffer, this line
     // tells WebGL the area of the buffer that clip space coordinates ([-1, -1], [1, 1]) map onto.
     // We could use this to transform the position/scale of the render on the buffer.
@@ -170,22 +203,29 @@ function useBackgroundEffect(
     // The simulation space stretches with the canvas. Without this the
     // containment force would only ever squeeze the flock inwards, leaving it
     // bunched up after the window is widened again.
-    const xBound = canvas.width / canvas.height;
+    const { unit, xBound, yBound } = simulationSpace(
+      canvas.width,
+      canvas.height,
+    );
+
+    const previous = previousBounds.current;
 
     if (
-      previousXBound.current !== null &&
-      previousXBound.current > 0 &&
-      xBound !== previousXBound.current
+      previous !== null &&
+      previous.x > 0 &&
+      previous.y > 0 &&
+      (xBound !== previous.x || yBound !== previous.y)
     ) {
-      boidsFlock.current.rescaleX(xBound / previousXBound.current);
+      boidsFlock.current.rescale(xBound / previous.x, yBound / previous.y);
     }
 
-    previousXBound.current = xBound;
+    previousBounds.current = { x: xBound, y: yBound };
 
-    updateBoids(boidsFlock.current, timeDelta, xBound, cursor.current);
+    updateBoids(boidsFlock.current, timeDelta, xBound, yBound, cursor.current);
 
     uniforms.current.resolution[0] = canvas.width;
     uniforms.current.resolution[1] = canvas.height;
+    uniforms.current.unitScale = unit;
     boidsFlock.current.toFlatPositionArray(uniforms.current.positions);
 
     gl.current.useProgram(programInfo.current.program);
@@ -205,10 +245,11 @@ function updateBoids(
   boids: Flock,
   timeDelta: number,
   xBound: number,
+  yBound: number,
   cursor: Vec2 | null,
 ) {
   if (cursor !== null) boids.avoidPosition(cursor);
-  boids.containWithinBounds(xBound, 1);
+  boids.containWithinBounds(xBound, yBound);
   boids.applyFriction();
   boids.update(timeDelta * BOID_SPEED);
 }
