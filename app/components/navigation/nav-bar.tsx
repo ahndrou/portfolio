@@ -10,7 +10,7 @@ export default function NavBar({ menuOpen, onMenuOpen }: NavBarProps) {
   const location = useLocation();
 
   return (
-    <nav className="border-line @container sticky top-[0] w-full border-b py-3 backdrop-blur-2xl min-[60ch]:py-4">
+    <nav className="border-line @container sticky top-[0] w-full border-b py-3 backdrop-blur-2xl @min-[70ch]:py-4">
       <ul className="mx-auto flex max-w-5xl items-center gap-6 px-6 lg:px-0">
         <li className="grow">
           <Link to="/" viewTransition className="text-md">
@@ -19,7 +19,7 @@ export default function NavBar({ menuOpen, onMenuOpen }: NavBarProps) {
         </li>
 
         {navLinks.map(({ to, label }) => (
-          <li className="@max-[60ch]:hidden" key={to}>
+          <li className="@max-[70ch]:hidden" key={to}>
             <Link
               to={to}
               viewTransition
@@ -30,7 +30,7 @@ export default function NavBar({ menuOpen, onMenuOpen }: NavBarProps) {
           </li>
         ))}
 
-        <li className="@max-[60ch]:hidden">
+        <li className="@max-[70ch]:hidden">
           <a
             href={githubUrl}
             target="_blank"
@@ -43,7 +43,7 @@ export default function NavBar({ menuOpen, onMenuOpen }: NavBarProps) {
           </a>
         </li>
 
-        <li className="hidden @max-[60ch]:block">
+        <li className="hidden @max-[70ch]:block">
           <button
             type="button"
             onClick={onMenuOpen}
