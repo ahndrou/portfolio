@@ -39,7 +39,7 @@ function Heading({ heading }: { heading: string }) {
 
 function ProjectImage({ src }: { src: string }) {
   return (
-    <div className="max-h-[600px] min-h-[350px]">
+    <div className="max-h-[600px]">
       <img
         className="block h-full w-full object-cover lg:object-top"
         src={src}
