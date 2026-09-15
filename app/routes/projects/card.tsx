@@ -18,11 +18,8 @@ export function Card({
 }) {
   return (
     <article className="surface border-line grid grid-rows-[auto_1fr] overflow-clip rounded-lg border">
-      <div className="max-h-[600px]">
-        <img
-          className="block h-full w-full object-cover lg:object-top"
-          src={imgSrc}
-        />
+      <div className="max-h-[450px]">
+        <img className="block h-full w-full object-cover" src={imgSrc} />
       </div>
 
       <div className="grid grid-cols-[2fr_1fr] items-start gap-5 rounded-md p-4 pt-6 *:col-span-2 md:p-6 md:*:col-span-1">
