@@ -35,7 +35,7 @@ interface LinkProps {
 
 function Link({ to, accent = false, offSite = false, children }: LinkProps) {
   let className =
-    "border border-line-strong flex justify-center p-2 rounded-md items-center";
+    "border border-line-strong flex justify-center p-2 px-3 rounded-md items-center";
 
   if (accent) {
     className += " bg-accent text-accent-ink hover:glow";
