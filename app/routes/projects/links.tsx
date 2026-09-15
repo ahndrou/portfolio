@@ -8,7 +8,7 @@ export function Links({
   githubUrl: string;
 }) {
   return (
-    <nav className="flex w-full gap-2 font-medium *:grow">
+    <nav className="grid w-full grid-flow-col grid-cols-3 gap-2 font-medium">
       <Link to="/" accent>
         Case Study
       </Link>
