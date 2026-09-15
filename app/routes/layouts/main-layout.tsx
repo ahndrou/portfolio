@@ -16,7 +16,11 @@ export default function MainLayout() {
           As such, it is kept outside of outer-container. This differs slightly from the usage
           in the docs. */}
       <div className="contents">
-        <NavSideMenu isOpen={menuOpen} onOpenChange={setMenuOpen} />
+        <NavSideMenu
+          isOpen={menuOpen}
+          onOpenChange={setMenuOpen}
+          setIsOpen={setMenuOpen}
+        />
       </div>
 
       <div id="outer-container" className="flex flex-col">

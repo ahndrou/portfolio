@@ -36,11 +36,13 @@ const styles = {
 
 type NavSideMenuProps = {
   isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onOpenChange: (isOpen: boolean) => void;
 };
 
 export default function NavSideMenu({
   isOpen,
+  setIsOpen,
   onOpenChange,
 }: NavSideMenuProps) {
   const location = useLocation();
@@ -61,6 +63,7 @@ export default function NavSideMenu({
         <Link
           to={to}
           viewTransition
+          onClick={() => setIsOpen(false)}
           key={to}
           className={`hover:text-text flex items-center rounded-md p-3 ${location.pathname === to ? "bg-fill text-text" : "text-text-muted"}`}
         >
