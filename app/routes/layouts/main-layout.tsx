@@ -22,7 +22,7 @@ export default function MainLayout() {
       <div id="outer-container" className="flex flex-col">
         <div id="page-wrap" className="grid grow content-start gap-7">
           <NavBar menuOpen={menuOpen} onMenuOpen={() => setMenuOpen(true)} />
-          <div className="mx-auto mb-7 grid w-full max-w-5xl gap-6 px-6 lg:px-0">
+          <div className="mx-auto mb-7 grid w-full max-w-5xl gap-6 px-3 lg:px-0">
             <Outlet />
           </div>
         </div>
