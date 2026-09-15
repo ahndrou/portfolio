@@ -1,6 +1,12 @@
-export default function TechList({ technologies }: { technologies: string[] }) {
+export default function TechList({
+  technologies,
+  className,
+}: {
+  technologies: string[];
+  className?: string;
+}) {
   return (
-    <section className="grid gap-2">
+    <section className={`grid gap-2 ${className}`}>
       <h3 className="text-text-quiet font-mono uppercase">Built with</h3>
 
       <ol className="flex flex-wrap gap-2">

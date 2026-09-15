@@ -17,7 +17,7 @@ export function Card({
   techList: string[];
 }) {
   return (
-    <article className="surface border-line grid grid-rows-[auto_1fr] gap-4 overflow-clip rounded-lg border">
+    <article className="surface border-line grid grid-rows-[auto_1fr] overflow-clip rounded-lg border">
       <div className="max-h-[600px]">
         <img
           className="block h-full w-full object-cover lg:object-top"
@@ -25,8 +25,8 @@ export function Card({
         />
       </div>
 
-      <div className="grid grid-cols-[2fr_1fr] items-start gap-4 rounded-md p-6">
-        <div className="grid gap-4">
+      <div className="grid grid-cols-[2fr_1fr] items-start gap-5 rounded-md p-6 *:col-span-2 md:*:col-span-1">
+        <div className="grid gap-5">
           <h2 className="font-display text-lg leading-none font-bold">
             {title}
           </h2>
@@ -36,10 +36,15 @@ export function Card({
               <p>{content}</p>
             ))}
           </div>
-
-          <Links githubUrl={githubUrl} websiteUrl={websiteUrl} />
         </div>
-        <TechList technologies={techList} />
+
+        <TechList technologies={techList} className="md:col-start-2" />
+
+        <Links
+          githubUrl={githubUrl}
+          websiteUrl={websiteUrl}
+          className="mt-5 lg:mt-0"
+        />
       </div>
     </article>
   );

@@ -3,12 +3,16 @@ import { Link as RouterLink } from "react-router";
 export function Links({
   websiteUrl,
   githubUrl,
+  className = "",
 }: {
   websiteUrl: string;
   githubUrl: string;
+  className?: string;
 }) {
   return (
-    <nav className="grid w-full grid-flow-col grid-cols-3 gap-2 font-medium">
+    <nav
+      className={`grid w-full grid-flow-col grid-cols-3 gap-2 font-medium ${className}`}
+    >
       <Link to="/" accent>
         Case Study
       </Link>
