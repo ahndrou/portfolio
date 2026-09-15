@@ -27,7 +27,7 @@ const styles = {
   },
   bmCrossButton: {
     right: "var(--space-5)",
-    top: "var(--space-3)",
+    top: "var(--space-5)",
   },
   bmCross: {
     background: "var(--text-muted)",
@@ -54,7 +54,7 @@ export default function NavSideMenu({
       customBurgerIcon={false}
       pageWrapId="page-wrap"
       outerContainerId="outer-container"
-      width={280}
+      width={220}
       styles={styles}
     >
       {navLinks.map(({ to, label }) => (
