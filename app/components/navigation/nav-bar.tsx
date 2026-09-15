@@ -1,12 +1,12 @@
 import { Link, useLocation } from "react-router";
+import { githubUrl, navLinks } from "./nav-data";
 
-const links = [
-  { to: "/", label: "Home" },
-  { to: "/projects", label: "Projects" },
-  { to: "/contact", label: "Contact" },
-];
+type NavBarProps = {
+  menuOpen: boolean;
+  onMenuOpen: () => void;
+};
 
-export default function NavBar() {
+export default function NavBar({ menuOpen, onMenuOpen }: NavBarProps) {
   const location = useLocation();
 
   return (
@@ -18,7 +18,7 @@ export default function NavBar() {
           </Link>
         </li>
 
-        {links.map(({ to, label }) => (
+        {navLinks.map(({ to, label }) => (
           <li className="@max-[60ch]:hidden" key={to}>
             <Link
               to={to}
@@ -32,7 +32,7 @@ export default function NavBar() {
 
         <li className="@max-[60ch]:hidden">
           <a
-            href="https://github.com/ahndrou"
+            href={githubUrl}
             target="_blank"
             rel="noopener"
             className="border-line-strong hover:bg-fill rounded-md border p-3"
@@ -43,7 +43,20 @@ export default function NavBar() {
           </a>
         </li>
 
-        <li className="hidden @max-[60ch]:block">Menu</li>
+        <li className="hidden @max-[60ch]:block">
+          <button
+            type="button"
+            onClick={onMenuOpen}
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            aria-controls="nav-drawer"
+            className="border-line-strong hover:bg-fill grid cursor-pointer gap-1 rounded-md border p-3"
+          >
+            <span className="bg-text block h-[2px] w-5" />
+            <span className="bg-text block h-[2px] w-5" />
+            <span className="bg-text block h-[2px] w-5" />
+          </button>
+        </li>
       </ul>
     </nav>
   );
