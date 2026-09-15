@@ -11,7 +11,7 @@ export function Links({
 }) {
   return (
     <nav
-      className={`grid w-full grid-flow-col grid-cols-3 gap-2 font-medium ${className}`}
+      className={`flex w-full flex-wrap gap-2 font-medium *:grow *:basis-1 ${className}`}
     >
       <Link to="/" accent>
         Case Study
@@ -35,7 +35,7 @@ interface LinkProps {
 
 function Link({ to, accent = false, offSite = false, children }: LinkProps) {
   let className =
-    "border border-line-strong flex justify-center p-3 rounded-md items-center";
+    "border border-line-strong flex justify-center p-2 rounded-md items-center";
 
   if (accent) {
     className += " bg-accent text-accent-ink hover:glow";
@@ -48,8 +48,10 @@ function Link({ to, accent = false, offSite = false, children }: LinkProps) {
   }
 
   return (
-    <RouterLink to={to} className={className}>
-      {children}
-    </RouterLink>
+    <div className={className}>
+      <RouterLink to={to} className="w-max">
+        {children}
+      </RouterLink>
+    </div>
   );
 }
