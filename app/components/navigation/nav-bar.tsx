@@ -10,7 +10,7 @@ export default function NavBar({ menuOpen, onMenuOpen }: NavBarProps) {
   const location = useLocation();
 
   return (
-    <nav className="border-line @container sticky top-[0] w-full border-b py-3 backdrop-blur-2xl @min-[70ch]:py-4">
+    <nav className="border-line @container sticky top-[0] z-10 w-full border-b py-3 backdrop-blur-2xl @min-[70ch]:py-4">
       <ul className="mx-auto flex max-w-5xl items-center gap-6 px-3 lg:px-0">
         <li className="grow">
           <Link to="/" viewTransition className="text-md">

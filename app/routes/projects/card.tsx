@@ -18,7 +18,7 @@ export function Card({
 }) {
   return (
     <article className="surface border-line grid grid-rows-[auto_1fr] overflow-clip rounded-lg border">
-      <div className="max-h-[450px]">
+      <div className="reveal max-h-[450px]">
         <img className="block h-full w-full object-cover" src={imgSrc} />
       </div>
 

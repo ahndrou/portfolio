@@ -42,6 +42,21 @@
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
   --radius-pill: var(--radius-pill);
+
+  @keyframes reveal {
+    0% {
+      filter: grayscale(100%);
+    }
+
+    30%,
+    60% {
+      filter: grayscale(0%);
+    }
+
+    100% {
+      filter: grayscale(100%);
+    }
+  }
 }
 
 @utility glow {
@@ -63,4 +78,9 @@
 
 @utility surface {
   background: var(--surface);
+}
+
+@utility reveal {
+  animation: reveal linear both;
+  animation-timeline: view();
 }
