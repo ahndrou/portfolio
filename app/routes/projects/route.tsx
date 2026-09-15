@@ -37,7 +37,7 @@ export default function Projects() {
           Selected Works
         </h2>
 
-        <ol className="grid list-none content-center gap-4 text-sm">
+        <ol className="grid list-none content-center gap-6 text-sm">
           {projects.map((project) => (
             <li key={project.slug}>
               <Card
