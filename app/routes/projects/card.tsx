@@ -17,32 +17,30 @@ export function Card({
   techList: string[];
 }) {
   return (
-    <article className="surface border-line grid grid-rows-[auto_1fr] overflow-clip rounded-lg border">
-      <div className="reveal max-h-[450px]">
-        <img className="block h-full w-full object-cover" src={imgSrc} />
+    <article className="surface border-line grid grid-cols-[1fr_1fr_1fr] gap-5 overflow-clip rounded-lg border p-5">
+      <div className="reveal border-line col-span-3 overflow-clip rounded-md border md:col-span-2">
+        <img className="block h-full object-cover" src={imgSrc} />
       </div>
 
-      <div className="grid grid-cols-[10fr_6fr] items-start gap-x-6 gap-y-5 rounded-md p-4 pt-6 *:col-span-2 md:p-6 md:*:col-span-1">
-        <div className="grid gap-5">
-          <h2 className="font-display text-lg leading-none font-bold">
-            {title}
-          </h2>
+      <div className="border-line col-span-3 flex flex-col gap-4 rounded-md pt-1 md:col-span-1">
+        <h2 className="font-display text-lg leading-none font-medium">
+          {title}
+        </h2>
 
-          <div className="text-text-muted grid gap-3">
-            {paragraphs.map((content) => (
-              <p>{content}</p>
-            ))}
-          </div>
+        <div className="text-text-muted grid gap-3">
+          {paragraphs.map((content) => (
+            <p>{content}</p>
+          ))}
         </div>
 
-        <TechList technologies={techList} className="md:col-start-2" />
-
-        <Links
-          githubUrl={githubUrl}
-          websiteUrl={websiteUrl}
-          className="mt-5 lg:mt-0"
-        />
+        <TechList technologies={techList} className="grow content-end" />
       </div>
+
+      <Links
+        githubUrl={githubUrl}
+        websiteUrl={websiteUrl}
+        className="col-span-3"
+      />
     </article>
   );
 }

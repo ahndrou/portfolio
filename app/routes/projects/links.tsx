@@ -10,9 +10,7 @@ export function Links({
   className?: string;
 }) {
   return (
-    <nav
-      className={`flex w-full flex-wrap gap-2 font-medium *:grow *:basis-1 ${className}`}
-    >
+    <nav className={`grid w-full grid-cols-subgrid font-medium ${className}`}>
       <Link to="/" accent>
         Case Study
       </Link>

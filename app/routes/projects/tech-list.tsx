@@ -7,8 +7,6 @@ export default function TechList({
 }) {
   return (
     <section className={`grid gap-2 ${className}`}>
-      <h3 className="text-text-quiet font-mono uppercase">Built with</h3>
-
       <ol className="flex flex-wrap gap-2">
         {technologies.map((tech) => (
           <TechItem technology={tech} />
