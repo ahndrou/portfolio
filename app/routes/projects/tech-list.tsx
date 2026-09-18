@@ -20,7 +20,7 @@ function TechItem({ technology }: { technology: string }) {
   return (
     <li
       key={technology}
-      className="bg-fill border-line grow rounded-sm border p-2 text-center font-mono text-xs"
+      className="bg-fill border-line grow rounded-sm border p-[6px] text-center font-mono text-xs"
     >
       {technology}
     </li>

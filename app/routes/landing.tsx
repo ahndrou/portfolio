@@ -53,7 +53,7 @@ export default function Landing() {
 
         <section className="surface border-line grid grid-cols-1 gap-5 rounded-lg border p-5 md:grid-cols-2">
           <div className="grid content-start gap-2">
-            <h3 className="leading-tight font-medium">Hi, I'm Andrew</h3>
+            <h3 className="leading-tight font-medium">Hi, I'm Billy</h3>
             <p className="text-text-muted">
               Frontend-focused, with fundamentals from two years of self-study
               on top of the degree.
