@@ -1,7 +1,7 @@
 import { Links } from "./links";
 import TechList from "./tech-list";
 import testVideo from "./assets/asteroid_field_demo.mp4";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Card({
   imgSrc,
@@ -50,24 +50,25 @@ export function Card({
 function Video({ src }: { src: string }) {
   const video = useRef<HTMLVideoElement>(null);
 
-  function toggleVideoPlaying() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  useEffect(() => {
     if (video.current === null) return;
 
-    if (video.current.paused) {
-      video.current.play();
-    } else {
+    if (isPlaying) {
       video.current.pause();
+    } else {
+      video.current.play();
     }
-  }
+  }, [isPlaying]);
 
   return (
     <video
       ref={video}
-      autoPlay
       muted
       playsInline
       src={testVideo}
-      onClick={toggleVideoPlaying}
+      onClick={() => setIsPlaying(!isPlaying)}
       className="cursor-pointer"
     />
   );
