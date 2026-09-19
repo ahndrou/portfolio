@@ -50,26 +50,42 @@ export function Card({
 function Video({ src }: { src: string }) {
   const video = useRef<HTMLVideoElement>(null);
 
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
-    if (video.current === null) return;
+  function togglePlaying() {
+    const videoElement = video.current;
 
-    if (isPlaying) {
-      video.current.pause();
+    if (videoElement === null) return;
+
+    if (videoElement.paused) {
+      videoElement.play();
     } else {
-      video.current.play();
+      videoElement.pause();
     }
-  }, [isPlaying]);
+  }
+
+  const overlayCn =
+    "after:bg-dark-tint/75 after:absolute after:inset-[0] after:content-[''] after:z-20";
+  const className =
+    "cursor-pointer relative isolate" + " " + (!isPlaying ? overlayCn : null);
 
   return (
-    <video
-      ref={video}
-      muted
-      playsInline
-      src={testVideo}
-      onClick={() => setIsPlaying(!isPlaying)}
-      className="cursor-pointer"
-    />
+    <div className={className}>
+      <video
+        ref={video}
+        autoPlay={false}
+        src={testVideo}
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+        className="z-10"
+      />
+
+      <button
+        onClick={togglePlaying}
+        className="absolute inset-[0] z-30 h-full w-full cursor-pointer"
+      >
+        {isPlaying ? "Pause" : "Play"}
+      </button>
+    </div>
   );
 }

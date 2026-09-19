@@ -2,6 +2,7 @@
   /* — Color ————————————————————————————— */
   --bg: rgb(10, 11, 10); /* page canvas */
   --bg-media: #07110c; /* media wells - media is loaded into these spots */
+  --dark-tint: rgb(10, 11, 10);
   --surface: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.035),
