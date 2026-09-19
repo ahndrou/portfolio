@@ -77,7 +77,6 @@ function Video({ src }: { src: string }) {
         src={testVideo}
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
-        className="z-10"
       />
 
       <button
