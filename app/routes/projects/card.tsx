@@ -64,10 +64,8 @@ function Video({ src }: { src: string }) {
     }
   }
 
-  const overlayCn =
-    "after:bg-dark-tint/75 after:absolute after:inset-[0] after:content-[''] after:z-20";
-  const className =
-    "cursor-pointer relative isolate" + " " + (!isPlaying ? overlayCn : null);
+  const overlayCn = `after:bg-dark-tint after:transition after:[transition-duration:1s] after:absolute after:inset-[0] after:content-[''] after:z-20 ${!isPlaying ? "after:opacity-75" : "after:opacity-0"}`;
+  const className = "cursor-pointer relative isolate" + " " + overlayCn;
 
   return (
     <div className={className}>
