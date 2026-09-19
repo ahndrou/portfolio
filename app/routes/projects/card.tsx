@@ -2,6 +2,7 @@ import { Links } from "./links";
 import TechList from "./tech-list";
 import testVideo from "./assets/asteroid_field_demo.mp4";
 import { useEffect, useRef, useState } from "react";
+import { PauseButtonSVG, PlayButtonSVG } from "./svgs";
 
 export function Card({
   imgSrc,
@@ -79,9 +80,13 @@ function Video({ src }: { src: string }) {
 
       <button
         onClick={togglePlaying}
-        className="absolute inset-[0] z-30 h-full w-full cursor-pointer"
+        className="absolute inset-[0] z-30 flex h-full w-full cursor-pointer items-center justify-center"
       >
-        {isPlaying ? "Pause" : "Play"}
+        {isPlaying ? (
+          <PauseButtonSVG className="fill-text/40 w-1/7" />
+        ) : (
+          <PlayButtonSVG className="fill-text/40 w-1/7" />
+        )}
       </button>
     </div>
   );
