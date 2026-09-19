@@ -48,10 +48,12 @@ export function Card({
   );
 }
 
+const AUTOPLAY = true;
+
 function Video({ src }: { src: string }) {
   const video = useRef<HTMLVideoElement>(null);
 
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(AUTOPLAY);
 
   function togglePlaying() {
     const videoElement = video.current;
@@ -65,14 +67,16 @@ function Video({ src }: { src: string }) {
     }
   }
 
-  const overlayCn = `after:bg-dark-tint after:transition after:[transition-duration:1s] after:absolute after:inset-[0] after:content-[''] after:z-20 ${!isPlaying ? "after:opacity-75" : "after:opacity-0"}`;
+  const overlayCn = `after:bg-dark-tint after:transition after:duration-1000 after:absolute after:inset-[0] after:content-[''] after:z-20 ${!isPlaying ? "after:opacity-75" : "after:opacity-0"}`;
   const className = "cursor-pointer relative isolate" + " " + overlayCn;
 
   return (
     <div className={className}>
       <video
         ref={video}
-        autoPlay={false}
+        autoPlay={AUTOPLAY}
+        muted
+        playsInline
         src={testVideo}
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
@@ -80,12 +84,12 @@ function Video({ src }: { src: string }) {
 
       <button
         onClick={togglePlaying}
-        className="absolute inset-[0] z-30 flex h-full w-full cursor-pointer items-center justify-center"
+        className="absolute inset-[0] z-30 h-full w-full cursor-pointer"
       >
         {isPlaying ? (
-          <PauseButtonSVG className="fill-text/40 w-1/7" />
+          <PauseButtonSVG className="fill-text absolute bottom-1 left-1 w-1/12 opacity-60 transition duration-1000 starting:opacity-0" />
         ) : (
-          <PlayButtonSVG className="fill-text/40 w-1/7" />
+          <PlayButtonSVG className="fill-text absolute inset-1/2 w-1/7 -translate-1/2 opacity-75 transition duration-1000 starting:opacity-0" />
         )}
       </button>
     </div>
