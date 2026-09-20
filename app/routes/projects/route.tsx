@@ -42,7 +42,7 @@ export default function Projects() {
             <li key={project.slug}>
               <Card
                 title={project.title}
-                imgSrc={project.imgSrc}
+                videoSrc={project.videoSrc}
                 paragraphs={project.paragraphs}
                 githubUrl={project.githubUrl}
                 websiteUrl={project.websiteUrl}

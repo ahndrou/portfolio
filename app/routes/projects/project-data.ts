@@ -1,11 +1,11 @@
-import markdownEditor from "./assets/md-editor.png";
-const weatherApp = markdownEditor;
-const spaceShooter = markdownEditor;
+import asteroidFieldSrc from "./assets/asteroid_field_demo.mp4";
+import mdEditorSrc from "./assets/md-editor-demo.mp4";
+import weatherAppSrc from "./assets/weather-app-demo.mp4";
 
 interface Project {
   title: string;
   slug: string;
-  imgSrc: string;
+  videoSrc: string;
   websiteUrl: string;
   githubUrl: string;
   paragraphs: string[];
@@ -16,7 +16,7 @@ export const projects: Project[] = [
   {
     title: "Asteroid Field",
     slug: "asteroid-field",
-    imgSrc: spaceShooter,
+    videoSrc: asteroidFieldSrc,
     websiteUrl: "https://3d-asteroids.netlify.app/",
     githubUrl: "https://github.com/ahndrou/Space-Shooter",
     paragraphs: [
@@ -35,7 +35,7 @@ export const projects: Project[] = [
   {
     title: "Weather Forecast",
     slug: "weather-forecast",
-    imgSrc: weatherApp,
+    videoSrc: weatherAppSrc,
     websiteUrl:
       "https://weather-app-11ve-4zezr9sk7-Billys-projects-64d55d66.vercel.app/",
     githubUrl: "https://github.com/ahndrou/weather-app",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
   {
     title: "Markdown Editor",
     slug: "markdown-editor",
-    imgSrc: markdownEditor,
+    videoSrc: mdEditorSrc,
     websiteUrl: "https://markdown-editor-ecru-six.vercel.app/",
     githubUrl: "https://github.com/ahndrou/markdown-editor",
     paragraphs: [

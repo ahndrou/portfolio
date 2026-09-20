@@ -1,18 +1,17 @@
 import { Links } from "./links";
 import TechList from "./tech-list";
-import testVideo from "./assets/asteroid_field_demo.mp4";
 import { useEffect, useRef, useState } from "react";
 import { PauseButtonSVG, PlayButtonSVG } from "./svgs";
 
 export function Card({
-  imgSrc,
+  videoSrc,
   title,
   paragraphs,
   websiteUrl,
   githubUrl,
   techList,
 }: {
-  imgSrc: string;
+  videoSrc: string;
   title: string;
   paragraphs: string[];
   websiteUrl: string;
@@ -22,7 +21,7 @@ export function Card({
   return (
     <article className="surface border-line grid grid-cols-[1fr_1fr_1fr] gap-5 overflow-clip rounded-lg border p-5">
       <div className="reveal border-line-strong col-span-3 overflow-clip rounded-md border lg:col-span-2">
-        <Video src={""} />
+        <Video src={videoSrc} />
       </div>
 
       <div className="border-line col-span-3 flex flex-col gap-4 rounded-md pt-1 lg:col-span-1">
@@ -102,7 +101,7 @@ function Video({ src }: { src: string }) {
         autoPlay={AUTOPLAY}
         muted
         playsInline
-        src={testVideo}
+        src={src}
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
       />
