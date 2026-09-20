@@ -48,7 +48,7 @@ export function Card({
   );
 }
 
-const AUTOPLAY = true;
+const AUTOPLAY = false;
 
 function Video({ src }: { src: string }) {
   const video = useRef<HTMLVideoElement>(null);
@@ -66,6 +66,29 @@ function Video({ src }: { src: string }) {
       videoElement.pause();
     }
   }
+
+  useEffect(() => {
+    const options: IntersectionObserverInit = {
+      root: null,
+      threshold: 1,
+    };
+
+    const videoElement = video.current!;
+
+    const callback: IntersectionObserverCallback = (entries) => {
+      if (entries[0].intersectionRatio === 1) {
+        videoElement.play();
+      } else {
+        videoElement.pause();
+      }
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    observer.observe(videoElement);
+
+    return () => observer.disconnect();
+  }, []);
 
   const overlayCn = `after:bg-dark-tint after:transition after:duration-1000 after:absolute after:inset-[0] after:content-[''] after:z-20 ${!isPlaying ? "after:opacity-75" : "after:opacity-0"}`;
   const className = "cursor-pointer relative isolate" + " " + overlayCn;
