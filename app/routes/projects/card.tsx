@@ -68,6 +68,8 @@ function Video({ src }: { src: string }) {
   }
 
   useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const options: IntersectionObserverInit = {
       root: null,
       threshold: 1,
