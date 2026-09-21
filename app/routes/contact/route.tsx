@@ -35,7 +35,7 @@ export default function Contact() {
           Send a message
         </h2>
 
-        <section className="surface border-line flex flex-col gap-6 rounded-md border p-6 md:flex-row">
+        <section className="surface border-line flex flex-col gap-6 rounded-md border p-4 md:flex-row lg:p-5">
           <div className="grow">
             <EmailForm />
           </div>

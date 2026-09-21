@@ -51,7 +51,7 @@ export default function Landing() {
           About
         </h2>
 
-        <section className="surface border-line grid grid-cols-1 gap-5 rounded-lg border p-5 md:grid-cols-2">
+        <section className="surface border-line grid grid-cols-1 gap-5 rounded-lg border p-4 md:grid-cols-2 lg:p-5">
           <div className="grid content-start gap-2">
             <h3 className="leading-tight font-medium">Hi, I'm Billy</h3>
             <p className="text-text-muted">
