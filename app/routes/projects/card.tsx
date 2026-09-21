@@ -19,7 +19,7 @@ export function Card({
   techList: string[];
 }) {
   return (
-    <article className="surface border-line grid grid-cols-[1fr_1fr_1fr] gap-5 overflow-clip rounded-lg border p-4 md:p-5">
+    <article className="surface border-line grid grid-cols-[1fr_1fr_1fr] gap-5 overflow-clip rounded-md border p-4 md:p-5">
       <div className="reveal border-line-strong col-span-3 overflow-clip rounded-md border lg:col-span-2">
         <Video src={videoSrc} />
       </div>
