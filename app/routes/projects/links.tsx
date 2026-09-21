@@ -10,7 +10,9 @@ export function Links({
   className?: string;
 }) {
   return (
-    <nav className={`grid w-full grid-cols-subgrid font-medium ${className}`}>
+    <nav
+      className={`grid w-full font-medium max-sm:gap-2 sm:grid-cols-subgrid ${className}`}
+    >
       <Link to="/" accent>
         Case Study
       </Link>
