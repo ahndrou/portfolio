@@ -91,7 +91,7 @@ function SubmitButton() {
       <span className="hidden">Send message</span>
       <button
         type="submit"
-        className="bg-accent text-accent-ink flex w-full cursor-pointer items-center justify-center rounded-md py-2 text-center font-mono text-sm font-medium"
+        className="bg-accent text-accent-ink flex w-full cursor-pointer items-center justify-center rounded-md border py-2 text-sm font-medium"
       >
         Send Message
       </button>
