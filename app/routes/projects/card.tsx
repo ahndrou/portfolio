@@ -104,6 +104,8 @@ function Video({ src }: { src: string }) {
         src={src}
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
+        width={1736}
+        height={1080}
       />
 
       <button
