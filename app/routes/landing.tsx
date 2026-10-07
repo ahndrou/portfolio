@@ -1,6 +1,13 @@
 import { Link } from "react-router";
 import type { Route } from "./+types/landing";
 
+const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Andrew Smith's Portfolio" },
@@ -105,14 +112,20 @@ export default function Landing() {
             </div>
 
             <ul className="surface border-line-strong flex flex-col rounded-md border">
-              {TEST_DATA.map(({ date, title, duration, blurb }) => {
+              {TEST_DATA.map(({ slug, date, title, duration, blurb }) => {
                 return (
-                  <li className="not-last:border-line-strong flex gap-5 p-3 not-last:border-b">
-                    <span className="text-text-muted text-sm">
-                      {date.toDateString()}
-                    </span>
+                  <li
+                    key={slug}
+                    className="not-last:border-line-strong flex gap-5 p-3 not-last:border-b"
+                  >
+                    <time
+                      dateTime={date.toISOString().slice(0, 10)}
+                      className="text-text-muted text-sm"
+                    >
+                      {dateFormatter.format(date)}
+                    </time>
                     <div>
-                      <span className="text-text-strong">{title}</span>
+                      <h3 className="text-text-strong">{title}</h3>
                       <p className="text-text-muted text-sm">{blurb}</p>
                     </div>
                     <span className="text-text-muted grow text-end text-sm">
@@ -131,25 +144,29 @@ export default function Landing() {
 
 const TEST_DATA = [
   {
-    date: new Date("28/09/2026"),
+    slug: "test-post-1",
+    date: new Date("2026-10-07"),
     title: "My first blog post",
     duration: "8 mins",
     blurb: "How I wrote my first blog post.",
   },
   {
-    date: new Date("28/09/2026"),
+    slug: "test-post-2",
+    date: new Date("2026-10-07"),
     title: "My first blog post",
     duration: "8 mins",
     blurb: "How I wrote my first blog post.",
   },
   {
-    date: new Date("28/09/2026"),
+    slug: "test-post-3",
+    date: new Date("2026-10-07"),
     title: "My first blog post",
     duration: "8 mins",
     blurb: "How I wrote my first blog post.",
   },
   {
-    date: new Date("28/09/2026"),
+    slug: "test-post-4",
+    date: new Date("2026-10-07"),
     title: "My first blog post",
     duration: "8 mins",
     blurb: "How I wrote my first blog post.",
