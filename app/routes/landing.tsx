@@ -1,13 +1,7 @@
 import { Link } from "react-router";
 import type { Route } from "./+types/landing";
 import { POSTS } from "./blog/post-data";
-
-const dateFormatter = new Intl.DateTimeFormat("en-GB", {
-  day: "numeric",
-  month: "short",
-  year: "numeric",
-  timeZone: "UTC",
-});
+import { PostRow } from "./blog/post-row";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -105,7 +99,8 @@ export default function Landing() {
                 Notes on things I've learned and found interesting.
               </p>
               <Link
-                to={"./"}
+                to={"./blog"}
+                viewTransition
                 className="bg-accent text-accent-ink hover:glow w-max rounded-md px-4 py-3 text-sm font-medium"
               >
                 All Posts
@@ -113,34 +108,14 @@ export default function Landing() {
             </div>
 
             <ul className="surface border-line-strong flex flex-col rounded-md border">
-              {POSTS.map(({ slug, date, title, duration, blurb }) => {
-                return (
-                  <li
-                    key={slug}
-                    className="not-last:border-line-strong not-last:border-b"
-                  >
-                    <Link
-                      to={`/blog/${slug}`}
-                      viewTransition
-                      className="hover:bg-fill flex gap-5 p-3"
-                    >
-                      <time
-                        dateTime={date.toISOString().slice(0, 10)}
-                        className="text-text-muted text-sm"
-                      >
-                        {dateFormatter.format(date)}
-                      </time>
-                      <div>
-                        <h3 className="text-text-strong">{title}</h3>
-                        <p className="text-text-muted text-sm">{blurb}</p>
-                      </div>
-                      <span className="text-text-muted grow text-end text-sm">
-                        {duration}
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
+              {POSTS.map((post) => (
+                <li
+                  key={post.slug}
+                  className="not-last:border-line-strong not-last:border-b"
+                >
+                  <PostRow post={post} />
+                </li>
+              ))}
             </ul>
           </div>
         </section>
