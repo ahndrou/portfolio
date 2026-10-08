@@ -1,38 +1,30 @@
-export type Post = {
-  slug: string;
-  date: Date;
+import type { MDXContent } from "mdx/types";
+
+type Frontmatter = {
   title: string;
+  date: string;
   duration: string;
   blurb: string;
 };
 
-export const POSTS: Post[] = [
-  {
-    slug: "test-post-1",
-    date: new Date("2026-10-07"),
-    title: "My first blog post",
-    duration: "8 mins",
-    blurb: "How I wrote my first blog post.",
-  },
-  {
-    slug: "test-post-2",
-    date: new Date("2026-10-07"),
-    title: "My first blog post",
-    duration: "8 mins",
-    blurb: "How I wrote my first blog post.",
-  },
-  {
-    slug: "test-post-3",
-    date: new Date("2026-10-07"),
-    title: "My first blog post",
-    duration: "8 mins",
-    blurb: "How I wrote my first blog post.",
-  },
-  {
-    slug: "test-post-4",
-    date: new Date("2026-10-07"),
-    title: "My first blog post",
-    duration: "8 mins",
-    blurb: "How I wrote my first blog post.",
-  },
-];
+type PostModule = {
+  default: MDXContent;
+  frontmatter: Frontmatter;
+};
+
+// Using eager imports, the module itself is the value, not a loader for it.
+const modules = import.meta.glob<PostModule>("/app/content/*.mdx", {
+  eager: true,
+});
+
+export const POSTS = Object.entries(modules).map(([path, module]) => ({
+  slug: path
+    .split("/")
+    .pop()!
+    .replace(/\.mdx$/, ""),
+  ...module.frontmatter,
+  date: new Date(module.frontmatter.date),
+  Content: module.default,
+}));
+
+export type Post = (typeof POSTS)[number];
